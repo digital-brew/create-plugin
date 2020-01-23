@@ -30,9 +30,10 @@ plugin-name
 │    ├── filters
 │    ├── stores
 │    └── index.js
-├── package.json
+├── bs-config.js
+├── plugin-name.php
 ├── webpack.config.js
-└── plugin-name.php
+└── package.json
 ```
 
 ### package.json
@@ -305,9 +306,10 @@ plugin-name
 │    ├── filters
 │    ├── stores
 │    └── index.js
-├── package.json
+├── bs-config.js
+├── plugin-name.php
 ├── webpack.config.js
-└── plugin-name.php
+└── package.json
 ```
 You'll need to export the block's name and settings from each block's index.js file so it can be automatically reloaded:
 ```
@@ -359,9 +361,10 @@ plugin-name
 │    ├── filters
 │    ├── stores
 │    └── index.js
-├── package.json
+├── bs-config.js
+├── plugin-name.php
 ├── webpack.config.js
-└── plugin-name.php
+└── package.json
 ```
 You'll need to export the plugins's name and settings from each plugin's index.js file so it can be automatically reloaded:
 ```
@@ -408,9 +411,10 @@ plugin-name
 │    │       └── index.js
 │    ├── stores
 │    └── index.js
-├── package.json
+├── bs-config.js
+├── plugin-name.php
 ├── webpack.config.js
-└── plugin-name.php
+└── package.json
 ```
 You'll need to export the filter's name and an array of filters from each filter's index.js file so it can be automatically reloaded.  
 
@@ -474,9 +478,10 @@ plugin-name
 │    │   └── store-3
 │    │       └── index.js
 │    └── index.js
-├── package.json
+├── bs-config.js
+├── plugin-name.php
 ├── webpack.config.js
-└── plugin-name.php
+└── package.json
 ```
 You'll need to export the store's name and settings from each stores's index.js file so it can be automatically reloaded:
 ```
