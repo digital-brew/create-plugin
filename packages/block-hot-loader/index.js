@@ -245,7 +245,6 @@ export const hotStoreLoader = ( { getContext, module: storeModule } ) => {
 };
 
 // RegisterBlocks function for non-HMR use
-// Register blocks.
 export const registerBlocks = ( { getContext } ) => {
 	const context = getContext();
 
@@ -255,6 +254,54 @@ export const registerBlocks = ( { getContext } ) => {
 		const settings = module.settings;
 
 		registerBlockType( name, settings );
+	}
+
+	return context;
+};
+
+// RegisterPluginStores function for non-HMR use
+export const registerPluginStores = ( { getContext } ) => {
+	const context = getContext();
+
+	for ( const filePath of context.keys() ) {
+		const module = context( filePath );
+		const name = module.name;
+		const settings = module.settings;
+
+		registerStore( name, settings );
+	}
+
+	return context;
+};
+
+// Register filters function for non-HMR use
+export const registerFilters = ( { getContext } ) => {
+	const context = { getContext };
+
+	for ( const filePath of context.keys() ) {
+		const module = context( filePath );
+		const filters = module.filters;
+
+		filters.forEach( ( filter ) => {
+			// addFilter( 'hookName', 'namespace', 'functionName', 'callback', 'priority' )
+			const { hookName, namespace, functionName } = filter;
+			addFilter( hookName, namespace, functionName );
+		} );
+	}
+
+	return context;
+};
+
+// RegisterPlugins function for non-HMR use
+export const registerPlugins = ( { getContext } ) => {
+	const context = getContext();
+
+	for ( const filePath of context.keys() ) {
+		const module = context( filePath );
+		const name = module.name;
+		const settings = module.settings;
+
+		registerPlugin( name, settings );
 	}
 
 	return context;
