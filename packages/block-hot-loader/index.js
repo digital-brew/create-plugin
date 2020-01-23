@@ -246,7 +246,7 @@ export const hotStoreLoader = ( { getContext, module: storeModule } ) => {
 
 // RegisterBlocks function for non-HMR use
 // Register blocks.
-const registerBlocks = ( { getContext } ) => {
+export const registerBlocks = ( { getContext } ) => {
 	const context = getContext();
 
 	for ( const filePath of context.keys() ) {
@@ -259,5 +259,3 @@ const registerBlocks = ( { getContext } ) => {
 
 	return context;
 };
-
-export default registerBlocks;
