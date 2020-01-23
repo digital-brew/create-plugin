@@ -19,17 +19,17 @@ You'll need a Block Plugin with a file structure something like this:
 plugin-name
 ├── build
 ├── src
-│		├── blocks
-│		│   ├── block-1
-│		│   │   └── index.js
-│		│   ├── block-2
-│		│   │   └── index.js
-│		│   └── block-3
-│		│       └── index.js
-│		├── plugins
-│		├── filters
-│		├── stores
-│		└── index.js
+│    ├── blocks
+│    │   ├── block-1
+│    │   │   └── index.js
+│    │   ├── block-2
+│    │   │   └── index.js
+│    │   └── block-3
+│    │       └── index.js
+│    ├── plugins
+│    ├── filters
+│    ├── stores
+│    └── index.js
 ├── package.json
 ├── webpack.config.js
 └── plugin-name.php
@@ -294,17 +294,17 @@ For hot-reloading Blocks you'll want a file structure similar to the one below:
 plugin-name
 ├── build
 ├── src
-│		├── blocks
-│		│   ├── block-1
-│		│   │   └── index.js
-│		│   ├── block-2
-│		│   │   └── index.js
-│		│   └── block-3
-│		│       └── index.js
-│		├── plugins
-│		├── filters
-│		├── stores
-│		└── index.js
+│    ├── blocks
+│    │   ├── block-1
+│    │   │   └── index.js
+│    │   ├── block-2
+│    │   │   └── index.js
+│    │   └── block-3
+│    │       └── index.js
+│    ├── plugins
+│    ├── filters
+│    ├── stores
+│    └── index.js
 ├── package.json
 ├── webpack.config.js
 └── plugin-name.php
@@ -348,17 +348,17 @@ For hot-reloading Plugins you'll want a file structure similar to the one below:
 plugin-name
 ├── build
 ├── src
-│		├── blocks
-│		├── plugins
-│		│   ├── plugin-1
-│		│   │   └── index.js
-│		│   ├── plugin-2
-│		│   │   └── index.js
-│		│   └── plugin-3
-│		│       └── index.js
-│		├── filters
-│		├── stores
-│		└── index.js
+│    ├── blocks
+│    ├── plugins
+│    │   ├── plugin-1
+│    │   │   └── index.js
+│    │   ├── plugin-2
+│    │   │   └── index.js
+│    │   └── plugin-3
+│    │       └── index.js
+│    ├── filters
+│    ├── stores
+│    └── index.js
 ├── package.json
 ├── webpack.config.js
 └── plugin-name.php
@@ -397,17 +397,17 @@ For hot-reloading Filters you'll want a file structure similar to the one below:
 plugin-name
 ├── build
 ├── src
-│		├── blocks
-│		├── plugins
-│		├── filters
-│		│   ├── filter-1
-│		│   │   └── index.js
-│		│   ├── filter-2
-│		│   │   └── index.js
-│		│   └── filter-3
-│		│       └── index.js
-│		├── stores
-│		└── index.js
+│    ├── blocks
+│    ├── plugins
+│    ├── filters
+│    │   ├── filter-1
+│    │   │   └── index.js
+│    │   ├── filter-2
+│    │   │   └── index.js
+│    │   └── filter-3
+│    │       └── index.js
+│    ├── stores
+│    └── index.js
 ├── package.json
 ├── webpack.config.js
 └── plugin-name.php
@@ -463,17 +463,17 @@ For hot-reloading Stores you'll want a file structure similar to the one below:
 plugin-name
 ├── build
 ├── src
-│		├── blocks
-│		├── plugins
-│		├── filters
-│		├── stores
-│		│   ├── store-1
-│		│   │   └── index.js
-│		│   ├── store-2
-│		│   │   └── index.js
-│		│   └── store-3
-│		│       └── index.js
-│		└── index.js
+│    ├── blocks
+│    ├── plugins
+│    ├── filters
+│    ├── stores
+│    │   ├── store-1
+│    │   │   └── index.js
+│    │   ├── store-2
+│    │   │   └── index.js
+│    │   └── store-3
+│    │       └── index.js
+│    └── index.js
 ├── package.json
 ├── webpack.config.js
 └── plugin-name.php
