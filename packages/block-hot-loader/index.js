@@ -101,6 +101,7 @@ export const hotBlockLoader = ( { getContext, module: blockModule } ) => {
 					return true;
 			}
 		} );
+
 		for ( const filePath of context.keys() ) {
 			const module = context( filePath );
 			const name = module.name;
