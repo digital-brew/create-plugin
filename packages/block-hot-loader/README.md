@@ -80,7 +80,7 @@ I've currently got this working with browsersync, so here is an example package.
 }
 ```
 
-## webpack.config.js
+### webpack.config.js
 You'll also need a webpack.config.js file as well. 
 
 The important things to note are making sure you include the webpack.HotModuleReplacementPlugin as well as the output > publicPath to your build directory.  You can adjust HMR settings by adding them to the query string in the entry > 'webpack-hot-middleware/...' item:
