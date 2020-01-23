@@ -243,3 +243,21 @@ export const hotStoreLoader = ( { getContext, module: storeModule } ) => {
 	};
 	storeModule.hot.accept( loadStore().id, loadStore );
 };
+
+// RegisterBlocks function for non-HMR use
+// Register blocks.
+const registerBlocks = ( { getContext } ) => {
+	const context = getContext();
+
+	for ( const filePath of context.keys() ) {
+		const module = context( filePath );
+		const name = module.name;
+		const settings = module.settings;
+
+		registerBlockType( name, settings );
+	}
+
+	return context;
+};
+
+export default registerBlocks;
