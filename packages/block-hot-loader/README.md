@@ -61,7 +61,7 @@ I've currently got this working with browsersync, so here is an example package.
     "browser-sync": "^2.26.7",
     "cross-env": "^5.2.1",
     "css-loader": "^2.1.1",
-		"npm-run-all": "^4.1.5",
+    "npm-run-all": "^4.1.5",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-middleware": "^3.7.2",
