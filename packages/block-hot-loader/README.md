@@ -1,6 +1,8 @@
 # Hot Module Replacement for Blazing Fast Gutenberg Block Development
 This is a collection of Hot Module Replacement utilities that make it easier to speed up your Gutenberg Block Development workflow.
 
+Couple the @blockhandbook/block-hot-loader npm package with browsersync and some webpack middleware and you have live reloading for php files and Hot Module Replacement for JS and CSS files.
+
 ## Installation
 ```
 npm i @blockhandbook/block-hot-loader --save-dev
