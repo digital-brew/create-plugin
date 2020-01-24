@@ -61,6 +61,7 @@ I've currently got this working with browsersync, so here is an example package.
     "browser-sync": "^2.26.7",
     "cross-env": "^5.2.1",
     "css-loader": "^2.1.1",
+		"npm-run-all": "^4.1.5",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-middleware": "^3.7.2",
@@ -82,7 +83,7 @@ I've currently got this working with browsersync, so here is an example package.
 ```
 
 ### webpack.config.js
-You'll also need a webpack.config.js file as well. 
+You'll also need a webpack.config.js file. 
 
 The important things to note are making sure you include the webpack.HotModuleReplacementPlugin as well as the output > publicPath to your build directory.  You can adjust HMR settings by adding them to the query string in the entry > 'webpack-hot-middleware/...' item:
 ```
@@ -103,7 +104,7 @@ const config = {
 		'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true&overlay=true',
 	],
 	output: {
-		publicPath: `http://localhost:3000/build/`,
+		publicPath: `/build/`,
 		path: path.resolve( __dirname, `./build` ),
 		filename: 'index.build.js',
 	},
@@ -141,7 +142,7 @@ We're almost there, this is kinda complicated if you didn't notice.  You'll also
 
 A lot of this is boilerplate bs-config.js stuff.  You'll notice there's a WRITE_TO_DISK flag that allows you to write to disk or memory.  In theory it should run faster writing to memory.
 
-One of the important configurations of note is the ignore array where you can tell browsersync what directories to watch and what to ignore.  Since we're using webpack to write the build files and we're using HMR we'll want browsersynce to ignore both the /build and /src directories.  This is the MAGIC of HMR.  However, browsersync will watch any php files for updates and any other files you're not ignoring and auto-reload the browser if for instance you update your php files.
+One of the important configurations of note is the ignore array where you can tell browsersync what directories to watch and what to ignore.  Since we're using webpack to write the build files and we're using HMR we'll want browsersync to ignore both the /build and /src directories.  This is the MAGIC of HMR.  However, browsersync will watch any php files for updates and any other files you're not ignoring and auto-reload the browser if for instance you update your php files.
 
 You'll also want to make sure you're using the right proxy, so you may be using localhost:8888, make sure you change the proxy to localhost:8888.
 
