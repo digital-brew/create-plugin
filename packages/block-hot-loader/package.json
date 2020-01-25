@@ -1,0 +1,24 @@
+{
+  "name": "@blockhandbook/block-hot-loader",
+  "version": "1.0.9",
+  "description": "Hot Module Replacement for Blazing Fast Gutenberg Block Development",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blockhandbook/block-hot-loader.git"
+  },
+  "keywords": [
+    "hot module replacement",
+    "gutenberg",
+    "block editor"
+  ],
+  "author": "Lee Shadle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blockhandbook/block-hot-loader/issues"
+  },
+  "homepage": "https://github.com/blockhandbook/block-hot-loader#readme"
+}
