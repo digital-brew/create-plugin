@@ -42,10 +42,10 @@ export const hotBlockLoader = ( { getContext, module: blockModule } ) => {
 			return flat;
 		};
 
-		blocks = blocks.map( ( block ) => {
+		blocks = blocks.map( ( block, index ) => {
 			const { innerBlocks, name, clientId } = block;
 			const flattenedInnerBlocks = flatten( innerBlocks );
-			block = { name: name, clientId: clientId, innerBlocks: flattenedInnerBlocks };
+			block = { name: name, clientId: clientId, innerBlocks: flattenedInnerBlocks, index };
 			return block;
 		} );
 
@@ -150,7 +150,6 @@ export const hotBlockLoader = ( { getContext, module: blockModule } ) => {
 							module.settings.attributes[ attribute ].default = prevAttributes[ attribute ];
 						}								
 					}
-
 					const insertedBlock = createBlock( module.name, module.settings );
 					insertBlock( insertedBlock, block.index );
 				}
