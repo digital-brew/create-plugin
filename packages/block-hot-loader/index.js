@@ -120,34 +120,35 @@ export const hotBlockLoader = ( { getContext, module: blockModule } ) => {
 					continue;
 				}
 			}
-			let prevAttributes = {};
+
+			let prevAttributes = [];
 			if ( blockModules[ name ] ) {
 				const prevModule = blockModules[ name ].module;
 				
 				// we need to remove the block before we unregister it
 				// it's breaking the rendering for now. hopefully i can delete
 				// this crap later
-				blocks.forEach( ( block ) => {					
+				blocks.forEach( ( block, index ) => {
 					if( block.name === name ) {
-						blocks.forEach( ( block ) => {
-							const { attributes } = getBlock( block.clientId );
+						const { attributes } = getBlock( block.clientId );
 
-							prevAttributes = attributes;
-							removeBlock( block.clientId )
-						} );
+						prevAttributes[ index ] = attributes;
+						removeBlock( block.clientId );
 					}
 				} );
+				
 				unregisterBlockType( prevModule.name );
 			}
 
 			registerBlockType( module.name, module.settings );
+			
 			// here we're passing on the prev state to the newly added block
 			// hopefully we can remove all this crap and revert back to register/unregister at some point...
-			blocks.forEach( ( block ) => {
+			blocks.forEach( ( block, index ) => {
 				if( block.name === name ) {					
 					for( const attribute in module.settings.attributes ) {
 						if( module.settings.attributes[ attribute ]) {
-							module.settings.attributes[ attribute ].default = prevAttributes[ attribute ];
+							module.settings.attributes[ attribute ].default = prevAttributes[ index ][ attribute ];
 						}								
 					}
 					const insertedBlock = createBlock( module.name, module.settings );
