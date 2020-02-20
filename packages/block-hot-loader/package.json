@@ -1,10 +1,11 @@
 {
   "name": "@blockhandbook/block-hot-loader",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Hot Module Replacement for Blazing Fast Gutenberg Block Development",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update": "npm version $npm_package_version && npm publish"
   },
   "repository": {
     "type": "git",
