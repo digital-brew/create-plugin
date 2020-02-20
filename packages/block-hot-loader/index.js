@@ -5,10 +5,12 @@
 /**
  * WordPress Dependencies
  */
-import { registerBlockType, unregisterBlockType } from '@wordpress/blocks';
+import { getUnregisteredTypeHandlerName, createBlock, setUnregisteredTypeHandlerName, rawHandler, registerBlockType, unregisterBlockType } from '@wordpress/blocks';
 import { registerPlugin, unregisterPlugin } from '@wordpress/plugins';
 import { dispatch, select, registerStore } from '@wordpress/data';
 import { addFilter, removeFilter } from '@wordpress/hooks';
+const { replaceBlock, insertBlock, removeBlock, updateBlock, updateBlockAttributes } = dispatch( 'core/block-editor' );
+const { getBlock } = select( 'core/block-editor' );
 
 /**
  * Internal Dependencies
@@ -118,14 +120,41 @@ export const hotBlockLoader = ( { getContext, module: blockModule } ) => {
 					continue;
 				}
 			}
-
+			let prevAttributes = {};
 			if ( blockModules[ name ] ) {
 				const prevModule = blockModules[ name ].module;
+				
+				// we need to remove the block before we unregister it
+				// it's breaking the rendering for now. hopefully i can delete
+				// this crap later
+				blocks.forEach( ( block ) => {					
+					if( block.name === name ) {
+						blocks.forEach( ( block ) => {
+							const { attributes } = getBlock( block.clientId );
 
+							prevAttributes = attributes;
+							removeBlock( block.clientId )
+						} );
+					}
+				} );
 				unregisterBlockType( prevModule.name );
 			}
 
 			registerBlockType( module.name, module.settings );
+			// here we're passing on the prev state to the newly added block
+			// hopefully we can remove all this crap and revert back to register/unregister at some point...
+			blocks.forEach( ( block ) => {
+				if( block.name === name ) {					
+					for( const attribute in module.settings.attributes ) {
+						if( module.settings.attributes[ attribute ]) {
+							module.settings.attributes[ attribute ].default = prevAttributes[ attribute ];
+						}								
+					}
+
+					const insertedBlock = createBlock( module.name, module.settings );
+					insertBlock( insertedBlock, block.index );
+				}
+			} );
 
 			blockModules = { ...blockModules, [ name ]: { filePath: filePath, module: module } };
 		}
