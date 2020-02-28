@@ -19,6 +19,7 @@ const { getBlock } = select( 'core/block-editor' );
 // Hot Module Replacement for blocks
 export const hotBlockLoader = ( { getContext, module: blockModule } ) => {
 	let blockModules = {};
+	let prevBlocks = [];
 	const loadBlocks = () => {
 		const selectedBlockId = select( 'core/block-editor' ).getSelectedBlockClientId();
 
@@ -121,33 +122,32 @@ export const hotBlockLoader = ( { getContext, module: blockModule } ) => {
 				}
 			}
 
+			// added to fix breaking changes to gutenberg
 			let prevAttributes = [];
+			// end added
 			if ( blockModules[ name ] ) {
 				const prevModule = blockModules[ name ].module;
-				
-				// we need to remove the block before we unregister it
-				// it's breaking the rendering for now. hopefully i can delete
-				// this crap later
-				blocks.forEach( ( block, index ) => {
-					if( block.name === name ) {
-						const { attributes } = getBlock( block.clientId );
 
+				// added to fix breaking changes to gutenberg
+				blocks.forEach( ( block, index ) => {
+					if( block.name === name && block.updated ) {
+						const { attributes } = getBlock( block.clientId );
 						prevAttributes[ index ] = attributes;
 						removeBlock( block.clientId );
 					}
 				} );
+				// end added
 				
 				unregisterBlockType( prevModule.name );
 			}
 
 			registerBlockType( module.name, module.settings );
 			
-			// here we're passing on the prev state to the newly added block
-			// hopefully we can remove all this crap and revert back to register/unregister at some point...
+			// added to fix breaking changes to gutenberg
 			blocks.forEach( ( block, index ) => {
-				if( block.name === name ) {					
+				if( block.name === name && block.updated ) {
 					for( const attribute in module.settings.attributes ) {
-						if( module.settings.attributes[ attribute ]) {
+						if( module.settings.attributes[ attribute ] ) {
 							module.settings.attributes[ attribute ].default = prevAttributes[ index ][ attribute ];
 						}								
 					}
@@ -155,6 +155,7 @@ export const hotBlockLoader = ( { getContext, module: blockModule } ) => {
 					insertBlock( insertedBlock, block.index );
 				}
 			} );
+			// end added
 
 			blockModules = { ...blockModules, [ name ]: { filePath: filePath, module: module } };
 		}
