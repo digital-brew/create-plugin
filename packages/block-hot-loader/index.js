@@ -19,7 +19,7 @@ const { getBlock } = select( 'core/block-editor' );
 // Hot Module Replacement for blocks
 export const hotBlockLoader = ( { getContext, module: blockModule } ) => {
 	let blockModules = {};
-	let prevBlocks = [];
+
 	const loadBlocks = () => {
 		const selectedBlockId = select( 'core/block-editor' ).getSelectedBlockClientId();
 
@@ -122,20 +122,22 @@ export const hotBlockLoader = ( { getContext, module: blockModule } ) => {
 				}
 			}
 
-			// added to fix breaking changes to gutenberg
-			let prevAttributes = [];
+			// added to fix breaking changes to gutenberg 7.6
+			// keeping just in case we need this again in the future
+			// let prevAttributes = [];
 			// end added
 			if ( blockModules[ name ] ) {
 				const prevModule = blockModules[ name ].module;
 
-				// added to fix breaking changes to gutenberg
-				blocks.forEach( ( block, index ) => {
-					if( block.name === name && block.updated ) {
-						const { attributes } = getBlock( block.clientId );
-						prevAttributes[ index ] = attributes;
-						removeBlock( block.clientId );
-					}
-				} );
+				// added to fix breaking changes to gutenberg 7.6
+				// keeping just in case we need this again in the future
+				// blocks.forEach( ( block, index ) => {
+				// 	if( block.name === name && block.updated ) {
+				// 		const { attributes } = getBlock( block.clientId );
+				// 		prevAttributes[ index ] = attributes;
+				// 		removeBlock( block.clientId );
+				// 	}
+				// } );
 				// end added
 				
 				unregisterBlockType( prevModule.name );
@@ -143,18 +145,19 @@ export const hotBlockLoader = ( { getContext, module: blockModule } ) => {
 
 			registerBlockType( module.name, module.settings );
 			
-			// added to fix breaking changes to gutenberg
-			blocks.forEach( ( block, index ) => {
-				if( block.name === name && block.updated ) {
-					for( const attribute in module.settings.attributes ) {
-						if( module.settings.attributes[ attribute ] ) {
-							module.settings.attributes[ attribute ].default = prevAttributes[ index ][ attribute ];
-						}								
-					}
-					const insertedBlock = createBlock( module.name, module.settings );
-					insertBlock( insertedBlock, block.index );
-				}
-			} );
+			// added to fix breaking changes to gutenberg 7.6
+			// keeping just in case we need this again in the future
+			// blocks.forEach( ( block, index ) => {
+			// 	if( block.name === name && block.updated ) {
+			// 		for( const attribute in module.settings.attributes ) {
+			// 			if( module.settings.attributes[ attribute ] ) {
+			// 				module.settings.attributes[ attribute ].default = prevAttributes[ index ][ attribute ];
+			// 			}								
+			// 		}
+			// 		const insertedBlock = createBlock( module.name, module.settings );
+			// 		insertBlock( insertedBlock, block.index );
+			// 	}
+			// } );
 			// end added
 
 			blockModules = { ...blockModules, [ name ]: { filePath: filePath, module: module } };
