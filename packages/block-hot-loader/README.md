@@ -45,7 +45,8 @@ plugin-name
 ```
 
 ### package.json
-I've currently got this working with browsersync, so here is an example package.json file.  The main things you'll need are the @blockhandbook/block-hot-loader, browser-sync, webpack, webpack-cli, webpack-dev-middleware, webpack-hot-middleware packages.  I've also left the babel and react stuff in there b/c I'm assuming you're going to need those as well:
+I'm currently using this with the @wordpress/scripts package for block building scripts and the @wordpress/env package for a Docker block plugin development environment.  So here is an example package.json file.  
+
 ```
 {
   "name": "block-handbook",
@@ -54,13 +55,13 @@ I've currently got this working with browsersync, so here is an example package.
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "npm-run-all --parallel browser-sync",
-    "browser-sync": "cross-env WRITE_TO_DISK=true PLUGIN_NAME=$npm_package_name browser-sync start --config bs-config.js",
+    "start": "npm run browser-sync",
+    "browser-sync": "browser-sync start --config bs-config.js",
   },
   "devDependencies": {
-		"@wordpress/scripts",
-		"@wordpress/env",
-    "@blockhandbook/block-hot-loader": "^1.0.7"
+		"@blockhandbook/block-hot-loader": "^1.2.1",
+		"@wordpress/env": "^1.0.1",
+		"@wordpress/scripts": "^7.1.2"    
   }
 }
 ```
@@ -68,18 +69,29 @@ I've currently got this working with browsersync, so here is an example package.
 ### webpack.config.js
 You'll also need a webpack.config.js file. 
 
-The important things to note are making sure you include the webpack.HotModuleReplacementPlugin as well as the output > publicPath to your build directory.  You can adjust HMR settings by adding them to the query string in the entry > 'webpack-hot-middleware/...' item:
+The important things to note are making sure you include the webpack.HotModuleReplacementPlugin as well as the output > publicPath to your build directory.  The HotModuleReplacementPlugin will also be installed by the @blockhandbook/block-hot-loader package.  You can adjust HMR settings by adding them to the query string in the entry > 'webpack-hot-middleware/...' item:
+
+I'm also going to assume you're using the @wordpress/scripts package.  This example webpack.config.js file takes that into account by importing the default WordPress webpack.config.js settings.
+
+This example is also showing how to using how to use the baked in SASS dependencies to compile SASS into css build files.
 ```
 const path = require( 'path' );
 const webpack = require( 'webpack' );
 const nodeEnv = process.env.NODE_ENV || 'development';
-const slug = process.env.PLUGIN_NAME;
+const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 
 // Plugins
+
 // Hot Module Replacement
 const hotModuleReplacementPlugin = new webpack.HotModuleReplacementPlugin();
 
+// Compile block frontend and editor scss files into css files.
+const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
+const extractStyles = new ExtractTextPlugin( './style.css' );
+const extractEditorStyles = new ExtractTextPlugin( './editor.css' );
+
 const config = {
+	...defaultConfig,
 	mode: nodeEnv,
 	devtool: 'source-map',
 	entry: [
@@ -92,28 +104,51 @@ const config = {
 		filename: 'index.build.js',
 	},
 	module: {
+		...defaultConfig.module,
 		rules: [
+			...defaultConfig.module.rules,
 			{
-				test: /\.js$/,
-				exclude: [ /node_modules/ ],
-				use: {
-					loader: 'babel-loader',
-					options: {
-						presets: [
-							'@babel/preset-env',
-							{
-								plugins: [
-									'@babel/plugin-transform-react-jsx',
-								],
+				test: /editor\.(sa|sc|c)ss$/,
+				use: extractEditorStyles.extract( {
+					fallback: 'style-loader',
+					use: [
+						{
+							loader: 'css-loader',
+						},
+						{
+							loader: 'sass-loader',
+							options: {
+								sourceMap: true,								
 							},
-						],
-					},
-				},
+						},
+					],
+				} ),
+			},
+			{
+				test: /style\.(sa|sc|c)ss$/,
+				use: extractStyles.extract( {
+					fallback: 'style-loader',
+					use: [
+						{
+							loader: 'css-loader',
+						},
+						{
+							loader: 'sass-loader',
+							options: {
+								sourceMap: true,
+							},
+						},
+					],
+				} ),
 			},			
 		],
 	},
 	plugins: [
 		hotModuleReplacementPlugin,
+		...defaultPlugins,
+		extractStyles,
+		extractEditorStyles,
+		hotModuleReplacementPlugin
 	],
 };
 
@@ -121,7 +156,13 @@ module.exports = config;
 ```
 
 ### bs-config.js
-We're almost there, this is kinda complicated if you didn't notice.  You'll also need to add a bs-config.js file.  This is just a browsersync file that allows webpack and browsersync to work together.  Maybe I'll rollout a web-dev-server version someday...
+We're almost there, this is kinda complicated if you didn't notice...
+
+It's not too late to jump over and take our FREE 6-Lesson Blazing Fast Block Development video course:
+* [Visit the BlockHandbook website](https://blockhandbook.com)
+* [Follow us on Twitter](https://twitter.com/blockhandbook)
+
+ You'll also need to add a bs-config.js file.  This is just a browsersync file that allows webpack and browsersync to work together.  Maybe I'll rollout a web-dev-server version someday...
 
 A lot of this is boilerplate bs-config.js stuff.  You'll notice there's a WRITE_TO_DISK flag that allows you to write to disk or memory.  In theory it should run faster writing to memory.
 
@@ -152,13 +193,6 @@ const webpackDevMiddleware = require( 'webpack-dev-middleware' );
 const webpackHotMiddleware = require( 'webpack-hot-middleware' );
 const config = require( './webpack.config.js' );
 const compiler = webpack( config );
-// need to convert passed variable to boolean
-const WRITE_TO_DISK = ( process.env.WRITE_TO_DISK === 'true' );
-// if we need to write to disk then let's check for hot module updates and not write those
-const writeToDisk = WRITE_TO_DISK ? ( ( filePath ) => {
-	return /^(?!.*(hot)).*/.test( filePath );
-} ) :
-	false;
 
 module.exports = {
 	ui: {
@@ -185,7 +219,9 @@ module.exports = {
 		webpackDevMiddleware( compiler, {
 			publicPath: config.output.publicPath,
 			path: config.output.path,
-			writeToDisk,
+			writeToDisk: ( ( filePath ) => {
+				return /^(?!.*(hot)).*/.test( filePath );
+			} ),
 			stats: {
 				colors: true,
 			},
@@ -309,6 +345,7 @@ const settings = {
 	},
 	// etc.
 }
+
 export { name, settings };
 ```
 Finally, you'll add the hotBlockLoader function to your root ./src/index.js file.
