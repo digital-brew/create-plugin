@@ -6,7 +6,7 @@ The @blockhandbook/block-hot-loader npm package is coupled with browsersync and 
 Don't want to read or think through all this documentation?
 
 Take our FREE 6-Lesson Blazing Fast Block Development video course:
-* [Visit the BlockHandbook website](https://blockhandbook.com)
+* [Take our FREE course](https://blockhandbook.com)
 * [Follow us on Twitter](https://twitter.com/blockhandbook)
 
 ## Installation
@@ -59,9 +59,9 @@ I'm currently using this with the @wordpress/scripts package for block building 
     "browser-sync": "browser-sync start --config bs-config.js",
   },
   "devDependencies": {
-		"@blockhandbook/block-hot-loader": "^1.2.1",
-		"@wordpress/env": "^1.0.1",
-		"@wordpress/scripts": "^7.1.2"    
+    "@blockhandbook/block-hot-loader": "^1.2.1",
+    "@wordpress/env": "^1.0.1",
+    "@wordpress/scripts": "^7.1.2"    
   }
 }
 ```
@@ -69,11 +69,16 @@ I'm currently using this with the @wordpress/scripts package for block building 
 ### webpack.config.js
 You'll also need a webpack.config.js file. 
 
-The important things to note are making sure you include the webpack.HotModuleReplacementPlugin as well as the output > publicPath to your build directory.  The HotModuleReplacementPlugin will also be installed by the @blockhandbook/block-hot-loader package.  You can adjust HMR settings by adding them to the query string in the entry > 'webpack-hot-middleware/...' item:
+The important things to note are making sure you include the webpack.HotModuleReplacementPlugin as well as the output > publicPath to your build directory.  The HotModuleReplacementPlugin will also be installed by the @blockhandbook/block-hot-loader package.  
+
+You can adjust HMR settings by adding them to the query string in the entry: [
+  path.resolve( __dirname, `./src/index.js` ),
+  *'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true&overlay=true',*
+]
 
 I'm also going to assume you're using the @wordpress/scripts package.  This example webpack.config.js file takes that into account by importing the default WordPress webpack.config.js settings.
 
-This example is also showing how to using how to use the baked in SASS dependencies to compile SASS into css build files.
+This example is also showing how to use the baked in SASS dependencies to compile SASS into editor.css & style.css build files.
 ```
 const path = require( 'path' );
 const webpack = require( 'webpack' );
@@ -144,11 +149,10 @@ const config = {
 		],
 	},
 	plugins: [
-		hotModuleReplacementPlugin,
-		...defaultPlugins,
-		extractStyles,
-		extractEditorStyles,
-		hotModuleReplacementPlugin
+    ...defaultPlugins,
+    extractStyles,
+    extractEditorStyles,
+    hotModuleReplacementPlugin
 	],
 };
 
@@ -162,9 +166,12 @@ It's not too late to jump over and take our FREE 6-Lesson Blazing Fast Block Dev
 * [Visit the BlockHandbook website](https://blockhandbook.com)
 * [Follow us on Twitter](https://twitter.com/blockhandbook)
 
- You'll also need to add a bs-config.js file.  This is just a browsersync file that allows webpack and browsersync to work together.  Maybe I'll rollout a web-dev-server version someday...
+You'll also need to add a bs-config.js file.  This is just a browsersync config file that allows webpack and browsersync to work together.  You can just run this command in your root directory to generate a bs-config.js file:
+```
+browser-sync init
+```
 
-A lot of this is boilerplate bs-config.js stuff.  You'll notice there's a WRITE_TO_DISK flag that allows you to write to disk or memory.  In theory it should run faster writing to memory.
+A lot of this is boilerplate bs-config.js stuff.
 
 One of the important configurations of note is the ignore array where you can tell browsersync what directories to watch and what to ignore.  Since we're using webpack to write the build files and we're using HMR we'll want browsersync to ignore both the /build and /src directories.  This is the MAGIC of HMR.  However, browsersync will watch any php files for updates and any other files you're not ignoring and auto-reload the browser if for instance you update your php files.
 
