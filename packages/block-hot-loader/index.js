@@ -9,8 +9,10 @@ import { getUnregisteredTypeHandlerName, createBlock, setUnregisteredTypeHandler
 import { registerPlugin, unregisterPlugin } from '@wordpress/plugins';
 import { dispatch, select, registerStore } from '@wordpress/data';
 import { addFilter, removeFilter } from '@wordpress/hooks';
-const { replaceBlock, insertBlock, removeBlock, updateBlock, updateBlockAttributes } = dispatch( 'core/block-editor' );
-const { getBlock } = select( 'core/block-editor' );
+// Needed this for breaking Gutenberg changes.  Commenting out incase we 
+// need it in the future
+// const { replaceBlock, insertBlock, removeBlock, updateBlock, updateBlockAttributes } = dispatch( 'core/block-editor' );
+// const { getBlock } = select( 'core/block-editor' );
 
 /**
  * Internal Dependencies
