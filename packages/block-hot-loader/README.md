@@ -3,9 +3,7 @@ This is a collection of Hot Module Replacement utilities that make it easier to 
 
 The @blockhandbook/block-hot-loader npm package is coupled with browsersync and some webpack middleware to give you live reloading for php files and Hot Module Replacement for JS and CSS files.
 
-Don't want to read or think through all this documentation?
-
-Take our FREE 6-Lesson Blazing Fast Block Development video course:
+Don't want to read or think through all this documentation?  We'll walk you through this entire setup in our FREE 6-Lesson Blazing Fast Block Development video course:
 * [Take our FREE course](https://blockhandbook.com)
 * [Follow us on Twitter](https://twitter.com/blockhandbook)
 
@@ -59,7 +57,7 @@ I'm currently using this with the @wordpress/scripts package for block building 
     "browser-sync": "browser-sync start --config bs-config.js",
   },
   "devDependencies": {
-    "@blockhandbook/block-hot-loader": "^1.2.1",
+    "@blockhandbook/block-hot-loader": "^1.2.2",
     "@wordpress/env": "^1.0.1",
     "@wordpress/scripts": "^7.1.2"    
   }
