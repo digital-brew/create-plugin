@@ -280,6 +280,36 @@ export const hotStoreLoader = ( { getContext, module: storeModule } ) => {
 	storeModule.hot.accept( loadStore().id, loadStore );
 };
 
+// Hot Module Replacement for frontend
+export const hotFrontendLoader = ( { getContext, module: frontendModule } ) => {
+	let frontendModules = {};
+	const loadFrontend = () => {
+		const context = getContext();
+		
+		for ( const filePath of context.keys() ) {
+			const module = context( filePath );
+			const name = module.name;
+			const components = module.components;
+			const containers = module.containers;
+
+			if ( frontendModules[ name ] && ( module === frontendModules[ name ].module ) ) {
+				continue;
+			}
+
+			containers.forEach( ( container, index ) => {
+				render( 
+					components[ index ],
+					container
+				);
+			} );
+
+			frontendModules = { ...frontendModules, [ name ]: { filePath: filePath, module: module } };
+		}
+		return context;
+	};
+	frontendModule.hot.accept( loadFrontend().id, loadFrontend );
+};
+
 // RegisterBlocks function for non-HMR use
 export const registerBlocks = ( { getContext } ) => {
 	const context = getContext();
@@ -338,6 +368,26 @@ export const registerPlugins = ( { getContext } ) => {
 		const settings = module.settings;
 
 		registerPlugin( name, settings );
+	}
+
+	return context;
+};
+
+// Autoload frontend.js
+export const registerFrontend = ( { getContext } ) => {
+	const context = getContext();
+
+	for ( const filePath of context.keys() ) {
+		const module = context( filePath );
+		const components = module.components;
+		const containers = module.containers;
+
+		containers.forEach( ( container, index ) => {
+			render( 
+				components[ index ],
+				container
+			);
+		} );
 	}
 
 	return context;
