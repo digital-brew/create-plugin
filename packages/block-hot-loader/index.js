@@ -6,6 +6,7 @@
  * WordPress Dependencies
  */
 import { getUnregisteredTypeHandlerName, createBlock, setUnregisteredTypeHandlerName, rawHandler, registerBlockType, unregisterBlockType } from '@wordpress/blocks';
+import { render } from '@wordpress/element';
 import { registerPlugin, unregisterPlugin } from '@wordpress/plugins';
 import { dispatch, select, registerStore } from '@wordpress/data';
 import { addFilter, removeFilter } from '@wordpress/hooks';
