@@ -289,17 +289,17 @@ export const hotFrontendLoader = ( { getContext, module: frontendModule } ) => {
 		for ( const filePath of context.keys() ) {
 			const module = context( filePath );
 			const name = module.name;
-			const components = module.components;
-			const containers = module.containers;
+			const blocks = module.blocks;
+			const blockContainers = module.blockContainers;
 
 			if ( frontendModules[ name ] && ( module === frontendModules[ name ].module ) ) {
 				continue;
 			}
 
-			containers.forEach( ( container, index ) => {
+			blockContainers.forEach( ( blockContainer, index ) => {
 				render( 
-					components[ index ],
-					container
+					blocks[ index ],
+					blockContainer
 				);
 			} );
 
@@ -379,13 +379,13 @@ export const registerFrontend = ( { getContext } ) => {
 
 	for ( const filePath of context.keys() ) {
 		const module = context( filePath );
-		const components = module.components;
-		const containers = module.containers;
+		const blocks = module.blocks;
+		const blockContainers = module.blockContainers;
 
-		containers.forEach( ( container, index ) => {
+		containers.forEach( ( blockContainer, index ) => {
 			render( 
-				components[ index ],
-				container
+				blocks[ index ],
+				blockContainer
 			);
 		} );
 	}
