@@ -600,8 +600,14 @@ const name = `plugin-name/block-1`;
 const blockContainers = document.querySelectorAll( '.blockContainer' );
 
 const BlockComponent = ( props ) => {
+	const {
+		attributes: {
+			title,
+		}
+	} = props;
+
 	return(
-		<h1>Just a test</h1>
+		<h1>{ title }</h1>
 	);
 };
 
