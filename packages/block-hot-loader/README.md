@@ -586,7 +586,8 @@ plugin-name
 │    ├── plugins
 │    ├── filters
 │    ├── stores
-│    └── index.js
+│    ├── index.js
+│    └── frontend.js
 ├── bs-config.js
 ├── plugin-name.php
 ├── webpack.config.js
