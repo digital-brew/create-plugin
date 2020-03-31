@@ -382,7 +382,7 @@ export const registerFrontend = ( { getContext } ) => {
 		const blocks = module.blocks;
 		const blockContainers = module.blockContainers;
 
-		containers.forEach( ( blockContainer, index ) => {
+		blockContainers.forEach( ( blockContainer, index ) => {
 			render( 
 				blocks[ index ],
 				blockContainer
