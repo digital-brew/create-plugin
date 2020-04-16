@@ -70,12 +70,23 @@ You'll also need a webpack.config.js file.
 
 The important things to note are making sure you include the webpack.HotModuleReplacementPlugin as well as the output > publicPath to your build directory.  The HotModuleReplacementPlugin will also be installed by the @blockhandbook/block-hot-loader package.  
 
-You can adjust HMR settings by adding them to the query string in the entry: [
-  path.resolve( __dirname, `./src/index.js` ),
-  *'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true&overlay=true',*
-]
+You can adjust HMR settings by adding them to the query string in the entry:
+```
+entry: {
+	index: [
+		path.resolve( process.cwd(), `src/index.js` ),
+		*'webpack-hot-middleware/client?name=index&timeout=20000&reload=true&overlay=true'*
+	],
+	frontend: [
+		path.resolve( process.cwd(), `src/frontend.js` ),
+		*'webpack-hot-middleware/client?name=frontend&timeout=20000&reload=true&overlay=true'*
+	],
+},
+```
 
 I'm also going to assume you're using the @wordpress/scripts package.  This example webpack.config.js file takes that into account by importing the default WordPress webpack.config.js settings.
+
+I've also included an entrypoint for any frontend rendered blocks, in case you want to use HMR to build and render blocks on the frontend. 
 
 This example is also showing how to use the baked in SASS dependencies to compile SASS into editor.css & style.css build files.
 ```
@@ -94,18 +105,32 @@ const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 const extractStyles = new ExtractTextPlugin( './style.css' );
 const extractEditorStyles = new ExtractTextPlugin( './editor.css' );
 
+// Remove LiveReloadPlugin if in development mode
+const defaultPlugins = defaultConfig.plugins.map( ( plugin ) => {
+	if ( plugin.constructor.name.includes( 'LiveReloadPlugin' ) ) {
+		return false;
+	}
+	return plugin;
+} ).filter( plugin => plugin );
+
 const config = {
 	...defaultConfig,
 	mode: nodeEnv,
 	devtool: 'source-map',
-	entry: [
-		path.resolve( __dirname, `./src/index.js` ),
-		'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true&overlay=true',
-	],
+	entry: {
+		index: [
+			path.resolve( process.cwd(), `src/index.js` ),
+			'webpack-hot-middleware/client?name=index&timeout=20000&reload=true&overlay=true'
+		],
+		frontend: [
+			path.resolve( process.cwd(), `src/frontend.js` ),
+			'webpack-hot-middleware/client?name=frontend&timeout=20000&reload=true&overlay=true'
+		],
+	},
 	output: {
 		publicPath: `/build/`,
 		path: path.resolve( __dirname, `./build` ),
-		filename: 'index.build.js',
+		filename: '[name].js',
 	},
 	module: {
 		...defaultConfig.module,
@@ -210,16 +235,19 @@ module.exports = {
 	],
 	watch: true,
 	ignore: [
-		`./src`,
-		`./build`,
-		'./node_modules',
+    `./src`,
+    `./build/index.js`,
+    `./build/index.asset.php`,
+    `./build/frontend.js`,
+    `./build/frontend.asset.php`,
+    './node_modules',
 	],
 	single: false,
 	watchOptions: {
 		ignoreInitial: true,
 	},
 	server: false,
-	proxy: 'localhost:8000',
+	proxy: 'localhost:8888',
 	port: 3000,
 	middleware: [
 		webpackDevMiddleware( compiler, {
