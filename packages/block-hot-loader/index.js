@@ -326,8 +326,8 @@ export const registerBlocks = ( { getContext } ) => {
 	return context;
 };
 
-// RegisterPluginStores function for non-HMR use
-export const registerPluginStores = ( { getContext } ) => {
+// RegisterStores function for non-HMR use
+export const registerStores = ( { getContext } ) => {
 	const context = getContext();
 
 	for ( const filePath of context.keys() ) {

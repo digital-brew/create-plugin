@@ -35,7 +35,8 @@ plugin-name
 │    ├── plugins
 │    ├── filters
 │    ├── stores
-│    └── index.js
+│    ├── index.js
+│    └── frontend.js
 ├── bs-config.js
 ├── plugin-name.php
 ├── webpack.config.js
@@ -330,7 +331,8 @@ plugin-name
 │    ├── plugins
 │    ├── filters
 │    ├── stores
-│    └── index.js
+│    ├── index.js
+│    └── frontend.js
 ├── bs-config.js
 ├── plugin-name.php
 ├── webpack.config.js
@@ -387,7 +389,8 @@ plugin-name
 │    │       └── index.js
 │    ├── filters
 │    ├── stores
-│    └── index.js
+│    ├── index.js
+│    └── frontend.js
 ├── bs-config.js
 ├── plugin-name.php
 ├── webpack.config.js
@@ -408,7 +411,7 @@ Finally, you'll add the hotPluginLoader function to your root ./src/index.js fil
 
 You can use a different directory name by changing './plugins' to whatever directory name you used.  We've also included a registerBlocks function for non-HMR use ( production ):
 ```
-import { hotBlockLoader, registerBlocks } from '@blockhandbook/block-hot-loader';
+import { hotPluginLoader, registerPlugins } from '@blockhandbook/block-hot-loader';
 
 if ( module.hot ) {
 	hotPluginLoader( {
@@ -438,7 +441,8 @@ plugin-name
 │    │   └── filter-3
 │    │       └── index.js
 │    ├── stores
-│    └── index.js
+│    ├── index.js
+│    └── frontend.js
 ├── bs-config.js
 ├── plugin-name.php
 ├── webpack.config.js
@@ -509,7 +513,8 @@ plugin-name
 │    │   │   └── index.js
 │    │   └── store-3
 │    │       └── index.js
-│    └── index.js
+│    ├── index.js
+│    └── frontend.js
 ├── bs-config.js
 ├── plugin-name.php
 ├── webpack.config.js
@@ -550,9 +555,9 @@ export { name, settings };
 
 Finally, you'll add the hotStoreLoader function to your root ./src/index.js file.
 
-You can use a different directory name by changing './stores' to whatever directory name you used.  We've also included a registerPluginStores function for non-HMR use ( production ):
+You can use a different directory name by changing './stores' to whatever directory name you used.  We've also included a registerStores function for non-HMR use ( production ):
 ```
-import { hotStoreLoader, registerPluginStores } from '@blockhandbook/block-hot-loader';
+import { hotStoreLoader, registerStores } from '@blockhandbook/block-hot-loader';
 
 if ( module.hot ) {
 	hotStoreLoader( {
@@ -560,7 +565,7 @@ if ( module.hot ) {
 		module,
 	} );
 } else {
-	registerPluginStores( {
+	registerStores( {
 		getContext: () => require.context( './stores', true, /index\.js$/ ),
 		module,
 	} );
@@ -617,6 +622,9 @@ const BlockComponent = ( props ) => {
 // the array of blocks and any of their associated attributes
 let blocks = [];
 blockContainers.forEach( ( blockContainer ) => {
+	// in this example I'm passing all of the block's attributes
+	// to the frontend as an html data attribute and then parsing
+	// it to use the attribute data on the frontend
 	const attributes = JSON.parse( blockContainer.dataset.attributes );
 
 	blocks.push( <BlockComponent attributes={ attributes } /> )
@@ -625,7 +633,7 @@ blockContainers.forEach( ( blockContainer ) => {
 export { name, blocks, blockContainers };
 ```
 
-You'd simply use the 'wp_enqueue_scripts' hook to enqueue the ./src/frontend.js file only on the frontend in your php.  I highly recommend using the wp-scripts package too, so then you can have the frontend WordPress dependencies automatically included as well by doing something like this:
+You'd simply use the 'wp_enqueue_scripts' hook to enqueue the ./src/frontend.js file only on the frontend in your php.  I highly recommend using the wp-scripts package too, so then you can have the frontend WordPress dependencies automatically included as well by doing something like this in your php:
 
 ```
 function enqueue_frontend_scripts() {
