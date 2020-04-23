@@ -1,0 +1,125 @@
+<?php
+/**
+ * Plugin Name: {{title}}
+ * Description: {{description}}
+ * Version: {{version}}
+ * Plugin URI: {{{pluginURI}}}
+ * Author: {{author}}
+ * Author URI: {{{authorURI}}}
+ * Domain Path: /languages
+ * License: {{license}}
+ * License URI: {{{licenseURI}}}
+ * Tested up to: 5.4
+ * Requires at least: 5.0
+ * Requires PHP: 5.6
+ * Text Domain: {{textdomain}}
+ *
+ * @package {{phpClassName}}
+ */
+
+namespace {{phpClassName}};
+
+use \{{phpClassName}}\Plugin as Plugin;
+use \{{phpClassName}}\Register_Blocks as Register_Blocks;
+use \{{phpClassName}}\Load_Translations as Load_Translations;
+
+// Stop the hackers if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+if ( ! class_exists( 'Plugin' ) ) :
+	/**
+	 * Plugin Class.
+	 *
+	 * @since 0.1.0
+	 */
+	class Plugin {
+
+		/**
+		 * Class instance.
+		 *
+		 * @var Plugin
+		 */
+		private static $instance = null;
+
+		/**
+		 * Plugin Path.
+		 *
+		 * @var string
+		 */
+		public $plugin_dir_path;
+
+		/**
+		 * Plugin URL.
+		 *
+		 * @var string
+		 */
+		public $plugin_dir_url;
+
+		/**
+		 * Plugin Slug.
+		 *
+		 * @var string
+		 */
+		public $slug;
+
+		/**
+		 * Plugin text-domain.
+		 *
+		 * @var string
+		 */
+		public $text_domain;
+
+		/**
+		 * Plugin version.
+		 *
+		 * @var string
+		 */
+		public $version;
+
+		/**
+		 * Plugin constructor.
+		 * Called immediately when you instantiate a class.
+		 * Really good article on setting up constructors for WP classes.
+		 * https://carlalexander.ca/designing-class-wordpress-hooks/
+		 */
+		private function __construct() {
+			// filesystem directory i.e. /var/home/www/blockhandbook/wp-content/plugins/.
+			$this->plugin_dir_path = plugin_dir_path( __FILE__ );
+			// web address w/ trailing slash.
+			// i.e. - http://blockhandbook.com/wp-content/plugins/.
+			$this->plugin_dir_url = plugin_dir_url( __FILE__ );
+			$this->slug           = '{{slug}}';
+			$this->text_domain    = '{{textdomain}}';
+			$this->version        = '{{version}}';
+		}
+
+		/**
+		 * Return Plugin Instance.
+		 *
+		 * @return object\Plugin
+		 */
+		public static function get_instance() {
+			if ( null === self::$instance ) {
+				self::$instance = new self();
+			}
+
+			return self::$instance;
+		}
+
+		/**
+		 * Load the plugin.
+		 *
+		 * @return void
+		 */
+		public static function load() {
+			require __DIR__ . '/vendor/autoload.php';
+
+			Load_Translations::register();
+			Register_Blocks::register();
+		}
+	}
+endif;
+
+Plugin::load();
