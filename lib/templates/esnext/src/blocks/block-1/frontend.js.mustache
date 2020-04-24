@@ -24,7 +24,9 @@ const Block = ( props ) => {
 	} = props;
 
 	return(
-		
+		<p className={ className }>
+			{ __( '{{title}} – hello from the editor!', '{{textdomain}}' ) }
+		</p>
 	);
 }
 

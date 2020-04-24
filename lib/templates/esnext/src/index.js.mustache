@@ -10,8 +10,6 @@ import {
 	registerFilters,
 	hotStoreLoader,
 	registerStores,
-	hotFrontendLoader,
-	registerFrontend,
 } from '@blockhandbook/block-hot-loader';
 
 /**
@@ -73,19 +71,6 @@ if ( module.hot ) {
 } else {
 	registerStores( {
 		getContext: () => require.context( './stores', true, /index\.js$/ ),
-		module,
-	} );
-}
-
-/** Hot Frontend Loading & Registering Frontend for production **/
-if ( module.hot ) {
-	hotFrontendLoader( {
-		getContext: () => require.context( './blocks', true, /frontend\.js$/ ),
-		module,
-} );
-} else {
-registerFrontend( {
-		getContext: () => require.context( './blocks', true, /frontend\.js$/ ),
 		module,
 	} );
 }

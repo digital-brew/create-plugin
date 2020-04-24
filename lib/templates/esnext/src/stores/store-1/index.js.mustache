@@ -10,14 +10,12 @@ const settings = {
                         [ action.item ]: action.price,
                     },
                 };
-
             case 'START_SALE':
                 return {
                     ...state,
                     discountPercent: action.discountPercent,
                 };
         }
-
         return state;
     },
     actions,

@@ -6,6 +6,7 @@ import classnames from 'classnames';
 /**
  * WordPress Dependencies
  */
+ import { __ } from '@wordpress/i18n';
 
 /**
  * Internal Dependencies
@@ -17,7 +18,7 @@ function save( props ) {
 	const {
 		className,
 		attributes: {
-			// put attribute key names here to use them
+
 		},
 	} = props;
 
@@ -25,7 +26,9 @@ function save( props ) {
 	// the wrapper classes don't get added to the block when saving!!!!
 
 	return (
-		
+		<p>
+			{ __( '{{title}} – hello from the saved content!', '{{textdomain}}' ) }
+		</p>
 	);
 }
 

@@ -1,0 +1,52 @@
+/**
+ * External Dependencies
+ */
+
+ /**
+ * WordPress Dependencies
+ */
+import { __ } from '@wordpress/i18n';
+import { BaseControl, PanelBody } from '@wordpress/components';
+import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
+
+ /**
+ * Internal Dependencies
+ */
+ 
+const Plugin = ( props ) => {
+	const {
+
+	} = props;
+
+	return(
+		<>
+			<PluginSidebarMoreMenuItem
+				target="{{slug}}"
+			>
+				{{title}} plugin settings
+			</PluginSidebarMoreMenuItem>
+			<PluginSidebar
+				className=""
+				title="{{title}}"
+				name="settings"
+			>
+				<PanelBody>
+					<BaseControl
+						label={ __(
+							'ESNext Example – hello from the plugin sidebar!',
+							'create-plugin'
+						) }
+					/>
+				</PanelBody>
+			</PluginSidebar>
+		</>
+	);
+};
+
+const name = '{{slug}}';
+const settings = {
+	icon: 'admin-plugins',
+	render: Plugin,
+}
+
+export { name, settings };

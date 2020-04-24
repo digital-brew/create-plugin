@@ -5,6 +5,7 @@
 /**
  * WordPress Dependencies
  */
+ import { __ } from '@wordpress/i18n';
 
 /**
  * Internal Dependencies
@@ -28,7 +29,9 @@ const deprecated = [
 			// the wrapper classes don't get added to the block when saving!!!!
 
 			return (
-
+				<blockquote className={ className }>
+					{ __( '{{title}} – hello from the editor!', '{{textdomain}}' ) }
+				</blockquote>
 			);
 		}
 	},

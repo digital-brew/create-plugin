@@ -36,6 +36,9 @@ function Block( props ) {
 				attributes={ attributes }
 				setAttributes={ setAttributes }
 			/>
+			<p className={ className }>
+				{ __( '{{title}} – hello from the editor!', '{{textdomain}}' ) }
+			</p>
 		</>
 	);
 }

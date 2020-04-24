@@ -94,7 +94,7 @@ class Register_Blocks {
 
 		// Enqueue tailwind styles.
 		wp_enqueue_style(
-			$slug . '-tailwind-style',
+			$slug . '-tailwind',
 			$plugin_dir_url . 'build/tailwind.css',
 			array(),
 			$version
@@ -113,7 +113,7 @@ class Register_Blocks {
 		$script_asset = require( "$plugin_dir_path/build/index.asset.php" );
 
 		wp_register_script(
-			$slug . 'block-editor',
+			$slug . '-block-editor',
 			$plugin_dir_url . 'build/index.js',
 			$script_asset['dependencies'],
 			$script_asset['version'],
