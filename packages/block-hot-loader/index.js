@@ -31,6 +31,9 @@ export const hotBlockLoader = ( { getContext, module: blockModule } ) => {
 		let blocks = select( 'core/block-editor' ).getBlocks();
 
 		const context = getContext();
+		if ( ! context ) {
+			return;
+		}
 
 		const flatten = ( array ) => {
 			let flat = [];
@@ -192,6 +195,9 @@ export const hotFilterLoader = ( { getContext, module: filterModule } ) => {
 	let filterModules = {};
 	const loadFilters = () => {
 		const context = getContext();
+		if ( ! context ) {
+			return;
+		}
 
 		for ( const filePath of context.keys() ) {
 			const module = context( filePath );
@@ -230,6 +236,9 @@ export const hotPluginLoader = ( { getContext, module: pluginModule } ) => {
 	let pluginModules = {};
 	const loadPlugins = () => {
 		const context = getContext();
+		if ( ! context ) {
+			return;
+		}
 
 		for ( const filePath of context.keys() ) {
 			const module = context( filePath );
@@ -259,6 +268,9 @@ export const hotStoreLoader = ( { getContext, module: storeModule } ) => {
 	let storeModules = {};
 	const loadStore = () => {
 		const context = getContext();
+		if ( ! context ) {
+			return;
+		}
 
 		for ( const filePath of context.keys() ) {
 			const module = context( filePath );
@@ -283,6 +295,9 @@ export const hotFrontendLoader = ( { getContext, module: frontendModule } ) => {
 	let frontendModules = {};
 	const loadFrontend = () => {
 		const context = getContext();
+		if ( ! context ) {
+			return;
+		}
 		
 		for ( const filePath of context.keys() ) {
 			const module = context( filePath );
