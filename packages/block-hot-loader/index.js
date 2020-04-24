@@ -191,9 +191,6 @@ export const hotBlockLoader = ( { getContext, module: blockModule } ) => {
 export const hotFilterLoader = ( { getContext, module: filterModule } ) => {
 	let filterModules = {};
 	const loadFilters = () => {
-		if ( ! context ) {
-			return;
-		}
 		const context = getContext();
 
 		for ( const filePath of context.keys() ) {
