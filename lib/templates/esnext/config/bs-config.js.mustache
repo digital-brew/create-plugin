@@ -19,10 +19,9 @@ const compiler = webpack( config );
 // need to convert passed variable to boolean
 const WRITE_TO_DISK = ( process.env.WRITE_TO_DISK === 'true' );
 // if we need to write to disk then let's check for hot module updates and not write those
-const writeToDisk = WRITE_TO_DISK ? ( ( filePath ) => {
+const writeToDisk = ( ( filePath ) => {
 	return /^(?!.*(hot)).*/.test( filePath );
-} ) :
-	false;
+} );
 
 module.exports = {
 	ui: {
