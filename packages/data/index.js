@@ -1,1 +1,1 @@
-export { withPosts } from './components/with-posts';
+export { default as withPosts } from './components/with-posts';
