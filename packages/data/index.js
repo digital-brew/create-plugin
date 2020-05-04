@@ -1,0 +1,1 @@
+export { withPosts } from './components/with-posts';
