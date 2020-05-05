@@ -36,6 +36,19 @@ plugin-name
 
 Grabbing post data to create dynamic blocks is kinda complicated.  The withPosts Higher Order Component makes it a breeze to grab WordPress post data.
 
+withPosts() grabs the 'post' posttype by default, but you can have it grab pages, or any other posttype you want by setting the postType in the attributes like so in your block.json file:
+
+```
+{
+ "name": "plugin-name/dynamic-block",
+ "attributes": {
+  "postType": {
+   "type": "string",
+   "default": "page"
+  },
+ }
+```
+
 All you need to do is import the withPosts HOC and then export your Edit component using the withPosts() HOC and you'll have access to the posts data in the props:
 
 ```

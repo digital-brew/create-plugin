@@ -19,6 +19,7 @@ const withPosts = createHigherOrderComponent(
 		const {
 			attributes: {
 				postsToShow,
+				postType,
 				order,
 				orderBy,
 				categories,
@@ -37,12 +38,11 @@ const withPosts = createHigherOrderComponent(
 			categories: catIds,
 			order,
 			orderby: orderBy,
-			per_page: postsToShow,
-			authors: -1
+			per_page: postsToShow
 		}, ( value ) => ! isUndefined( value ) );
 
-		const posts = getEntityRecords( 'postType', 'post', latestPostsQuery );
 		const authors = select( 'core' ).getAuthors();
+		const posts = getEntityRecords( 'postType', `${ !! postType ? postType : 'post' }`, latestPostsQuery );
 	
 		return {
 			posts: ! Array.isArray( posts )
