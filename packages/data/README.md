@@ -11,6 +11,7 @@ npm i @blockhandbook/data --save-dev
 ```
 
 _This package assumes that your code will run in an ES2015+ environment._
+
 _This package assumes you are using the @wordpress/scripts package._
 
 * [@wordpress/scripts](https://www.npmjs.com/package/@wordpress/scripts)
