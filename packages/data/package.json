@@ -1,6 +1,6 @@
 {
   "name": "@blockhandbook/data",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Utilities that make it easier to manage state for WordPress plugins built for the block editor.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

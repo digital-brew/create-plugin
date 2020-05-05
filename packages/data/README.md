@@ -36,7 +36,7 @@ plugin-name
 
 Grabbing post data to create dynamic blocks is kinda complicated.  The withPosts Higher Order Component (HOC) makes it a breeze to grab WordPress post type data.
 
-withPosts() queries the 'post' post type by default, but you can have it grab pages, or any other post type you want by setting the postType default value in the attributes in your block.json file:
+withPosts() queries the 'posts' post type by default, but you can have it grab 'pages', custom post types, or any other post type you want by setting the postType default value in the attributes in your block.json file:
 
 ```
 {
