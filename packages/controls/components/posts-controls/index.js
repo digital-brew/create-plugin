@@ -11,7 +11,7 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { useState, useEffect } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 import { addQueryArgs } from '@wordpress/url';
-//hello
+
 /**
  * Internal Dependencies
  */
