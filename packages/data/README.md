@@ -56,7 +56,7 @@ withPosts() queries the 'posts' post type by default, but you can have it grab '
  }
 ```
 
-**HOW TO USE**
+**HOW TO USE**  
 All you need to do is import the withPosts HOC and then export your Edit component using the withPosts() HOC and you'll have access to the posts data in your edit.js function's props:
 
 ```
