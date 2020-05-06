@@ -1,6 +1,6 @@
 {
   "name": "@blockhandbook/controls",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A library of components for creating common InspectorControls and BlockControls patterns for WordPress plugins built for the block editor.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
