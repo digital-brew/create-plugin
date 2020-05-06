@@ -14,7 +14,7 @@
 const filterDefaultClassName = ( className, blockName ) => {
 	const namespace = '{{slug}}';
 	const classes = `${ className } ${ namespace }`;
-	console.log( 'filter example: logged from filters/filter-1/index.js' )
+	console.log( 'filter example: logged from src/filters/filter-1/index.js'
 	return blockName.includes( namespace ) ? classes : className;
 };
 

@@ -27,6 +27,6 @@ const categories = [
 		title: '{{title}}',
 		icon: icons.plugin,
 	},
-	...getCategories().filter( ( { categorySlug } ) => categorySlug !== '{{slug}}' ),
+	...getCategories().filter( ( { categorySlug } ) => categorySlug !== '{{category}}' ),
 ];
 setCategories( categories );
