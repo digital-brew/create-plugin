@@ -1,6 +1,6 @@
-# Data Utility Components for the WordPress block editor plugin
+# Data utilities & components for the WordPress block editor plugin
 
-A library of utilities that make it easier to manage state for WordPress plugins built for the block editor.
+A library of utilities & components that make it easier to manage state for WordPress plugins built for the block editor.
 
 * [Follow us on Twitter](https://twitter.com/blockhandbook)
 
@@ -14,24 +14,6 @@ _This package assumes that your code will run in an ES2015+ environment._
 _This package assumes you are using the @wordpress/scripts package._
 
 * [@wordpress/scripts](https://www.npmjs.com/package/@wordpress/scripts)
-
-## Setup
-
-Here's a little context. I'm going to assume you have a gutenberg block file structure something like this with your edit function in the edit.js file:
-
-```
-plugin-name
-├── build
-├── src
-│    ├── blocks
-│    │   ├── block-1
-│    │   │   ├── block.json
-│    │   │   ├── edit.js
-│    │   │   └── index.js
-├── plugin-name.php
-├── webpack.config.js
-└── package.json
-```
 
 ## Components
 
