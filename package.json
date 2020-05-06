@@ -1,5 +1,5 @@
 {
-	"name": "@wpmovable/create-plugin",
+	"name": "@blockhandbook/create-plugin",
 	"version": "0.0.1",
 	"description": "Generates PHP, JS and CSS code for building a WordPress plugin for the block editor.",
 	"author": "leeshadle",
@@ -9,13 +9,13 @@
 		"block",
 		"scaffold"
 	],
-	"homepage": "https://github.com/wpmovable/create-plugin/README.md",
+	"homepage": "https://github.com/blockhandbook/create-plugin/README.md",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/wpmovable/create-plugin.git"
+		"url": "https://github.com/blockhandbook/create-plugin.git"
 	},
 	"bugs": {
-		"url": "https://github.com/wpmovable/create-plugin"
+		"url": "https://github.com/blockhandbook/create-plugin"
 	},
 	"engines": {
 		"node": ">=10",
@@ -29,7 +29,9 @@
 		"wp-create-block": "./index.js"
 	},
 	"scripts": {
-		"create-plugin": "node ./index.js"
+		"create-plugin": "node ./index.js",
+		"lerna:version": "lerna version",
+		"lerna:publish": "lerna publish"
 	},
 	"dependencies": {
 		"chalk": "^4.0.0",

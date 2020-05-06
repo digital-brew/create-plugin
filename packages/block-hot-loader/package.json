@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blockhandbook/block-hot-loader.git"
+    "url": "git+https://github.com/blockhandbook/create-plugin/tree/master/packages/block-hot-loader.git"
   },
   "keywords": [
     "hot module replacement",
@@ -21,9 +21,9 @@
   "author": "Lee Shadle",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/blockhandbook/block-hot-loader/issues"
+    "url": "https://github.com/blockhandbook/create-plugin/tree/master/packages/block-hot-loader/issues"
   },
-  "homepage": "https://github.com/blockhandbook/block-hot-loader#readme",
+  "homepage": "https://github.com/blockhandbook/create-plugin/tree/master/packages/block-hot-loader#readme",
   "dependencies": {
     "browser-sync": "^2.26.7",
     "css-loader": "^3.4.2",

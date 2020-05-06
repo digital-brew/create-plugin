@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blockhandbook/controls.git"
+    "url": "git+https://github.com/blockhandbook/create-plugin/tree/master/packages/controls"
   },
   "keywords": [
     "inspectorcontrols",
@@ -25,7 +25,7 @@
   "author": "Lee Shadle",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/blockhandbook/controls/issues"
+    "url": "https://github.com/blockhandbook/create-plugin/tree/master/packages/controls/issues"
   },
-  "homepage": "https://github.com/blockhandbook/controls#readme"
+  "homepage": "https://github.com/blockhandbook/create-plugin/tree/master/packages/controls#readme"
 }

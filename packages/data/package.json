@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blockhandbook/data.git"
+    "url": "git+https://github.com/blockhandbook/create-plugin/tree/master/packages/data"
   },
   "keywords": [
     "higher order component",
@@ -22,7 +22,7 @@
   "author": "Lee Shadle",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/blockhandbook/data/issues"
+    "url": "https://github.com/blockhandbook/create-plugin/tree/master/packages/data/issues"
   },
-  "homepage": "https://github.com/blockhandbook/data#readme"
+  "homepage": "https://github.com/blockhandbook/create-plugin/tree/master/packages/data#readme"
 }
