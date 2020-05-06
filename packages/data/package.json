@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/blockhandbook/create-plugin/tree/master/packages/data"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "higher order component",
     "gutenberg blocks",

@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/blockhandbook/create-plugin/tree/master/packages/block-hot-loader.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "hot module replacement",
     "gutenberg blocks",
