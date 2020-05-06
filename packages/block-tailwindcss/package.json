@@ -29,10 +29,9 @@
   },
   "homepage": "https://github.com/blockhandbook/create-plugin/tree/master/packages/block-tailwindcss.git#readme",
   "dependencies": {
-    "@fullhuman/postcss-purgecss": "^1.3.0",
     "cross-env": "^7.0.2",
     "postcss-cli": "^7.1.0",
     "postcss-prepend-selector": "^0.3.1",
-    "tailwindcss": "^1.2.0"
+    "tailwindcss": "^1.4.5"
   }
 }
