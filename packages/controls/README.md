@@ -20,7 +20,7 @@ _This package assumes you are using the @wordpress/scripts package._
 ### PostsControls
 
 InspectorControls for creating dynamic blocks:  
-![PostsControls in the WordPress block editor sidebar.]: (https://blockhandbook.com/wp-content/uploads/2020/05/Screen-Shot-2020-05-05-at-6.20.05-PM.png)
+![PostsControls in the WordPress block editor sidebar]: (https://blockhandbook.com/wp-content/uploads/2020/05/Screen-Shot-2020-05-05-at-6.20.05-PM.png)
 
 Add the following attributes to block.json:
 
