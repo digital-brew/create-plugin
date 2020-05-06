@@ -27,7 +27,7 @@ const withPosts = createHigherOrderComponent(
 			},
 		} = props;
 
-		const { getEntityRecords, getMedia } = select( 'core' );
+		const { getEntityRecords, getMedia, getAuthors } = select( 'core' );
 
 		const catIds =
 			categories && categories.length > 0
@@ -41,7 +41,7 @@ const withPosts = createHigherOrderComponent(
 			per_page: postsToShow
 		}, ( value ) => ! isUndefined( value ) );
 
-		const authors = select( 'core' ).getAuthors();
+		const authors = getAuthors();
 		const posts = getEntityRecords( 'postType', `${ !! postType ? postType : 'post' }`, latestPostsQuery );
 	
 		return {
