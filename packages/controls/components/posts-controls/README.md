@@ -1,10 +1,10 @@
 
-### PostsControls
+# PostsControls
 
-InspectorControls for creating dynamic blocks:  
+## InspectorControls for creating dynamic blocks:  
 ![PostsControls in the WordPress block editor sidebar](https://blockhandbook.com/wp-content/uploads/2020/05/PostsControls-Screenshot-1.png)
 
-Add the following attributes to block.json:
+## Add the following attributes to block.json:
 
 ```
 {
@@ -52,7 +52,7 @@ Add the following attributes to block.json:
  }
 ```
 
-How to use it in edit.js:
+## How to use it in edit.js:
 
 ```
 import { PostControls } from '@blockhandbook/controls';
