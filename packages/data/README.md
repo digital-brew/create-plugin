@@ -39,10 +39,10 @@ plugin-name
 
 Grabbing post data to create dynamic blocks is kinda complicated.  The withPosts() Higher Order Component (HOC) makes it a breeze to grab WordPress post type data.  
 
-**Get Post core data + Featured Media data + Author data**
+**Get Post core data + Featured Media data + Author data**  
 withPosts() bundles the getEntityRecords, getMedia, & getAuthors data store selectors to return an array of post data ( content, title, url, etc. ) as well as post featured media and author data.
 
-**Add attributes to get ANY post type**
+**Add attributes to get ANY post type**  
 withPosts() queries the 'posts' post type by default, but you can have it grab 'pages', custom post types, or any other post type you want by setting the postType default value in the attributes in your block.json file:
 
 ```
