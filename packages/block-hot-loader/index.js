@@ -14,7 +14,7 @@ import { addFilter, removeFilter } from '@wordpress/hooks';
 // need it in the future
 // const { replaceBlock, insertBlock, removeBlock, updateBlock, updateBlockAttributes } = dispatch( 'core/block-editor' );
 // const { getBlock } = select( 'core/block-editor' );
-//test
+
 /**
  * Internal Dependencies
  */
