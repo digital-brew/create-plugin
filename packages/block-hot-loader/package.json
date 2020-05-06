@@ -1,6 +1,6 @@
 {
   "name": "@blockhandbook/block-hot-loader",
-  "version": "1.2.9",
+  "version": "1.2.10",
   "description": "Hot Module Replacement for Blazing Fast Gutenberg Block Development",
   "main": "index.js",
   "scripts": {
