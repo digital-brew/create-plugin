@@ -1,4 +1,4 @@
-# Data utilities & components for the WordPress block editor plugin
+# Data utilities & components for building WordPress block editor plugins
 
 A library of utilities & components that make it easier to manage state for WordPress plugins built for the block editor.
 
