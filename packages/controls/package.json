@@ -32,9 +32,5 @@
   "bugs": {
     "url": "https://github.com/blockhandbook/create-plugin/tree/master/packages/controls/issues"
   },
-  "homepage": "https://github.com/blockhandbook/create-plugin/tree/master/packages/controls#readme",
-  "dependencies": {
-    "@blockhandbook/block-hot-loader": "^1.2.11",
-    "@wordpress/scripts": "^9.0.0"
-  }
+  "homepage": "https://github.com/blockhandbook/create-plugin/tree/master/packages/controls#readme"
 }
