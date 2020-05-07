@@ -1,10 +1,12 @@
 {
   "name": "@blockhandbook/controls",
   "version": "0.1.4",
+  "main": "build/index.js",
   "description": "A library of components for creating common InspectorControls and BlockControls patterns for WordPress plugins built for the block editor.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "update": "npm version && npm publish"
+    "update": "npm version && npm publish",
+    "build": "wp-scripts build --config ./webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -30,5 +32,9 @@
   "bugs": {
     "url": "https://github.com/blockhandbook/create-plugin/tree/master/packages/controls/issues"
   },
-  "homepage": "https://github.com/blockhandbook/create-plugin/tree/master/packages/controls#readme"
+  "homepage": "https://github.com/blockhandbook/create-plugin/tree/master/packages/controls#readme",
+  "dependencies": {
+    "@blockhandbook/block-hot-loader": "^1.2.11",
+    "@wordpress/scripts": "^9.0.0"
+  }
 }
