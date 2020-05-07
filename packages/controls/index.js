@@ -1,1 +1,0 @@
-export { default as PostsControls } from './components/posts-controls';
