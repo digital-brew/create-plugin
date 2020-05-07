@@ -1,0 +1,8 @@
+38 error Error: Command failed: git add -- packages/controls/package.json packages/controls/package-lock.json
+38 error The following paths are ignored by one of your .gitignore files:
+38 error packages/controls/package-lock.json
+38 error Use -f if you really want to add them.
+38 error
+38 error     at makeError (/usr/local/lib/node_modules/lerna/node_modules/execa/index.js:174:9)
+38 error     at /usr/local/lib/node_modules/lerna/node_modules/execa/index.js:278:16
+38 error     at processTicksAndRejections (internal/process/task_queues.js:97:5)
