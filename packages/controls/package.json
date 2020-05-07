@@ -16,7 +16,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@wordpress/scripts": "^9.0.0"
+    "@babel/runtime": "^7.9.6"
   },
   "keywords": [
     "inspectorcontrols",
