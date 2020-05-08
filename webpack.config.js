@@ -40,7 +40,7 @@ const config = {
 		devtoolNamespace: 'blockhandbook',
 		filename: './packages/[name]/build/index.js',
 		path: __dirname,
-		library: '[name]',
+		library: {},
 		libraryTarget: 'this',
 	},
 	module: {
