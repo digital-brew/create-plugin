@@ -11,6 +11,15 @@
     "type": "git",
     "url": "https://github.com/blockhandbook/create-plugin/tree/master/packages/data"
   },
+  "dependencies": {
+    "@wordpress/data": "^4.17.0",
+    "@wordpress/compose": "^3.14.0",
+    "@wordpress/i18n": "^3.12.0",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.9.6"
+  },
   "publishConfig": {
     "access": "public"
   },
