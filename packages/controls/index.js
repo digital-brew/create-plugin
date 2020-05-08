@@ -1,2 +1,2 @@
 import * as controls from './src';
-export default controls;
+export * as controls from './src';
