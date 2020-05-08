@@ -1,1 +1,1 @@
-export { default as PostsControls } from './src/posts-controls';
+export { default as PostsControls } from './posts-controls';
