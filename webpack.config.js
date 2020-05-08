@@ -37,7 +37,6 @@ const config = {
 		return memo;
 	}, {} ),
 	output: {
-		devtoolNamespace: 'blockhandbook',
 		filename: './packages/[name]/build/index.js',
 		path: __dirname,
 	},
