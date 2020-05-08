@@ -31,7 +31,6 @@ const config = {
 		concatenateModules: true,
 	},
 	mode: 'production',
-	devtool: 'source-map',
 	entry: blockhandbookPackages.reduce( ( memo, packageName ) => {
 		const name = camelCaseDash( packageName );
 		memo[ name ] = `./packages/${ packageName }/src`;
@@ -41,8 +40,8 @@ const config = {
 		devtoolNamespace: 'blockhandbook',
 		filename: './packages/[name]/build/index.js',
 		path: __dirname,
-		library: [ 'blockhandbook', '[name]' ],
-		libraryTarget: 'window',
+		library: '[name]',
+		libraryTarget: 'this',
 	},
 	module: {
 		...defaultConfig.module,
