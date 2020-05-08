@@ -51,7 +51,7 @@
 	},
 	"devDependencies": {
 		"lerna": "^3.20.2",
-		"@blockhandbook/controls": "file:packages/data",
+		"@blockhandbook/controls": "file:packages/controls",
 		"@blockhandbook/data": "file:packages/data",
 		"@babel/runtime": "^7.9.6",
 		"@wordpress/scripts": "^9.0.0",
