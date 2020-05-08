@@ -1,1 +1,0 @@
-export { default as withPosts } from './components/with-posts';
