@@ -1,7 +1,18 @@
 const path = require( 'path' );
 const { basename, sep } = require( 'path' );
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
-const { dependencies } = require( './package' );
+const { devDependencies } = require( './package' );
+
+const BLOCKHANDBOOK_NAMESPACE = '@blockhandbook/';
+const BUNDLED_PACKAGES = [ ];
+
+const blockhandbookPackages = Object.keys( devDependencies )
+	.filter(
+		( packageName ) =>
+			! BUNDLED_PACKAGES.includes( packageName ) &&
+			packageName.startsWith( BLOCKHANDBOOK_NAMESPACE )
+	)
+	.map( ( packageName ) => packageName.replace( BLOCKHANDBOOK_NAMESPACE, '' ) );
 
 /* Plugins */
 const CustomTemplatedPathPlugin = require( '@wordpress/custom-templated-path-webpack-plugin' );
@@ -20,13 +31,16 @@ const config = {
 	},
 	mode: 'production',
 	devtool: 'source-map',
-	entry: {
-		index: [ path.resolve( process.cwd(), `src/index.js` ) ],
-	},
+	entry: blockhandbookPackages.reduce( ( memo, packageName ) => {
+		const name = camelCaseDash( packageName );
+		memo[ name ] = `./packages/${ packageName }/src`;
+		console.log( memo )
+		return memo;
+	}, {} ),
 	output: {
 		devtoolNamespace: 'blockhandbook',
-		path: path.resolve( process.cwd(), `./build` ),
-		filename: '[name].js',
+		path: __dirname,
+		filename: './packages/[name]/build/index.js',
 		library: [ 'blockhandbook', '[name]' ],
 		libraryTarget: 'this',
 	},

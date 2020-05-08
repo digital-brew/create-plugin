@@ -31,7 +31,8 @@
 	"scripts": {
 		"create-plugin": "node ./index.js",
 		"lerna:version": "lerna version",
-		"lerna:publish": "lerna publish"
+		"lerna:publish": "lerna publish",
+		"build:packages": "wp-scripts build --config ./webpack.config.js"
 	},
 	"dependencies": {
 		"chalk": "^4.0.0",
@@ -49,6 +50,12 @@
 		"access": "public"
 	},
 	"devDependencies": {
-		"lerna": "^3.20.2"
+		"lerna": "^3.20.2",
+		"@blockhandbook/controls": "file:packages/controls",
+		"@babel/runtime": "^7.9.6",
+		"@wordpress/scripts": "^9.0.0",
+		"@wordpress/library-export-default-webpack-plugin": "1.6.0",
+		"@wordpress/custom-templated-path-webpack-plugin": "1.6.0",
+		"@wordpress/dependency-extraction-webpack-plugin": "2.6.0"
 	}
 }
