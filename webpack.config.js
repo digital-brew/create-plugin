@@ -42,7 +42,7 @@ const config = {
 		filename: './packages/[name]/build/index.js',
 		path: __dirname,
 		library: [ 'blockhandbook', '[name]' ],
-		libraryTarget: 'this',
+		libraryTarget: 'window',
 	},
 	module: {
 		...defaultConfig.module,
@@ -52,41 +52,6 @@ const config = {
 	},
 	plugins: [ 
 		...defaultPlugins,
-		new CustomTemplatedPathPlugin( {
-			basename( path, data ) {
-				let rawRequest;
-
-				const entryModule = get( data, [ 'chunk', 'entryModule' ], {} );
-				switch ( entryModule.type ) {
-					case 'javascript/auto':
-						rawRequest = entryModule.rawRequest;
-						break;
-
-					case 'javascript/esm':
-						rawRequest = entryModule.rootModule.rawRequest;
-						break;
-				}
-
-				if ( rawRequest ) {
-					return basename( rawRequest );
-				}
-
-				return path;
-			},
-		} ),
-		new LibraryExportDefaultPlugin(
-			[
-				'api-fetch',
-				'deprecated',
-				'dom-ready',
-				'redux-routine',
-				'token-list',
-				'server-side-render',
-				'shortcode',
-				'warning',
-			].map( camelCaseDash )
-		),
-		new DependencyExtractionWebpackPlugin( { injectPolyfill: true } ),
 	],
 };
 
