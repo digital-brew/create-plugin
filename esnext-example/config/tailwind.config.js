@@ -1,0 +1,14 @@
+const config = {
+	theme: {
+		spacing: {},
+		opacity: {},
+		borderRadius: {},
+		borderWidth: {},
+		boxShadow: {},
+		extend: {},
+	},
+	variants: {},
+	plugins: [ require( 'tailwindcss' ), require( 'autoprefixer' ) ],
+};
+
+module.exports = config;

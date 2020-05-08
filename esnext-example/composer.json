@@ -1,0 +1,22 @@
+{
+	"name":"create-plugin/esnext-example",
+	"description":"Example block written with ESNext standard and JSX support – build step required.",
+	"version":"0.1.0",
+	"type": "wordpress-plugin",
+	"require": {
+		"php": ">=5.6"
+	},
+	"config": {
+		"platform": {
+			"php": "5.6"
+		}
+	},
+  "autoload": {
+    "psr-4": {
+      "CreatePlugin\\":"includes/"
+		}
+	},
+	"scripts": {
+		"regenerate-autoloader":"composer dumpautoload -o"
+	}
+}

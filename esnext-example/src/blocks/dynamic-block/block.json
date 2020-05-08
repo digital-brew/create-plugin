@@ -1,0 +1,48 @@
+{
+	"name": "esnext-example/dynamic-block",
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "center"
+		},
+		"categories": {
+			"type": "array"
+		},
+		"postsToShow": {
+			"type": "number",
+			"default": 10
+		},
+		"order": {
+			"type": "string",
+			"default": "desc"
+		},
+		"orderBy": {
+			"type": "string",
+			"default": "date"
+		},
+		"showPostAuthor": {
+			"type": "boolean",
+			"default": true
+		},
+		"showPostDate": {
+			"type": "boolean",
+			"default": true
+		},
+		"showPostExcerpt": {
+			"type": "boolean",
+			"default": true
+		},
+		"showFeaturedImage": {
+			"type": "boolean",
+			"default": false
+		},
+		"featuredImageSize": {
+			"type": "string",
+			"default": "medium_large"
+		},
+		"showPostTitle": {
+			"type": "boolean",
+			"default": true
+		}
+	}
+}

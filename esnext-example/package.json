@@ -1,0 +1,71 @@
+{
+	"name": "esnext-example",
+	"version": "0.1.0",
+	"description": "Example block written with ESNext standard and JSX support – build step required.",
+	"author": "The WordPress Contributors",
+	"license": "GPL-2.0-or-later",
+	"main": "./src/index.js",
+	"config": {
+		"authorUri": "https://wordpress.org/",
+		"pluginUri": "https://wordpress.org/plugins/",
+		"pluginName": "ESNext Example",
+		"contributors": "The WordPress Contributors",
+		"tags": "blockhandbook, block handbook",
+		"slug": "esnext-example",
+		"namespace": "CreatePlugin",
+		"textdomain": "create-plugin",
+		"testedUpTo": "5.4",
+		"language": "eo",
+		"replace": {
+			"slug": "esnext-example",
+			"pluginName": "CreatePlugin",
+			"textdomain": "create-plugin",
+			"namespace": "create-plugin"
+		}
+	},
+	"scripts": {
+		"setup": "composer install && npm run generate-autoloader && npm install && npm run build && npm run server:start && npm run permalinks",
+		"start": "npm run browser-sync & npm run tailwind:watch",
+		"build": "wp-scripts build --config ./config/webpack.prod.js && npm run tailwind:build && cd ./build && rm *.map",
+		"clean": "npx wp-env clean && npm run server:stop && rm -rf node_modules wordpress vendor",
+		"config:update": "replace-in-file --configFile=./config/replace.config.js --regEx --verbose",
+		"server:start": "npx wp-env start && npm run permalinks && npm run install:gutenberg",
+		"server:stop": "npx wp-env stop",
+		"tailwind:build": "cross-env NODE_ENV=production postcss --config ./config/postcss.config.js ./src/assets/css/tailwind.css -o ./build/tailwind.css",
+		"browser-sync": "browser-sync start --config ./config/bs-config.js",
+		"generate-autoloader": "composer dump-autoload -o",
+		"install:gutenberg": "npx wp-env run cli wp plugin install gutenberg && npx wp-env run cli wp plugin activate gutenberg",
+		"format:js": "wp-scripts format-js",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"lint:pkg-json": "wp-scripts lint-pkg-json",
+		"make:pot": "wp i18n make-pot ./ ./languages/$npm_package_config_text_domain.pot --headers='{\"Last-Translator\":\"The WordPress Contributors <yourname@yourwebsite.com>\",\"Language-Team\":\"The WordPress Contributors <yourname@yourwebsite.com>\"}' --exclude=src && cp ./languages/$npm_package_config_text_domain.pot ./languages/$npm_package_config_text_domain-$npm_package_config_language.po",
+		"make:json": "wp i18n make-json ./languages/ && rename 's/(esnext-example-[a-zA-Z_]+-)[^\\.]*(\\.json)/$1esnext-example-block-editor-script$2/' ./languages/*",
+		"make:mo": "cd languages && find . -name \\*.po -execdir sh -c 'msgfmt \"$0\" -o `basename $0 .po`.mo' '{}' \\;",
+		"packages-update": "wp-scripts packages-update",
+		"permalinks": "wp-env run cli wp rewrite structure /%postname%/ --hard",
+		"svn:make": "svn co https://plugins.svn.wordpress.org/$npm_package_config_slug svn",
+		"svn:add": "cd svn && svn add trunk/* && svn add assets/* && svn add branches && svn add tags/*",
+		"svn:tag": "cd svn && svn cp trunk tags/$npm_package_version",
+		"svn:update": "cd svn && svn up",
+		"test:e2e": "wp-scripts test-e2e",
+		"test:unit": "wp-scripts test-unit-js",
+		"tailwind:watch": "cross-env NODE_ENV=development postcss --config ./config/postcss.config.js ./src/assets/css/tailwind.css -o ./build/tailwind.css -w",
+		"wp": "wp-env run cli wp",
+		"zip": "bestzip ./$npm_package_config_slug.zip ./src ./class-plugin.php ./readme.txt ./LICENSE [ ./build ./languages ./includes ./vendor ]"
+	},
+	"devDependencies": {
+		"@blockhandbook/block-hot-loader": "^1.2.11",
+		"@blockhandbook/block-tailwindcss": "^0.1.2",
+		"@blockhandbook/controls": "^0.1.37",
+		"@blockhandbook/data": "^0.1.30",
+		"@wordpress/env": "^1.3.0",
+		"@wordpress/scripts": "^9.0.0",
+		"bestzip": "^2.1.5",
+		"replace-in-file": "^5.0.2"
+	},
+	"dependencies": {
+		"@wordpress/components": "^9.5.0",
+		"classnames": "^2.2.6"
+	}
+}
