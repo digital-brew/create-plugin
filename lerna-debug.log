@@ -3,6 +3,6 @@
 39 error packages/controls/package-lock.json
 39 error Use -f if you really want to add them.
 39 error
-39 error     at makeError (/usr/local/lib/node_modules/lerna/node_modules/execa/index.js:174:9)
-39 error     at /usr/local/lib/node_modules/lerna/node_modules/execa/index.js:278:16
+39 error     at makeError (/Applications/MAMP/htdocs/create-plugin/node_modules/@lerna/child-process/node_modules/execa/index.js:174:9)
+39 error     at /Applications/MAMP/htdocs/create-plugin/node_modules/@lerna/child-process/node_modules/execa/index.js:278:16
 39 error     at processTicksAndRejections (internal/process/task_queues.js:97:5)
