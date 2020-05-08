@@ -34,7 +34,7 @@ const config = {
 	devtool: 'source-map',
 	entry: blockhandbookPackages.reduce( ( memo, packageName ) => {
 		const name = camelCaseDash( packageName );
-		memo[ name ] = `./packages/${ packageName }`;
+		memo[ name ] = `./packages/${ packageName }/src`;
 		return memo;
 	}, {} ),
 	output: {
