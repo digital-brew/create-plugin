@@ -1,6 +1,6 @@
 {
   "name": "@blockhandbook/data",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "main": "build/index.js",
   "description": "Utilities that make it easier to manage state for WordPress plugins built for the block editor.",
   "scripts": {
@@ -12,8 +12,8 @@
     "url": "https://github.com/blockhandbook/create-plugin/tree/master/packages/data"
   },
   "dependencies": {
-    "@wordpress/data": "^4.17.0",
     "@wordpress/compose": "^3.14.0",
+    "@wordpress/data": "^4.17.0",
     "@wordpress/i18n": "^3.12.0",
     "lodash": "^4.17.15"
   },
