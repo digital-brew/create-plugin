@@ -16,7 +16,14 @@
     "access": "public"
   },
   "dependencies": {
-    "@babel/runtime": "^7.9.6"
+    "@wordpress/i18n": "^3.12.0",
+    "@wordpress/components": "^9.5.0",
+    "@wordpress/block-editor": "^3.10.0",
+    "@wordpress/element": "^2.13.1",
+    "@wordpress/api-fetch": "^3.14.0",
+    "@wordpress/url": "^2.14.0",
+    "@babel/runtime": "^7.9.6",
+    "@wordpress/scripts": "^9.0.0"
   },
   "keywords": [
     "inspectorcontrols",

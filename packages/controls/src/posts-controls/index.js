@@ -2,7 +2,6 @@
  * External Dependencies
  */
 
-
 /**
  * WordPress Dependencies
  */
