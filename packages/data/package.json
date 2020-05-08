@@ -1,6 +1,6 @@
 {
   "name": "@blockhandbook/data",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "main": "build/index.js",
   "description": "Utilities that make it easier to manage state for WordPress plugins built for the block editor.",
   "scripts": {
