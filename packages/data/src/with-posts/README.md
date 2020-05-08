@@ -27,7 +27,8 @@ withPosts() queries the 'posts' post type by default, but you can have it grab '
 All you need to do is import the withPosts HOC and then export your Edit component using the withPosts() HOC and you'll have access to the posts data in your edit.js function's props:
 
 ```
-import { withPosts } from '@blockhandbook/data';
+import { data } from '@blockhandbook/data';
+const { withPosts } = data;
 
 function Edit( props ) {
  const { posts } = props;

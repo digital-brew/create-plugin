@@ -55,7 +55,8 @@ Add the following attributes to block.json:
 How to use it in edit.js:
 
 ```
-import { PostsControls } from '@blockhandbook/controls';
+import { controls } from '@blockhandbook/controls';
+const { PostsControls } = controls;
 
 function Edit( props ) {
  const {

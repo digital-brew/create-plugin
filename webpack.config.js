@@ -1,6 +1,3 @@
-const path = require( 'path' );
-const { get, escapeRegExp, compact } = require( 'lodash' );
-const { basename, sep } = require( 'path' );
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 const { devDependencies } = require( './package' );
 
@@ -16,9 +13,6 @@ const blockhandbookPackages = Object.keys( devDependencies )
 	.map( ( packageName ) => packageName.replace( BLOCKHANDBOOK_NAMESPACE, '' ) );
 
 /* Plugins */
-const CustomTemplatedPathPlugin = require( '@wordpress/custom-templated-path-webpack-plugin' );
-const LibraryExportDefaultPlugin = require( '@wordpress/library-export-default-webpack-plugin' );
-const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
 const defaultPlugins = defaultConfig.plugins;
 const {
 	camelCaseDash,
