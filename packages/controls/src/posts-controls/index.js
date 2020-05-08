@@ -23,7 +23,7 @@ const CATEGORIES_LIST_QUERY = {
 	per_page: -1,
 };
 
-function PostsControls( props ) {
+const PostsControls = ( props ) => {
 	const {
 		setAttributes,
 		attributes: {

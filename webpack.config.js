@@ -1,4 +1,5 @@
 const path = require( 'path' );
+const { get, escapeRegExp, compact } = require( 'lodash' );
 const { basename, sep } = require( 'path' );
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 const { devDependencies } = require( './package' );
@@ -33,14 +34,13 @@ const config = {
 	devtool: 'source-map',
 	entry: blockhandbookPackages.reduce( ( memo, packageName ) => {
 		const name = camelCaseDash( packageName );
-		memo[ name ] = `./packages/${ packageName }/src`;
-		console.log( memo )
+		memo[ name ] = `./packages/${ packageName }`;
 		return memo;
 	}, {} ),
 	output: {
 		devtoolNamespace: 'blockhandbook',
-		path: __dirname,
 		filename: './packages/[name]/build/index.js',
+		path: __dirname,
 		library: [ 'blockhandbook', '[name]' ],
 		libraryTarget: 'this',
 	},
