@@ -20,10 +20,10 @@ const config = {
 		index: [ path.resolve( process.cwd(), `src/index.js` ) ],
 	},
 	output: {
-		devtoolNamespace: 'wp',
+		devtoolNamespace: 'blockhandbook',
 		path: path.resolve( process.cwd(), `./build` ),
 		filename: '[name].js',
-		library: [ 'wp', '[name]' ],
+		library: [ 'blockhandbook', '[name]' ],
 		libraryTarget: 'this',
 	},
 	module: {
