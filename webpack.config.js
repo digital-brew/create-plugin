@@ -39,8 +39,6 @@ const config = {
 	output: {
 		filename: './packages/[name]/build/index.js',
 		path: __dirname,
-		library: '[name]',
-		libraryTarget: 'this',
 	},
 	module: {
 		...defaultConfig.module,
