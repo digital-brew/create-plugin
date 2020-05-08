@@ -42,6 +42,7 @@ const config = {
 		path: __dirname,
 		library: '[name]',
 		libraryTarget: 'this',
+		globalObject: 'this',
 	},
 	module: {
 		...defaultConfig.module,
