@@ -8,6 +8,12 @@ const config = {
 		extend: {},
 	},
 	variants: {},
+	purge: {
+		enabled: true,
+		content: [
+			'./src/**/*.js',
+		],
+	},
 	plugins: [ require( 'tailwindcss' ), require( 'autoprefixer' ) ],
 };
 
