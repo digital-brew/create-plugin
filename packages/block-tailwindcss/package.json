@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/blockhandbook/create-plugin/tree/master/packages/block-tailwindcss.git"
+    "url": "https://github.com/blockhandbook/create-plugin/tree/master/packages/block-tailwindcss"
   },
   "publishConfig": {
     "access": "public"
@@ -25,9 +25,9 @@
   "author": "Lee Shadle",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/blockhandbook/create-plugin/tree/master/packages/block-tailwindcss.git/issues"
+    "url": "https://github.com/blockhandbook/create-plugin/tree/master/packages/block-tailwindcss/issues"
   },
-  "homepage": "https://github.com/blockhandbook/create-plugin/tree/master/packages/block-tailwindcss.git#readme",
+  "homepage": "https://github.com/blockhandbook/create-plugin/tree/master/packages/block-tailwindcss#readme",
   "dependencies": {
     "cross-env": "^7.0.2",
     "postcss-cli": "^7.1.0",
