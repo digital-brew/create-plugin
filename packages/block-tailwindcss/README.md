@@ -20,7 +20,7 @@ Add postcss.config.js, tailwind.config.js, & a package.json file to your root di
 touch postcss.config.js && touch tailwind.config.js && touch package.json
 ```
 
-Add an assets directory in src and create a tailwind.css file:
+Add an assets directory in src, a css directory in assets, and create a tailwind.css file:
 
 ```
 plugin-name
@@ -103,8 +103,8 @@ Finally, add a build and start script to your package.json.  I'm going to assume
  "scripts": {
    "start": "wp-scripts start && npm run tailwind:watch",
    "build": "wp-scripts build && npm run tailwind:build",
-   "tailwind:watch":"cross-env NODE_ENV=development postcss --config ./config/postcss.config.js ./src/assets/css/tailwind.css -o ./build/tailwind.css -w",
-   "tailwind:build":"cross-env NODE_ENV=production postcss --config ./config/postcss.config.js ./src/assets/css/tailwind.css -o ./build/tailwind.css"
+   "tailwind:watch":"cross-env NODE_ENV=development postcss --config ./postcss.config.js ./src/assets/css/tailwind.css -o ./build/tailwind.css -w",
+   "tailwind:build":"cross-env NODE_ENV=production postcss --config ./postcss.config.js ./src/assets/css/tailwind.css -o ./build/tailwind.css"
  }
 }
 ```
