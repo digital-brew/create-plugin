@@ -19,5 +19,5 @@ _This package assumes you are using the @wordpress/scripts package._
 
 ### PostsControls
 
-InspectorControls for creating dynamic blocks:  
+Sidebar controls for creating dynamic blocks:  
 ![PostsControls in the WordPress block editor sidebar](https://blockhandbook.com/wp-content/uploads/2020/05/PostsControls-Screenshot-1.png)

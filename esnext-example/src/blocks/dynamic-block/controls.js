@@ -13,16 +13,6 @@ import { BlockControls, InspectorControls } from '@wordpress/block-editor';
 /**
  * Internal Dependencies
  */
-import icons from '../../utils/icons';
-const pkg = require( '../../../package.json' );
-const slug = pkg.config.slug;
-
-/**
- * Module Constants
- */
-const CATEGORIES_LIST_QUERY = {
-	per_page: -1,
-};
 
 function Controls( props ) {
 	const {

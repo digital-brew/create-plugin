@@ -15,6 +15,9 @@ import { Spinner } from '@wordpress/components';
  * Internal Dependencies
  */
 import Controls from './controls';
+import icons from '../../utils/icons';
+const pkg = require( '../../../package.json' );
+const slug = pkg.config.slug;
 
 function DynamicBlockEdit( props ) {
 	const {
@@ -31,8 +34,6 @@ function DynamicBlockEdit( props ) {
 			showFeaturedImage
 		}
 	} = props;
-
-	console.log( posts )
 
 	if ( ! posts ) {
 		return (
