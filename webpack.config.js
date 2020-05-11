@@ -33,8 +33,8 @@ const config = {
 	output: {
 		filename: './packages/[name]/build/index.js',
 		path: __dirname,
-		library: ['blockhandbook', '[name]'],
-		libraryTarget: 'umd',
+		library: '[name]',
+		libraryTarget: 'this',
 	},
 	module: {
 		...defaultConfig.module,

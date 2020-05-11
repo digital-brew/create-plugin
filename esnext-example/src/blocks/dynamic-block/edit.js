@@ -1,8 +1,7 @@
 /**
  * External Dependencies
  */
-import data from '@blockhandbook/data';
-console.log( data )
+import { data } from '@blockhandbook/data';
 const { withPosts } = data;
 
 

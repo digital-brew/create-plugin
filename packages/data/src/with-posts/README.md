@@ -1,6 +1,6 @@
 # withPosts()
 
-Grabbing post data to create dynamic blocks is kinda complicated.  The withPosts() Higher Order Component (HOC) makes it a breeze to grab WordPress post type data.  
+Getting post data to create dynamic blocks is kinda complicated.  The withPosts() Higher Order Component (HOC) makes it a breeze to grab WordPress post type data.  
   
 ### Post data + Featured Media data + Author data
 

@@ -1,8 +1,7 @@
 /**
  * External Dependencies
  */
-import controls from '@blockhandbook/controls';
-console.log( controls )
+import { controls } from '@blockhandbook/controls';
 const { PostsControls } = controls;
 
 /**
