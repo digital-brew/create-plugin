@@ -109,20 +109,6 @@ Finally, add a build and start script to your package.json.  I'm going to assume
 }
 ```
 
-## Usage
-
-To use in development run:
-
-```
-npm run start
-```
-
-To use in production run:
-
-```
-npm run build
-```
-
 The [classnames](https://www.npmjs.com/package/classnames) package is baked in so you can conditionally include/exclude tailwindcss classes.  I particularly love using it for providing preset stylings for properties such as boxShadow, borderRadius, borderWidth, etc.:
 
 ```
@@ -139,4 +125,18 @@ const rowClasses = classnames(
    relative: style === 'full' || style.includes( 'circle' ),
   }
  );
+```
+
+## Usage
+
+To use in development run:
+
+```
+npm run start
+```
+
+To use in production run:
+
+```
+npm run build
 ```
