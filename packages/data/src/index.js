@@ -1,1 +1,1 @@
-export { default as withPosts } from './with-posts';
+export { default as withPosts } from './with-posts'

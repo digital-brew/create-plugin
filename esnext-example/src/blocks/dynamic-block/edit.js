@@ -1,8 +1,9 @@
 /**
  * External Dependencies
  */
-import { data } from '@blockhandbook/data';
+import data from '@blockhandbook/data';
 const { withPosts } = data;
+console.log( data )
 
 /**
  * WordPress Dependencies
