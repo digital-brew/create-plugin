@@ -7,8 +7,8 @@ const postcssPrependSelector = require( 'postcss-prepend-selector' )( {
 
 module.exports = {
 	plugins: [
-		tailwindcss( './config/tailwind.config.js' ),
+		tailwindcss( './tailwind.config.js' ),
 		postcssPrependSelector,
-		autoprefixer,
+		autoprefixer
 	],
 };

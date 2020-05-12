@@ -28,11 +28,11 @@ const config = {
 	devtool: 'source-map',
 	entry: {
 		index: [
-			path.resolve( process.cwd(), `src/index.js` ),
+			path.resolve( process.cwd(), `./src/index.js` ),
 			'webpack-hot-middleware/client?name=index&timeout=20000&reload=true&overlay=true',
 		],
 		frontend: [
-			path.resolve( process.cwd(), `src/frontend.js` ),
+			path.resolve( process.cwd(), `./src/frontend.js` ),
 			'webpack-hot-middleware/client?name=frontend&timeout=20000&reload=true&overlay=true',
 		],
 	},

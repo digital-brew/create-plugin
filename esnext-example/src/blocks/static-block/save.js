@@ -14,9 +14,8 @@ import { __ } from '@wordpress/i18n';
 import './editor.scss';
 import './style.scss';
 
-function save( props ) {
+const Save = ( props ) => {
 	const {
-		className,
 		attributes: {},
 	} = props;
 
@@ -33,4 +32,4 @@ function save( props ) {
 	);
 }
 
-export default save;
+export default Save;

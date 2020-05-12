@@ -7,6 +7,7 @@ import classnames from 'classnames';
  * WordPress Dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { ToggleControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
 /**
@@ -14,17 +15,31 @@ import { useState } from '@wordpress/element';
  */
 import { name } from './block.json';
 
-const blockContainers = document.querySelectorAll( '.blockContainer' );
+const blockContainers = document.querySelectorAll( '.frontend-block-container' );
 
 const Block = ( props ) => {
 	const {
-		attributes: {},
+		attributes: {
+			isDarkBackground,
+		},
 	} = props;
 
+	const [ darkBackground, toggleDarkBackground ] = useState( isDarkBackground );
+
+	const rowClasses = classnames( 
+		'p-5',
+		{
+			'bg-gray-900 text-white': darkBackground,
+		} );
+
 	return (
-		<p className={ className }>
-			{ __( 'ESNext Example – hello from the editor!', 'create-plugin' ) }
-		</p>
+		<div className={ rowClasses }>
+			<ToggleControl
+				label={ 'Dark background' }
+				checked={ darkBackground }
+				onChange={ () => toggleDarkBackground( ! darkBackground ) }
+			/>
+		</div>
 	);
 };
 

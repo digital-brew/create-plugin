@@ -20,9 +20,9 @@ import './editor.scss';
 import './style.scss';
 
 const settings = {
-	title: __( 'Block', 'esnext-example' ),
+	title: __( 'Static Block', 'esnext-example' ),
 	description: __(
-		'Example block written with ESNext standard and JSX support – build step required.',
+		'Example static block written with ESNext standard and JSX support – build step required.',
 		'esnext-example'
 	),
 	keywords: [ 'blockhandbook', 'block handbook' ],

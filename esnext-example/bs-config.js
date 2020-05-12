@@ -17,7 +17,7 @@ const webpackHotMiddleware = require( 'webpack-hot-middleware' );
 const config = require( './webpack.dev.js' );
 const compiler = webpack( config );
 // need to convert passed variable to boolean
-const WRITE_TO_DISK = process.env.WRITE_TO_DISK === 'true';
+const WRITE_TO_DISK = ( process.env.WRITE_TO_DISK === 'true' );
 // if we need to write to disk then let's check for hot module updates and not write those
 const writeToDisk = ( filePath ) => {
 	return /^(?!.*(hot)).*/.test( filePath );

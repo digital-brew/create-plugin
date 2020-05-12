@@ -17,10 +17,11 @@ const { slug } = config;
 const setBlockCustomClassName = ( className, blockName ) => {
 	const customClass = `${ slug }`;
 	const pluginSettings = select( `${ slug }/settings` ).getPluginSettings();
+	
 	const { addCustomClass } = pluginSettings.defaults;
 	const classes = addCustomClass ? `${ className } ${ customClass }` : `${ className }`;
-
-	return blockName.includes( customClass ) ? classes : className;
+	console.log( classes )
+	return className;
 };
 
 export const name = 'set-block-custom-class-name';

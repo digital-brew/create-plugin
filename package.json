@@ -33,9 +33,10 @@
 		"lerna:version": "lerna version",
 		"lerna:publish": "lerna publish",
 		"build:packages": "wp-scripts build --config ./webpack.config.js && npm run build:remove-index.php",
-		"build:remove-index.php":"rm ./packages/controls/build/index.asset.php && rm ./packages/data/build/index.asset.php"
+		"build:remove-index.php": "rm ./packages/controls/build/index.asset.php && rm ./packages/data/build/index.asset.php"
 	},
 	"dependencies": {
+		"@fullhuman/postcss-purgecss": "^2.2.0",
 		"chalk": "^4.0.0",
 		"chalk-animation": "^1.6.0",
 		"check-node-version": "^3.1.1",

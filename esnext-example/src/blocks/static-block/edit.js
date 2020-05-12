@@ -19,7 +19,7 @@ import './style.scss';
  * Module Constants
  */
 
-function BlockEdit( props ) {
+const Edit = ( props ) => {
 	const {
 		attributes,
 		className,
@@ -46,4 +46,4 @@ function BlockEdit( props ) {
 	);
 }
 
-export default BlockEdit;
+export default Edit;

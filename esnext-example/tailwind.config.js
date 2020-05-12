@@ -1,15 +1,10 @@
+const nodeEnv = process.env.NODE_ENV;
+
 const config = {
-	theme: {
-		spacing: {},
-		opacity: {},
-		borderRadius: {},
-		borderWidth: {},
-		boxShadow: {},
-		extend: {},
-	},
+	theme: {},
 	variants: {},
 	purge: {
-		enabled: true,
+		enabled: nodeEnv === 'production' ? true : false,
 		content: [
 			'./src/**/*.js',
 		],
