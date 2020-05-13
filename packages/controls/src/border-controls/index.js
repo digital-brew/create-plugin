@@ -13,7 +13,7 @@ import { Fragment } from '@wordpress/element';
 /**
  * Internal Dependencies
  */
-import icons  from './icons';
+import icons from './icons';
 
 const BorderControls = ( props ) => {
 	const {
