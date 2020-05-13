@@ -17,7 +17,7 @@ _This package assumes that your code will run in an ES2015+ environment._
 Add postcss.config.js, tailwind.config.js, & a package.json file to your root directory:
 
 ```
-touch postcss.config.js && touch tailwind.config.js && touch package.json
+touch postcss.config.js && touch tailwind.config.js && npm init
 ```
 
 Add an assets directory in src, a css directory in assets, and create a tailwind.css file:
@@ -73,26 +73,25 @@ module.exports = {
 Add tailwindcss configurations in the tailwind.config.js file.  Change the purge > content array if you're using a different file structure:
 
 ```
+const nodeEnv = process.env.NODE_ENV;
+
 const config = {
- theme: {
-  spacing: {},
-  opacity: {},
-  borderRadius: {},
-  borderWidth: {},
-  boxShadow: {},
-  extend: {},
- },
+ theme: {},
  variants: {},
  purge: {
-  enabled: true,
+  enabled: nodeEnv === 'production' ? true : false,
   content: [
    './src/**/*.js',
   ],
  },
- plugins: [ require( 'tailwindcss' ), require( 'autoprefixer' ) ],
+ plugins: [
+  require( 'tailwindcss' ),
+  require( 'autoprefixer' )
+ ],
 };
 
 module.exports = config;
+
 ```
 
 Finally, add a build and start script to your package.json.  I'm going to assume you're using @wordpress/scripts for starting/building your plugin:

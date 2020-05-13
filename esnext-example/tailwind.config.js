@@ -9,7 +9,10 @@ const config = {
 			'./src/**/*.js',
 		],
 	},
-	plugins: [ require( 'tailwindcss' ), require( 'autoprefixer' ) ],
+	plugins: [ 
+		require( 'tailwindcss' ), 
+		require( 'autoprefixer' ) 
+	],
 };
 
 module.exports = config;
