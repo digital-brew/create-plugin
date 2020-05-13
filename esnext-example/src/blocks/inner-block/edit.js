@@ -74,11 +74,12 @@ const Edit = ( props ) => {
 		},
 	} = props;
 
-	const containerClasses = classnames( {
-		[ `${ borderStyle } overflow-hidden` ],
-		[ `${ borderRadius }` ]: ! useCustomBorderRadius,
-		[ `${ borderWidth }` ]: ! useCustomBorderWidth,
-	} );
+	const containerClasses = classnames(
+		`${ borderStyle } overflow-hidden`,
+		{
+			[ `${ borderRadius }` ]: ! useCustomBorderRadius,
+			[ `${ borderWidth }` ]: ! useCustomBorderWidth,
+		} );
  
 	const containerStyle = {
 	 borderColor,
