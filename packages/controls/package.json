@@ -1,6 +1,6 @@
 {
   "name": "@blockhandbook/controls",
-  "version": "0.1.45",
+  "version": "0.1.46",
   "main": "build/index.js",
   "description": "A library of components for creating common InspectorControls and BlockControls patterns for WordPress plugins built for the block editor.",
   "scripts": {
