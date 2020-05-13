@@ -19,16 +19,15 @@ import './style.scss';
 /**
  * Module Constants
  */
-const ALLOWED_MEDIA_TYPES = [ 'image' ];
 const ALLOWED_BLOCKS = [ 'core/paragraph', 'core/heading' ];
 const TEMPLATE = [
 	[
 		'core/paragraph',
 		{
 			/* translators: content placeholder */
-			placeholder: __( 'Testimonial', 'turbocharged-testimonial-block' ),
+			placeholder: __( 'Testimonial', 'esnext-example' ),
 			/* translators: content placeholder */
-			content: __( 'I am obsessed with learning how to build blocks!', 'turbocharged-testimonial-block' ),
+			content: __( 'I am obsessed with learning how to build blocks!', 'esnext-example' ),
 			fontSize: 'large',
 			className: 'mt-8',
 		},
@@ -37,9 +36,9 @@ const TEMPLATE = [
 		'core/paragraph',
 		{
 			/* translators: content placeholder */
-			placeholder: __( 'Author\'s name', 'turbocharged-testimonial-block' ),
+			placeholder: __( 'Author\'s name', 'esnext-example' ),
 			/* translators: content placeholder */
-			content: __( 'Lee Shadle', 'turbocharged-testimonial-block' ),
+			content: __( 'Lee Shadle', 'esnext-example' ),
 			fontSize: 'regular',
 			className: 'mb-0',
 		},
@@ -48,9 +47,9 @@ const TEMPLATE = [
 		'core/paragraph',
 		{
 			/* translators: content placeholder */
-			placeholder: __( 'Author\'s position', 'turbocharged-testimonial-block' ),
+			placeholder: __( 'Author\'s position', 'esnext-example' ),
 			/* translators: content placeholder */
-			content: __( 'Teacher @ blockhandbook.com', 'turbocharged-testimonial-block' ),
+			content: __( 'Teacher @ blockhandbook.com', 'esnext-example' ),
 			fontSize: 'small',
 			customTextColor: '#bbb',
 			className: 'mb-0',
@@ -64,16 +63,31 @@ const Edit = ( props ) => {
 		className,
 		setAttributes,
 		attributes: {
-			// put attribute key names here to use them
+			borderColor,
+			borderRadius,
+			borderStyle,
+			borderWidth,
+			customBorderRadius,
+			customBorderWidth,
+			useCustomBorderRadius,
+			useCustomBorderWidth,
 		},
 	} = props;
 
 	const containerClasses = classnames( {
-
+		[ `${ borderStyle } overflow-hidden` ],
+		[ `${ borderRadius }` ]: ! useCustomBorderRadius,
+		[ `${ borderWidth }` ]: ! useCustomBorderWidth,
 	} );
+ 
+	const containerStyle = {
+	 borderColor,
+	 borderRadius: useCustomBorderRadius ? customBorderRadius : null,
+	 borderWidth: useCustomBorderWidth ? customBorderWidth : null,
+	};
 
 	return (
-		<div className={ containerClasses }>
+		<div className={ containerClasses } style={ containerStyle }>
 			<Controls
 				className={ className }
 				attributes={ attributes }

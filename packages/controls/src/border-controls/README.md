@@ -40,7 +40,7 @@ Add the following attributes to block.json:
   },
   "borderColor" : {
    "type": "string"
-  },
+  }
  }
 ```
 
@@ -66,11 +66,12 @@ const Edit = ( props ) => {
   },
  } = props;
 
- const containerClasses = classnames( {
-   [ `${ borderStyle } overflow-hidden` ],
-   [ `${ borderRadius }` ]: ! useCustomBorderRadius,
-   [ `${ borderWidth }` ]: ! useCustomBorderWidth,
- } );
+ const containerClasses = classnames(
+  `${ borderStyle } overflow-hidden`,
+  {
+    [ `${ borderRadius }` ]: ! useCustomBorderRadius,
+    [ `${ borderWidth }` ]: ! useCustomBorderWidth,
+  } );
 
  const containerStyle = {
   borderColor,

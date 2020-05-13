@@ -1,12 +1,13 @@
 /**
  * External Dependencies
  */
+import { controls } from '@blockhandbook/controls';
+const { BorderControls } = controls;
 
 /**
  * WordPress Dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { BaseControl } from '@wordpress/components';
 import { BlockControls, InspectorControls } from '@wordpress/block-editor';
 
 /**
@@ -20,15 +21,18 @@ const Controls = ( props ) => {
 	const {
 		setAttributes,
 		className,
-		attributes: {
-			// put attribute key names here to use them
-		},
+		attributes,
 	} = props;
 
 	return (
 		<>
 			<BlockControls></BlockControls>
 			<InspectorControls></InspectorControls>
+			<BorderControls 
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				slug={ slug }
+			/>
 		</>
 	);
 }
