@@ -14,7 +14,7 @@ import { BlockControls, InspectorControls } from '@wordpress/block-editor';
  * Internal Dependencies
  */
 
-function Controls( props ) {
+const Controls = ( props ) => {
 	const {
 		setAttributes,
 		attributes,

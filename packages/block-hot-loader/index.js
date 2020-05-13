@@ -405,3 +405,18 @@ export const registerFrontend = ( { getContext } ) => {
 
 	return context;
 };
+
+// RegisterPatterns function for non-HMR use
+// export const registerPatterns = ( { getContext } ) => {
+// 	const context = getContext();
+
+// 	for ( const filePath of context.keys() ) {
+// 		const module = context( filePath );
+// 		const name = module.name;
+// 		const settings = module.settings;
+
+// 		registerBlockPattern( name, settings );
+// 	}
+
+// 	return context;
+// };

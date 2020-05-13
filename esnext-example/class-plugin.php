@@ -25,6 +25,7 @@ use \CreatePlugin\Load_Translations as Load_Translations;
 use \CreatePlugin\Register_Plugin_Settings as Register_Plugin_Settings;
 use \CreatePlugin\Register_Rest_API as Register_Rest_API;
 use \CreatePlugin\Load_Dynamic_Blocks as Load_Dynamic_Blocks;
+use \CreatePlugin\Register_Block_Patterns as Register_Block_Patterns;
 
 // Stop the hackers if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -125,6 +126,7 @@ if ( ! class_exists( 'Plugin' ) ) :
 			Register_Plugin_Settings::register();
 			Register_Rest_API::register();
 			new Load_Dynamic_Blocks();
+			Register_Block_Patterns::register();
 		}
 	}
 endif;

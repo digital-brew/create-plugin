@@ -18,7 +18,7 @@ import './style.scss';
 const pkg = require( '../../../package' );
 const slug = pkg.config.slug;
 
-function Edit( props ) {
+const Edit = ( props ) => {
 	const {
 		attributes,
 		className,

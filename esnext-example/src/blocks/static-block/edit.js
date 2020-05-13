@@ -15,10 +15,6 @@ import Controls from './controls';
 import './editor.scss';
 import './style.scss';
 
-/**
- * Module Constants
- */
-
 const Edit = ( props ) => {
 	const {
 		attributes,
@@ -36,7 +32,7 @@ const Edit = ( props ) => {
 				attributes={ attributes }
 				setAttributes={ setAttributes }
 			/>
-			<p className={ className }>
+			<p>
 				{ __(
 					'ESNext Example – this is a static block.',
 					'esnext-example'

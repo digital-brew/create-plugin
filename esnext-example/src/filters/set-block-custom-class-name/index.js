@@ -22,7 +22,7 @@ const setBlockCustomClassName = ( className, blockName ) => {
 		customClass 
 	} = pluginSettings.defaults;
 
-	const classes = addCustomClass ? `${ className } ${ customClass }` : `${ className }`;
+	const classes = addCustomClass && className.includes( slug ) ? `${ className } ${ customClass }` : `${ className }`;
 	return classes;
 };
 

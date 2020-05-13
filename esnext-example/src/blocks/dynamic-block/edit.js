@@ -19,7 +19,7 @@ import icons from '../../utils/icons';
 const pkg = require( '../../../package' );
 const slug = pkg.config.slug;
 
-function DynamicBlockEdit( props ) {
+const Edit = ( props ) => {
 	const {
 		setAttributes,
 		className,
@@ -119,4 +119,4 @@ function DynamicBlockEdit( props ) {
 	);
 }
 
-export default withPosts( DynamicBlockEdit );
+export default withPosts( Edit );
