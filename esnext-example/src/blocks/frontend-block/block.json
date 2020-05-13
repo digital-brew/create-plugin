@@ -1,9 +1,9 @@
 {
 	"name": "esnext-example/frontend-block",
 	"attributes": {
-		"isDarkMode": {
+		"isDarkBackground": {
 			"type": "boolean",
-			"default": "false"
+			"default": false
 		}
 	}
 }

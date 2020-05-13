@@ -29,13 +29,15 @@ function Edit( props ) {
 	} = props;
 
 	const rowClasses = classnames( 
-		`p-5`,
+		'p-5 rounded-lg',
 		{
 			'bg-gray-900 text-white': isDarkBackground,
-		} );
+			'bg-white shadow-md': ! isDarkBackground,
+		},
+	);
 
 	return (
-		<div className={ slug }>
+		<div className={ className }>
 			<div className={ rowClasses }>
 				<Controls
 					className={ className }

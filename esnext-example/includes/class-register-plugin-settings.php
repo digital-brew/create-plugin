@@ -64,7 +64,8 @@ class Register_Plugin_Settings {
 
 		$settings = array(
 			'defaults' => array(
-				'addCustomClass' => true,
+				'addWrapperClass' => true,
+				'wrapperClass'    => 'create-plugin',
 			),
 		);
 		// add_option only adds options if they don't yet exist.

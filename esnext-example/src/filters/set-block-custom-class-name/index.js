@@ -15,13 +15,15 @@ const { slug } = config;
 
 // Add custom namespace className to all plugin blocks.
 const setBlockCustomClassName = ( className, blockName ) => {
-	const customClass = `${ slug }`;
 	const pluginSettings = select( `${ slug }/settings` ).getPluginSettings();
 	
-	const { addCustomClass } = pluginSettings.defaults;
-	const classes = addCustomClass ? `${ className } ${ customClass }` : `${ className }`;
-	console.log( classes )
-	return className;
+	const { 
+		addWrapperClass, 
+		wrapperClass 
+	} = pluginSettings.defaults;
+
+	const classes = addWrapperClass ? `${ className } ${ wrapperClass }` : `${ className }`;
+	return classes;
 };
 
 export const name = 'set-block-custom-class-name';

@@ -17,20 +17,24 @@ import { name } from './block.json';
 
 const blockContainers = document.querySelectorAll( '.frontend-block-container' );
 
-const Block = ( props ) => {
+const FrontendBlock = ( props ) => {
 	const {
 		attributes: {
 			isDarkBackground,
 		},
 	} = props;
 
+	console.log( isDarkBackground )
+
 	const [ darkBackground, toggleDarkBackground ] = useState( isDarkBackground );
 
 	const rowClasses = classnames( 
-		'p-5',
+		'p-5 rounded-lg',
 		{
 			'bg-gray-900 text-white': darkBackground,
-		} );
+			'bg-white shadow-md': ! darkBackground,
+		},
+	);
 
 	return (
 		<div className={ rowClasses }>
@@ -45,9 +49,10 @@ const Block = ( props ) => {
 
 let blocks = [];
 blockContainers.forEach( ( blockContainer ) => {
+	// pass attributes to the frontend as a data attribute
 	const attributes = JSON.parse( blockContainer.dataset.attributes );
 
-	blocks.push( <Block attributes={ attributes } /> );
+	blocks.push( <FrontendBlock attributes={ attributes } /> );
 } );
 
 export { name, blocks, blockContainers };

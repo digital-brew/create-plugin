@@ -7,11 +7,13 @@
  */
 import { __ } from '@wordpress/i18n';
 import { useState } from '@wordpress/element';
-import { ToggleControl, BaseControl, PanelBody } from '@wordpress/components';
+import { Button, TextControl, ToggleControl, BaseControl, PanelRow, PanelBody, Panel } from '@wordpress/components';
 import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
+import { BlockCard } from '@wordpress/block-editor';
 import { compose } from '@wordpress/compose';
 import { dispatch, withSelect } from '@wordpress/data';
 import apiFetch from '@wordpress/api-fetch';
+const { savePost } = dispatch( 'core/editor' );
 
 /**
  * Internal Dependencies
@@ -22,12 +24,13 @@ const { pluginName, slug } = config;
 const Plugin = ( props ) => {
 	const {
 		defaults: {
-			addCustomClass
+			addWrapperClass,
+			wrapperClass,
 		},		
 	} = props;
 
-	console.log( props )
-	const [ showClass, setAddCustomClass ] = useState( addCustomClass );
+	const [ addWrapperClassState, toggleAddWrapperClass ] = useState( addWrapperClass );
+	const [ wrapperClassState, setWrapperClass ] = useState( wrapperClass );
 
 	const updatePluginSettings = async ( data ) => {
 		const request = apiFetch( {
@@ -40,41 +43,58 @@ const Plugin = ( props ) => {
 		try {
 			const response = await request;
 			if ( response ) {
-				console.log( response, data )
 				dispatch( 'core/notices' ).createNotice( 'success', 'Setting saved.' );
 				dispatch( `${ slug }/settings` ).updatePluginSettings( data );
-				setAddCustomClass( ( showClass ) => ! showClass );
+				savePost();
 			}
 		} catch ( error ) {
-			console.log( error )
 			const errorNotice = 'Setting was not updated, please try again.';
 			dispatch( 'core/notices' ).createNotice( 'error', errorNotice );
 		}
 	};
 
-
 	return (
 		<>
-			<PluginSidebarMoreMenuItem target={ `${ slug }` }>
-				{ __( 'ESNext Example plugin settings', 'create-plugin' ) }
+			<PluginSidebarMoreMenuItem 
+				target={ `${ slug }-settings` }
+			>
+				{ __( 'ESNext Example', 'create-plugin' ) }
 			</PluginSidebarMoreMenuItem>
-			<PluginSidebar className="" title={ `${ pluginName }`} name={ `${ slug }` }>
-				<PanelBody>
-					<BaseControl
-						label={ __(
-							'ESNext Example – hello from the plugin sidebar!',
-							'create-plugin'
-						) }
-					/>
+			<PluginSidebar 
+				title={ `${ pluginName }`} 
+				name={ `${ slug }-settings` }
+			>
+				<PanelBody title={__( 'Plugin Settings', 'create-plugin' ) }>
+					{
+						addWrapperClassState &&
+						<TextControl 
+							label={ __( 'Custom Block Wrapper Class', 'create-plugin' ) }
+							value={ wrapperClassState }
+							onChange={ ( wrapperClass ) => setWrapperClass( wrapperClass ) }
+						/>
+					}
 					<ToggleControl
-						onChange={ ( showClass ) => {
-							const defaults = { 
-								defaults: { addCustomClass: showClass }
-							};
-							updatePluginSettings( defaults );
+						onChange={ ( ) => {
+							toggleAddWrapperClass( ( ) => ! addWrapperClassState );
 						} }
-						checked={ showClass }
-						label={ __( 'Add classname to block wrapper.', 'create-plugin' ) }/>
+						checked={ addWrapperClassState }
+						label={ __( 'Add custom class to block wrapper.', 'create-plugin' ) }
+					/>
+					<Button
+						isSecondary
+						isSmall
+						onClick={ ( ) => {
+							const pluginSettings = { 
+								defaults: { 
+									wrapperClass: wrapperClassState, 
+									addWrapperClass: addWrapperClassState
+								}
+							};
+							updatePluginSettings( pluginSettings );
+						} }
+					>
+					{ __( 'Save', 'create-plugin' ) }
+					</Button>
 				</PanelBody>
 			</PluginSidebar>
 		</>
