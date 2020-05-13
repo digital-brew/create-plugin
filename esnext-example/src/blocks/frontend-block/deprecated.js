@@ -16,10 +16,12 @@ import { attributes, name } from './block.json';
 
 const deprecated = [
 	{
-		attributes,
+		attributes: {
+			...attributes,
+		},
+		supports: {},
 		save( props ) {
 			const {
-				className,
 				attributes: {},
 			} = props;
 
@@ -27,12 +29,10 @@ const deprecated = [
 			// the wrapper classes don't get added to the block when saving!!!!
 
 			return (
-				<blockquote className={ className }>
-					{ __(
-						'ESNext Example – hello from the editor!',
-						'create-plugin'
-					) }
-				</blockquote>
+				<div 
+					className="frontend-block-container" 
+					data-attributes={ attributes }
+				/>
 			);
 		},
 	},

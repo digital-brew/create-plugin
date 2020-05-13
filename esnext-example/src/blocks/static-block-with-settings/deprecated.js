@@ -16,23 +16,29 @@ import { attributes, name } from './block.json';
 
 const deprecated = [
 	{
-		attributes,
+		attributes: {
+			...attributes,
+		},
+		supports: {},
 		save( props ) {
 			const {
-				className,
-				attributes: {},
+				attributes: {
+					// put attribute key names here to use them
+				},
 			} = props;
 
 			// IMPORTANT -  If you use Fragment as wrapper then
 			// the wrapper classes don't get added to the block when saving!!!!
 
 			return (
-				<blockquote className={ className }>
-					{ __(
-						'ESNext Example – hello from the editor!',
-						'create-plugin'
-					) }
-				</blockquote>
+				<div>
+					<p>
+						{ __(
+							'ESNext Example – this is a static block w/ settings.',
+							'esnext-example'
+						) }
+					</p>
+				</div>
 			);
 		},
 	},

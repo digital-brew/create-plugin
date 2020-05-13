@@ -13,15 +13,16 @@ import { BlockControls, InspectorControls } from '@wordpress/block-editor';
  * Internal Dependencies
  */
 import icons from '../../utils/icons';
-const pkg = require( '../../../package.json' );
+const pkg = require( '../../../package' );
 const slug = pkg.config.slug;
 
 const Controls = ( props ) => {
 	const {
 		setAttributes,
 		className,
-		style,
-		attributes: {},
+		attributes: {
+			// put attribute key names here to use them
+		},
 	} = props;
 
 	return (

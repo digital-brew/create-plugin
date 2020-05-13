@@ -18,6 +18,9 @@ function Controls( props ) {
 	const {
 		setAttributes,
 		attributes,
+		attributes: {
+			// put attribute key names here to use them
+		},
 	} = props;
 
 	return (

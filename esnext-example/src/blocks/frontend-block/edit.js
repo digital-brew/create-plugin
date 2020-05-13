@@ -15,7 +15,7 @@ import { ToggleControl } from '@wordpress/components';
 import Controls from './controls';
 import './editor.scss';
 import './style.scss';
-const pkg = require( '../../../package.json' );
+const pkg = require( '../../../package' );
 const slug = pkg.config.slug;
 
 function Edit( props ) {
@@ -45,7 +45,7 @@ function Edit( props ) {
 					setAttributes={ setAttributes }
 				/>
 				<ToggleControl
-					label={ 'Dark background' }
+					label={ __( 'Dark background', 'esnext-example' ) }
 					checked={ isDarkBackground }
 					onChange={ () => setAttributes( { isDarkBackground: ! isDarkBackground } ) }
 				/>

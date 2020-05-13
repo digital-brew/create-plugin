@@ -38,8 +38,8 @@ const Edit = ( props ) => {
 			/>
 			<p className={ className }>
 				{ __(
-					'ESNext Example – hello from the editor!',
-					'create-plugin'
+					'ESNext Example – this is a static block.',
+					'esnext-example'
 				) }
 			</p>
 		</>

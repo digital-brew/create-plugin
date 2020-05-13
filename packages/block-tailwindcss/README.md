@@ -6,7 +6,7 @@ This is a collection of utilities that make it easy to add Tailwindcss to your W
 
 ## Installation
 
-```
+```bash
 npm i @blockhandbook/block-tailwindcss --save-dev
 ```
 
@@ -16,13 +16,13 @@ _This package assumes that your code will run in an ES2015+ environment._
 
 Add postcss.config.js, tailwind.config.js, & a package.json file to your root directory:
 
-```
+```bash
 touch postcss.config.js && touch tailwind.config.js && npm init
 ```
 
 Add an assets directory in src, a css directory in assets, and create a tailwind.css file:
 
-```
+```none
 plugin-name
 ├── build
 ├── src
@@ -40,7 +40,7 @@ plugin-name
 
 Add the following to the tailwind.css file ( I leave the @tailwind base styles out but you can uncomment those if you want them ):
 
-```
+```css
 /*
  tailwindcss styles and custom components
 */
@@ -53,7 +53,7 @@ Add the following to the tailwind.css file ( I leave the @tailwind base styles o
 
 Set your postcss configurations in postcss.config.js.  Add your plugin slug in the postcssPrependSelector selector key.  This will allow you to use ANY tailwindcss classes scoped to your custom build gutenberg blocks without them leaking to the rest of the page.  Also, if you put your tailwind.config.js file in a different directory, you'll want to update that here too:
 
-```
+```javascript
 const tailwindcss = require( 'tailwindcss' );
 const autoprefixer = require( 'autoprefixer' );
 
@@ -72,7 +72,7 @@ module.exports = {
 
 Add tailwindcss configurations in the tailwind.config.js file.  Change the purge > content array if you're using a different file structure:
 
-```
+```javascript
 const nodeEnv = process.env.NODE_ENV;
 
 const config = {
@@ -96,7 +96,7 @@ module.exports = config;
 
 Finally, add a build and start script to your package.json.  I'm going to assume you're using @wordpress/scripts for starting/building your plugin:
 
-```
+```json
 {
  "name": "plugin-name",
  "scripts": {
@@ -110,7 +110,7 @@ Finally, add a build and start script to your package.json.  I'm going to assume
 
 The [classnames](https://www.npmjs.com/package/classnames) package is baked in so you can conditionally include/exclude tailwindcss classes.  I particularly love using it for providing preset stylings for properties such as boxShadow, borderRadius, borderWidth, etc.:
 
-```
+```javascript
 const rowClasses = classnames(
   'flex',
   {
@@ -130,12 +130,12 @@ const rowClasses = classnames(
 
 To use in development run:
 
-```
+```bash
 npm run start
 ```
 
 To use in production run:
 
-```
+```bash
 npm run build
 ```

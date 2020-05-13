@@ -1,7 +1,6 @@
 /**
  * External Dependencies
  */
-import classnames from 'classnames';
 
 /**
  * WordPress Dependencies
@@ -19,14 +18,13 @@ const Save = ( props ) => {
 		attributes: {},
 	} = props;
 
-	// IMPORTANT - If you use Fragment as wrapper then
-	// the wrapper classes don't get added to the block when saving!!!!
+	/* IMPORTANT - Wrapper classes get added to the outermost wrapper element.  If you use Fragment as wrapper then the wrapper classes don't get added to the block when saving! */
 
 	return (
 		<p>
 			{ __(
 				'ESNext Example – hello from the saved content!',
-				'create-plugin'
+				'esnext-example'
 			) }
 		</p>
 	);

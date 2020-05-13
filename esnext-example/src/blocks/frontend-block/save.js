@@ -9,17 +9,17 @@
 /**
  * Internal Dependencies
  */
-import './editor.scss';
-import './style.scss';
 import { sortObject } from '../../utils/helpers';
 
 const Save = ( props ) => {
+	const {
+		attributes: {
+			className,
+		}
+	} = props;
 
 	let {
 		attributes,
-		attributes: {
-			className,
-		},
 	} = props;
 
 	// We need to pass the className to the saved attributes, otherwise
@@ -32,11 +32,13 @@ const Save = ( props ) => {
 		...{ className } 
 	} ) );
 
-	// IMPORTANT - If you use a Fragment as a wrapper then
-	// the wrapper classes don't get added to the block when saving!!!!
+	/* IMPORTANT - Wrapper classes get added to the outermost wrapper element.  If you use Fragment as wrapper then the wrapper classes don't get added to the block when saving! */
 
 	return (
-		<div className="frontend-block-container" data-attributes={ attributes }></div>
+		<div 
+			className="frontend-block-container" 
+			data-attributes={ attributes }
+		/>
 	);
 }
 

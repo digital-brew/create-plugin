@@ -18,23 +18,23 @@ const { savePost } = dispatch( 'core/editor' );
 /**
  * Internal Dependencies
  */
-import { config } from '../../../package.json';
+import { config } from '../../../package';
 const { pluginName, slug } = config;
 
 const Plugin = ( props ) => {
 	const {
 		defaults: {
-			addWrapperClass,
-			wrapperClass,
+			addCustomClass,
+			customClass,
 		},		
 	} = props;
 
-	const [ addWrapperClassState, toggleAddWrapperClass ] = useState( addWrapperClass );
-	const [ wrapperClassState, setWrapperClass ] = useState( wrapperClass );
+	const [ addCustomClassState, toggleAddCustomClass ] = useState( addCustomClass );
+	const [ customClassState, setCustomClass ] = useState( customClass );
 
-	const updatePluginSettings = async ( data ) => {
+	const updatePluginSettings = async ( data, setting ) => {
 		const request = apiFetch( {
-			path: `${ slug }/v1/settings/defaults`,
+			path: `${ slug }/v1/settings/${ setting }`,
 			headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
 			method: 'POST',
 			body: JSON.stringify( data )
@@ -66,19 +66,19 @@ const Plugin = ( props ) => {
 			>
 				<PanelBody title={__( 'Plugin Settings', 'create-plugin' ) }>
 					{
-						addWrapperClassState &&
+						addCustomClassState &&
 						<TextControl 
-							label={ __( 'Custom Block Wrapper Class', 'create-plugin' ) }
-							value={ wrapperClassState }
-							onChange={ ( wrapperClass ) => setWrapperClass( wrapperClass ) }
+							label={ __( 'Custom Class', 'create-plugin' ) }
+							value={ customClassState }
+							onChange={ ( customClass ) => setCustomClass( customClass ) }
 						/>
 					}
 					<ToggleControl
 						onChange={ ( ) => {
-							toggleAddWrapperClass( ( ) => ! addWrapperClassState );
+							toggleAddCustomClass( ( ) => ! addCustomClassState );
 						} }
-						checked={ addWrapperClassState }
-						label={ __( 'Add custom class to block wrapper.', 'create-plugin' ) }
+						checked={ addCustomClassState }
+						label={ __( 'Add custom class to default block class.', 'create-plugin' ) }
 					/>
 					<Button
 						isSecondary
@@ -86,11 +86,11 @@ const Plugin = ( props ) => {
 						onClick={ ( ) => {
 							const pluginSettings = { 
 								defaults: { 
-									wrapperClass: wrapperClassState, 
-									addWrapperClass: addWrapperClassState
+									customClass: customClassState, 
+									addCustomClass: addCustomClassState
 								}
 							};
-							updatePluginSettings( pluginSettings );
+							updatePluginSettings( pluginSettings, 'defaults' );
 						} }
 					>
 					{ __( 'Save', 'create-plugin' ) }
@@ -101,7 +101,7 @@ const Plugin = ( props ) => {
 	);
 };
 
-const PluginWithCompose = compose(
+const PluginWithSettings = compose(
 	[
 		withSelect( ( select, props ) => {
 			const pluginSettings = select( `${ slug }/settings` ).getPluginSettings();
@@ -114,7 +114,7 @@ const PluginWithCompose = compose(
 const name = `${ slug }`;
 const settings = {
 	icon: 'admin-plugins',
-	render: PluginWithCompose,
+	render: PluginWithSettings,
 };
 
 export { name, settings };

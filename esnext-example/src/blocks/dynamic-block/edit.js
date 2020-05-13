@@ -16,7 +16,7 @@ import { Spinner } from '@wordpress/components';
  */
 import Controls from './controls';
 import icons from '../../utils/icons';
-const pkg = require( '../../../package.json' );
+const pkg = require( '../../../package' );
 const slug = pkg.config.slug;
 
 function DynamicBlockEdit( props ) {
@@ -52,7 +52,7 @@ function DynamicBlockEdit( props ) {
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 				/>
-				{ __( 'No posts found.', 'create-plugin' ) }
+				{ __( 'No posts found.', 'esnext-example' ) }
 			</>
 		);
 	}

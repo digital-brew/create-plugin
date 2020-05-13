@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  * Internal Dependencies
  */
 import { attributes, name } from './block.json';
-import deprecated from './deprecated';
+// import deprecated from './deprecated';
 import edit from './edit';
 import icon from './icon';
 import save from './save';
@@ -22,16 +22,17 @@ import './style.scss';
 const settings = {
 	title: __( 'Static Block w/ Settings', 'esnext-example' ),
 	description: __(
-		'Example static block written with ESNext standard and JSX support – build step required.',
+		'A starter static block w/ settings.',
 		'esnext-example'
 	),
 	keywords: [ 'blockhandbook', 'block handbook' ],
 	icon,
 	category: 'esnext-example',
+	example: {},
 	supports: {},
 	styles: [],
 	attributes,
-	deprecated,
+	// deprecated,
 	transforms,
 	edit,
 	save,

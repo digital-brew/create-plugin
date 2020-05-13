@@ -16,22 +16,22 @@ import './style.scss';
 
 const Save = ( props ) => {
 	const {
-		className,
 		attributes: {
 			// put attribute key names here to use them
 		},
 	} = props;
 
-	// IMPORTANT - If you use Fragment as wrapper then
-	// the wrapper classes don't get added to the block when saving!!!!
+	/* IMPORTANT - Wrapper classes get added to the outermost wrapper element.  If you use Fragment as wrapper then the wrapper classes don't get added to the block when saving! */
 
 	return (
-		<p>
-			{ __(
-				'ESNext Example – hello from the saved content!',
-				'create-plugin'
-			) }
-		</p>
+		<div>
+			<p>
+				{ __(
+					'ESNext Example – this is a static block w/ settings.',
+					'esnext-example'
+				) }
+			</p>
+		</div>
 	);
 }
 

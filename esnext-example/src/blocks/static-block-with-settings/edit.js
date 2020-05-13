@@ -16,7 +16,7 @@ import { withSelect } from '@wordpress/data';
 import Controls from './controls';
 import './editor.scss';
 import './style.scss';
-const pkg = require( '../../../package.json' );
+const pkg = require( '../../../package' );
 const slug = pkg.config.slug;
 
 /**
@@ -29,16 +29,25 @@ const Edit = ( props ) => {
 		className,
 		setAttributes,
 		defaults: {
-			addWrapperClass,
-			wrapperClass,
+			addCustomClass,
+			customClass,
 		},
 		attributes: {
 			// put attribute key names here to use them
 		},
 	} = props;
 
+	// We need to generate the wrapper classes so that if the custom wrapper class changes in the plugin, this component will re-render.  Otherwise, it won't.
+	const wrapperClasses = classnames(
+		{
+			[`${ className } ${ customClass }`]: addCustomClass && ! className.includes( customClass ),
+			[ className ]: addCustomClass && className.includes( customClass ),
+			[ className ]: ! addCustomClass
+		}
+	)
+
 	return (
-		<div className={ className	}>
+		<div className={ wrapperClasses	}>
 			<Controls
 				className={ className }
 				attributes={ attributes }
@@ -46,8 +55,8 @@ const Edit = ( props ) => {
 			/>
 			<p>
 				{ __(
-					'ESNext Example – hello from the editor!',
-					'create-plugin'
+					'ESNext Example – this is a static block w/ settings.',
+					'esnext-example'
 				) }
 			</p>
 		</div>

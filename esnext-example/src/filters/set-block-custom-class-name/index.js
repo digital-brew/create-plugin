@@ -10,7 +10,7 @@ import { select } from '@wordpress/data';
 /**
  * Internal Dependencies
  */
-import { config } from '../../../package.json';
+import { config } from '../../../package';
 const { slug } = config;
 
 // Add custom namespace className to all plugin blocks.
@@ -18,11 +18,11 @@ const setBlockCustomClassName = ( className, blockName ) => {
 	const pluginSettings = select( `${ slug }/settings` ).getPluginSettings();
 	
 	const { 
-		addWrapperClass, 
-		wrapperClass 
+		addCustomClass, 
+		customClass 
 	} = pluginSettings.defaults;
 
-	const classes = addWrapperClass ? `${ className } ${ wrapperClass }` : `${ className }`;
+	const classes = addCustomClass ? `${ className } ${ customClass }` : `${ className }`;
 	return classes;
 };
 

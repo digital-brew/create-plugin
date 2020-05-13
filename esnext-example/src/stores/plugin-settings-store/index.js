@@ -10,7 +10,7 @@ const { apiFetch } = wp;
 /**
  * Internal Dependencies
  */
-import { config } from '../../../package.json';
+import { config } from '../../../package';
 const { slug } = config;
 
 // We can pass the plugin settings object via the
