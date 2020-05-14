@@ -59,13 +59,13 @@ const BorderControls = ( props ) => {
 											label: __( 'Small', 'esnext-example' ), icon: icons.borderRadiusSmall, value: 'rounded-sm' 
 										},
 										{ 
-											label: __( 'Medium', 'esnext-example' ), icon: icons.borderRadiusMedium, value: 'rounded-md' 
+											label: __( 'Medium', 'esnext-example' ), icon: icons.borderRadiusMedium, value: 'rounded' 
 										},
 										{ 
-											label: __( 'Large', 'esnext-example' ), icon: icons.borderRadiusLarge, value: 'rounded-lg' 
+											label: __( 'Large', 'esnext-example' ), icon: icons.borderRadiusLarge, value: 'rounded-md' 
 										},
 										{ 
-											label: __( 'X-Large', 'esnext-example' ), icon: icons.borderRadiusXLarge, value: 'rounded-xl' 
+											label: __( 'X-Large', 'esnext-example' ), icon: icons.borderRadiusXLarge, value: 'rounded-lg' 
 										},
 									].map( ( item ) => {
 										return(
@@ -143,7 +143,7 @@ const BorderControls = ( props ) => {
 												label: __( 'None', 'esnext-example' ), icon: icons.borderWidth ,value: 'border-0' 
 											},
 											{ 
-												label: __( 'Small', 'esnext-example' ), icon: icons.borderWidthSmall, value: 'border-1' 
+												label: __( 'Small', 'esnext-example' ), icon: icons.borderWidthSmall, value: 'border' 
 											},
 											{ 
 												label: __( 'Medium', 'esnext-example' ), icon: icons.borderWidthMedium, value: 'border-2' 
