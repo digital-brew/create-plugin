@@ -44,10 +44,10 @@ icons.borderWidthNone = <svg viewBox="0 0 104 104">
           <mask fill="currentColor">
             <use xlinkHref="#path-1" />
           </mask>
-          <use stroke="#FFFFFF" strokeWidth="3" xlinkHref="#path-1" />
+          <use stroke="currentColor" strokeWidth="3" xlinkHref="#path-1" />
           <path
             d="M16,16 L84,16 L84,84 L16,84 L16,16 Z"
-            fill="#FFFFFF"
+            fill="currentColor"
             mask="url(#mask-2)"
           />
         </g>
