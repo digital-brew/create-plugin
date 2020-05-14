@@ -55,17 +55,17 @@
 		"zip": "bestzip ./$npm_package_config_slug.zip ./src ./class-plugin.php ./readme.txt ./LICENSE [ ./build ./languages ./includes ./vendor ]"
 	},
 	"devDependencies": {
-		"@blockhandbook/block-hot-loader": "^1.2.12",
+		"@blockhandbook/block-hot-loader": "^1.2.13",
 		"@blockhandbook/block-tailwindcss": "^0.1.9",
-		"@blockhandbook/controls": "^0.1.57",
+		"@blockhandbook/controls": "^0.1.58",
 		"@blockhandbook/data": "^0.1.34",
 		"@wordpress/env": "^1.3.0",
-		"@wordpress/scripts": "^9.0.0",
+		"@wordpress/scripts": "^9.1.0",
 		"bestzip": "^2.1.5",
 		"replace-in-file": "^5.0.2"
 	},
 	"dependencies": {
-		"@wordpress/components": "^9.5.0",
+		"@wordpress/components": "^9.6.0",
 		"classnames": "^2.2.6"
 	}
 }
