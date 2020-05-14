@@ -75,7 +75,7 @@ const Edit = ( props ) => {
 	} = props;
 
 	const containerClasses = classnames(
-		`${ borderStyle } overflow-hidden`,
+		`p-10 bg-white ${ borderStyle } overflow-hidden`,
 		{
 			[ `${ borderRadius }` ]: ! useCustomBorderRadius,
 			[ `${ borderWidth }` ]: ! useCustomBorderWidth,
@@ -88,18 +88,20 @@ const Edit = ( props ) => {
 	};
 
 	return (
-		<div className={ containerClasses } style={ containerStyle }>
-			<Controls
-				className={ className }
-				attributes={ attributes }
-				setAttributes={ setAttributes }
-			/>
-			<InnerBlocks
-				allowedBlocks={ ALLOWED_BLOCKS }
-				template={ TEMPLATE }
-				templateLock={ true }
-			/>
-		</div>
+		<div className={ className }>
+			<div className={ containerClasses } style={ containerStyle }>
+				<Controls
+					className={ className }
+					attributes={ attributes }
+					setAttributes={ setAttributes }
+				/>
+				<InnerBlocks
+					allowedBlocks={ ALLOWED_BLOCKS }
+					template={ TEMPLATE }
+					templateLock={ true }
+				/>
+			</div>
+		</div>		
 	);
 }
 
