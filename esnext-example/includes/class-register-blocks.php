@@ -27,7 +27,7 @@ class Register_Blocks {
 		$instance = new self();
 		add_action( 'init', array( $instance, 'register_blocks' ) );
 		add_action( 'wp_enqueue_scripts', array( $instance, 'enqueue_frontend_scripts' ) );
-		add_action( 'wp_enqueue_scripts', array( $instance, 'enqueue_variations_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $instance, 'enqueue_variations_scripts' ) );
 	}
 
 	/**
