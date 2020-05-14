@@ -10,7 +10,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal Dependencies
  */
-import { attributes, name } from './block.json';
+import { attributes, name } from './block';
 // import deprecated from './deprecated';
 import edit from './edit';
 import icon from './icon';

@@ -5,7 +5,7 @@
 /**
  * WordPress Dependencies
  */
-import { getUnregisteredTypeHandlerName, createBlock, setUnregisteredTypeHandlerName, rawHandler, registerBlockType, unregisterBlockType } from '@wordpress/blocks';
+import { getUnregisteredTypeHandlerName, createBlock, setUnregisteredTypeHandlerName, rawHandler, registerBlockType, unregisterBlockType, registerBlockVariation, unregisterBlockVariation } from '@wordpress/blocks';
 import { render } from '@wordpress/element';
 import { registerPlugin, unregisterPlugin } from '@wordpress/plugins';
 import { dispatch, select, registerStore } from '@wordpress/data';
@@ -323,6 +323,46 @@ export const hotFrontendLoader = ( { getContext, module: frontendModule } ) => {
 	frontendModule.hot.accept( loadFrontend().id, loadFrontend );
 };
 
+// Hot Module Replacement for variations
+export const hotVariationLoader = ( { getContext, module: variationModule } ) => {
+	let variationModules = {};
+	const loadVariations = () => {
+		const context = getContext();
+		if ( ! context ) {
+			return;
+		}
+
+		for ( const filePath of context.keys() ) {
+			const module = context( filePath );
+			const name = module.name;
+			const variations = module.variations;
+
+			if ( variationModules[ name ] && ( module === variationModules[ name ].module ) ) {
+				continue;
+			}
+
+			if ( variationModules[ name ] ) {
+				const prevModule = variationModules[ name ].module;
+
+				prevModule.variations.forEach( ( variation ) => {
+					const { name } = variation;
+					unregisterBlockVariation( name, variation );
+				} );
+			}
+
+			variations.forEach( ( variation ) => {
+				// Adding the variation
+				const { name } = variation;
+				registerBlockVariation( name, variation );
+			} );
+
+			variationModules = { ...variationModules, [ name ]: { filePath: filePath, module: module } };
+		}
+		return context;
+	};
+	variationModule.hot.accept( loadVariations().id, loadVariations );
+};
+
 // RegisterBlocks function for non-HMR use
 export const registerBlocks = ( { getContext } ) => {
 	const context = getContext();
@@ -400,6 +440,24 @@ export const registerFrontend = ( { getContext } ) => {
 				blocks[ index ],
 				blockContainer
 			);
+		} );
+	}
+
+	return context;
+};
+
+// Autoload variations for non-HMR use
+export const registerVariations = ( { getContext } ) => {
+	const context = { getContext };
+
+	for ( const filePath of context.keys() ) {
+		const module = context( filePath );
+		const variations = module.variations;
+
+		variations.forEach( ( variation ) => {
+			// addFilter( 'hookName', 'namespace', 'functionName', 'callback', 'priority' )
+			const { name } = filter;
+			registerBlockVariation( name, variation );
 		} );
 	}
 

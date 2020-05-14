@@ -1,11 +1,13 @@
 /**
  * External Dependencies
  */
+import classnames from 'classnames';
 
 /**
  * WordPress Dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Internal Dependencies
@@ -15,18 +17,39 @@ import './style.scss';
 
 const Save = ( props ) => {
 	const {
-		attributes: {},
+		attributes: {
+			borderColor,
+			borderRadius,
+			borderStyle,
+			borderWidth,
+			customBorderRadius,
+			customBorderWidth,
+			useCustomBorderRadius,
+			useCustomBorderWidth,
+		},
 	} = props;
+
+	const containerClasses = classnames(
+		`p-10 bg-white ${ borderStyle } overflow-hidden`,
+		{
+			[ `${ borderRadius }` ]: ! useCustomBorderRadius,
+			[ `${ borderWidth }` ]: ! useCustomBorderWidth,
+		} );
+
+	const containerStyle = {
+	 borderColor,
+	 borderRadius: useCustomBorderRadius ? customBorderRadius : null,
+	 borderWidth: useCustomBorderWidth ? customBorderWidth : null,
+	};
 
 	/* IMPORTANT - Wrapper classes get added to the outermost wrapper element.  If you use Fragment as wrapper then the wrapper classes don't get added to the block when saving! */
 
 	return (
-		<p>
-			{ __(
-				'ESNext Example – hello from the saved content!',
-				'esnext-example'
-			) }
-		</p>
+		<div>
+			<div className={ containerClasses } style={ containerStyle }>
+				<InnerBlocks.Content />
+			</div>
+		</div>		
 	);
 }
 

@@ -7,7 +7,7 @@ import classnames from 'classnames';
  * WordPress Dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { InnerBlocks, MediaPlaceholder } from '@wordpress/block-editor';
+import { InnerBlocks, __experimentalBlockVariationPicker } from '@wordpress/block-editor';
 
 /**
  * Internal Dependencies
@@ -15,47 +15,12 @@ import { InnerBlocks, MediaPlaceholder } from '@wordpress/block-editor';
 import Controls from './controls';
 import './editor.scss';
 import './style.scss';
+import { variations } from './variations';
 
 /**
  * Module Constants
  */
 const ALLOWED_BLOCKS = [ 'core/paragraph', 'core/heading' ];
-const TEMPLATE = [
-	[
-		'core/paragraph',
-		{
-			/* translators: content placeholder */
-			placeholder: __( 'Testimonial', 'esnext-example' ),
-			/* translators: content placeholder */
-			content: __( 'I am obsessed with learning how to build blocks!', 'esnext-example' ),
-			fontSize: 'large',
-			className: 'mt-8',
-		},
-	],
-	[
-		'core/paragraph',
-		{
-			/* translators: content placeholder */
-			placeholder: __( 'Author\'s name', 'esnext-example' ),
-			/* translators: content placeholder */
-			content: __( 'Lee Shadle', 'esnext-example' ),
-			fontSize: 'regular',
-			className: 'mb-0',
-		},
-	],
-	[
-		'core/paragraph',
-		{
-			/* translators: content placeholder */
-			placeholder: __( 'Author\'s position', 'esnext-example' ),
-			/* translators: content placeholder */
-			content: __( 'Teacher @ blockhandbook.com', 'esnext-example' ),
-			fontSize: 'small',
-			customTextColor: '#bbb',
-			className: 'mb-0',
-		},
-	],
-];
 
 const Edit = ( props ) => {
 	const {
@@ -71,8 +36,11 @@ const Edit = ( props ) => {
 			customBorderWidth,
 			useCustomBorderRadius,
 			useCustomBorderWidth,
+			variation,
 		},
 	} = props;
+
+	console.log( variation )
 
 	const containerClasses = classnames(
 		`p-10 bg-white ${ borderStyle } overflow-hidden`,
@@ -80,15 +48,25 @@ const Edit = ( props ) => {
 			[ `${ borderRadius }` ]: ! useCustomBorderRadius,
 			[ `${ borderWidth }` ]: ! useCustomBorderWidth,
 		} );
- console.log( containerClasses )
+
 	const containerStyle = {
 	 borderColor,
 	 borderRadius: useCustomBorderRadius ? customBorderRadius : null,
 	 borderWidth: useCustomBorderWidth ? customBorderWidth : null,
 	};
 
+	if( ! variation ) {
+		return(
+			<__experimentalBlockVariationPicker
+				variations={ variations }
+				instructions={ __( 'Select a variation', 'esnext-example ' ) }
+				onSelect={ ( variation ) => setAttributes( { variation } ) }
+			/>
+		);
+	}
+
 	return (
-		<div className={ className }>
+		<div className={ className }>			
 			<div className={ containerClasses } style={ containerStyle }>
 				<Controls
 					className={ className }
@@ -97,7 +75,7 @@ const Edit = ( props ) => {
 				/>
 				<InnerBlocks
 					allowedBlocks={ ALLOWED_BLOCKS }
-					template={ TEMPLATE }
+					template={ variations[0].innerBlocks }
 					templateLock={ true }
 				/>
 			</div>

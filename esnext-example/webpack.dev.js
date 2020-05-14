@@ -35,6 +35,10 @@ const config = {
 			path.resolve( process.cwd(), `./src/frontend.js` ),
 			'webpack-hot-middleware/client?name=frontend&timeout=20000&reload=true&overlay=true',
 		],
+		variations: [
+			path.resolve( process.cwd(), `./src/variations.js` ),
+			'webpack-hot-middleware/client?name=frontend&timeout=20000&reload=true&overlay=true',
+		],
 	},
 	output: {
 		publicPath: `/build/`,

@@ -36,6 +36,8 @@ module.exports = {
 		`./build/index.asset.php`,
 		`./build/frontend.js`,
 		`./build/frontend.asset.php`,
+		`./build/variations.js`,
+		`./build/variations.asset.php`,
 		'./node_modules',
 	],
 	single: false,

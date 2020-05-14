@@ -1,36 +1,39 @@
 {
 	"name": "esnext-example/inner-block",
 	"attributes": {
-	"borderRadius" : {
-		"type": "string",
-		"default": "rounded-lg"
+		"borderRadius" : {
+			"type": "string",
+			"default": "rounded-lg"
 		},
 		"customBorderRadius": {
-		"type": "number",
-		"default": null
+			"type": "number",
+			"default": null
 		},
 		"useCustomBorderRadius" : {
-		"type": "boolean",
-		"default": false
+			"type": "boolean",
+			"default": false
 		},
 		"borderWidth" : {
-		"type": "string",
-		"default": "border-0"
+			"type": "string",
+			"default": "border-0"
 		},
 		"customBorderWidth": {
-		"type": "number",
-		"default": null
+			"type": "number",
+			"default": null
 		},
 		"useCustomBorderWidth" : {
-		"type": "boolean",
-		"default": false
+			"type": "boolean",
+			"default": false
 		},
 		"borderStyle" : {
-		"type": "string",
-		"default": "border-solid"
+			"type": "string",
+			"default": "border-solid"
 		},
 		"borderColor" : {
-		"type": "string"
+			"type": "string"
+		},
+		"variation": {
+			"type": "string"
 		}
 	}
 }

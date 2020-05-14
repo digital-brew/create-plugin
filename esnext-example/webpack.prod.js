@@ -16,6 +16,7 @@ const config = {
 	entry: {
 		index: [ path.resolve( process.cwd(), `src/index.js` ) ],
 		frontend: [ path.resolve( process.cwd(), `src/frontend.js` ) ],
+		variations: [ path.resolve( process.cwd(), `src/variations.js` ) ],
 	},
 	output: {
 		path: path.resolve( process.cwd(), `./build` ),

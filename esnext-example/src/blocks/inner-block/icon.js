@@ -10,47 +10,10 @@
  * Internal Dependencies
  */
 
-const icon = <svg viewBox="0 0 104 104">
-    <defs>
-      <rect x="0" y="0" width="100" height="100" />
-      <polygon points="0 0 100 0 100 100 0 100 0 71.6914062" />
-    </defs>
-    <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-      <g transform="translate(2.000000, 2.000000)">
-        <g>
-          <g>
-            <mask fill="white">
-              <use xlinkHref="#path-1" />
-            </mask>
-            <use stroke="#FFFFFF" strokeWidth="3" xlinkHref="#path-1" />
-            <rect
-              stroke="currentColor"
-              strokeWidth="10"
-              mask="url(#mask-2)"
-              x="-39"
-              y="-39"
-              width="118"
-              height="118"
-              rx="38"
-            />
-          </g>
-          <mask fill="white">
-            <use xlinkHref="#path-3" />
-          </mask>
-          <use stroke="#FFFFFF" strokeWidth="3" xlinkHref="#path-3" />
-          <path
-            d="M29,-54 L97,-54 L97,14 L29,14 L29,-54 Z"
-            fill="#FFFFFF"
-            mask="url(#mask-4)"
-          />
-          <path
-            d="M-54,50 L14,50 L14,118 L-54,118 L-54,50 Z"
-            fill="#FFFFFF"
-            mask="url(#mask-4)"
-          />
-        </g>
-      </g>
-    </g>
-  </svg>;
+const icon = <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<path d="M7 9C7 7.89543 7.89543 7 9 7H15C16.1046 7 17 7.89543 17 9V15C17 16.1046 16.1046 17 15 17H9C7.89543 17 7 16.1046 7 15V9Z" fill="currentColor"/>
+<path d="M5 3C3.89543 3 3 3.89543 3 5V11C3 12.1046 3.89543 13 5 13L5 5H13C13 3.89543 12.1046 3 11 3H5Z" fill="currentColor"/>
+</svg>;
 
 export default icon;

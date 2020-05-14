@@ -2,7 +2,7 @@ const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 const { devDependencies } = require( './package' );
 
 const BLOCKHANDBOOK_NAMESPACE = '@blockhandbook/';
-const BUNDLED_PACKAGES = [ ];
+const BUNDLED_PACKAGES = [];
 
 const blockhandbookPackages = Object.keys( devDependencies )
 	.filter(
