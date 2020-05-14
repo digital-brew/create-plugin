@@ -149,7 +149,7 @@ const BorderControls = ( props ) => {
 									{
 										[
 											{ 
-												label: __( 'None', 'esnext-example' ), icon: icons.borderWidth, value: 'border-0' 
+												label: __( 'None', 'esnext-example' ), icon: icons.borderWidthNone, value: 'border-0' 
 											},
 											{ 
 												label: __( 'Small', 'esnext-example' ), icon: icons.borderWidthSmall, value: 'border' 

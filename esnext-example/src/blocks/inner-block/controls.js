@@ -28,7 +28,7 @@ const Controls = ( props ) => {
 		<>
 			<BlockControls></BlockControls>
 			<InspectorControls></InspectorControls>
-			<BorderControls 
+			<BorderControls
 				attributes={ attributes }
 				setAttributes={ setAttributes }
 				slug={ slug }

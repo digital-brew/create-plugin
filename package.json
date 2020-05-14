@@ -31,7 +31,7 @@
 	"scripts": {
 		"create-plugin": "node ./index.js",
 		"lerna:version": "lerna version",
-		"lerna:publish": "lerna publish",
+		"lerna:publish": "npm run build:packages && lerna publish",
 		"build:packages": "wp-scripts build --config ./webpack.config.js && npm run build:remove-index.php",
 		"build:remove-index.php": "rm ./packages/controls/build/index.asset.php && rm ./packages/data/build/index.asset.php"
 	},

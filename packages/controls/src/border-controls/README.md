@@ -2,7 +2,7 @@
 # BorderControls
 
 Toolbar & InspectorControls for adding border radius settings to blocks:
-![BorderControls in the WordPress block editor sidebar](https://blockhandbook.com/wp-content/uploads/2020/05/PostsControls-Screenshot-1.png)
+![BorderControls in the WordPress block editor sidebar & toolbar](https://blockhandbook.com/wp-content/uploads/2020/05/BorderControls-Screenshot.png)
 
 Add the following attributes to block.json:
 
