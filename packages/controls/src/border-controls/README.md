@@ -86,6 +86,8 @@ const Edit = ( props ) => {
   >
    <BorderControls
     slug={ slug }
+    borderRadiusToolbar={ false }
+    borderWidthTooblar={ false }
     attributes={ attributes }
     setAttributes={ setAttributes }
    />
@@ -101,3 +103,13 @@ const Edit = ( props ) => {
 
 export default Edit;
 ```
+
+## props available
+
+### borderRadiusToolbar
+
+Show borderRadius settings in the toolbar.  Defaults to true.
+
+### borderWidthToolbar
+
+Show borderWidth settings in the toolbar.  Defaults to true.

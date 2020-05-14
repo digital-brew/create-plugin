@@ -1,6 +1,28 @@
 const icons = {};
 
-icons.borderRadiusNone = <svg viewBox="0 0 104 104"><defs><rect height="100" width="100" x="0" y="0"/></defs><g fill="none" stroke="none" strokeWidth="1" fillRule="evenodd"><g transform="matrix(1 0 0 1 2 2)"><g><mask fill="#fff"><use xlinkHref="#path-1"/></mask><use stroke="#fff" strokeWidth="3" xlinkHref="#path-1"/><rect height="118" stroke="currentColor" width="118" x="-51" y="-48" strokeWidth="10"/></g></g></g></svg>;
+icons.borderRadiusNone = <svg viewBox="0 0 104 104">
+<defs>
+	<rect x="0" y="0" width="100" height="100" />
+</defs>
+<g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+	<g transform="translate(2.000000, 2.000000)">
+		<g>
+			<mask fill="white">
+				<use xlinkHref="#path-1" />
+			</mask>
+			<use stroke="#FFFFFF" strokeWidth="3" xlinkHref="#path-1" />
+			<path
+				d="M16,16 L84,16 L84,84 L16,84 L16,16 Z"
+				stroke="#000000"
+				strokeWidth="3"
+				fill="#FFFFFF"
+				strokeDasharray="6"
+				mask="url(#mask-2)"
+			/>
+		</g>
+	</g>
+</g>
+</svg>;
 
 icons.borderRadiusSmall = <svg viewBox="0 0 104 104"><defs><rect height="100" width="100" x="0" y="0"/></defs><g fill="none" stroke="none" strokeWidth="1" fillRule="evenodd"><g transform="matrix(1 0 0 1 2 2)"><g><mask fill="#fff"><use xlinkHref="#path-1"/></mask><use stroke="#fff" strokeWidth="3" xlinkHref="#path-1"/><rect height="118" rx="2" stroke="currentColor" width="118" x="-51" y="-48" strokeWidth="10"/></g></g></g></svg>;
 

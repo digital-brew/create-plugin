@@ -19,6 +19,8 @@ const BorderControls = ( props ) => {
 	const {
 		setAttributes,
 		slug,
+		borderWidthToolbar = true,
+		borderRadiusToolbar = true,
 		attributes: {
 			borderColor,
 			borderRadius,
@@ -34,11 +36,15 @@ const BorderControls = ( props ) => {
 	return (
 		<Fragment>
 			<BlockControls>
+			{
+				( borderWithToolbar || borderRadiusToolbar ) &&
 				<ToolbarGroup>
+				{
+					borderRadiusToolbar &&
 					<Dropdown						
 						renderToggle={ ( { isOpen, onToggle } ) => (
 							<Button
-								icon={ icons.borderRadius }
+								icon={ icons.borderRadiusXLarge }
 								label={ __( 'Border Radius', 'esnext-example' ) }
 								onClick={ onToggle }
 							/>
@@ -122,10 +128,13 @@ const BorderControls = ( props ) => {
 							) } 
 						}
 					/>
+				}
+				{
+					borderWidthToolbar &&
 					<Dropdown						
 						renderToggle={ ( { isOpen, onToggle } ) => (
 							<Button
-								icon={ icons.borderWidth }
+								icon={ icons.borderWidthXLarge }
 								label={ __( 'Border Width', 'esnext-example' ) }
 								onClick={ onToggle }
 							/>
@@ -209,7 +218,9 @@ const BorderControls = ( props ) => {
 							) } 
 						}
 					/>
+				}
 				</ToolbarGroup>
+			}
 			</BlockControls>
 			<InspectorControls>
 				<PanelBody
