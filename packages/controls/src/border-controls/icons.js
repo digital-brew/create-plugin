@@ -12,7 +12,7 @@ icons.borderRadiusNone = <svg viewBox="0 0 104 104">
           </mask>
           <use stroke="#FFFFFF" strokeWidth="3" xlinkHref="#path-1" />
           <rect
-            stroke="#000000"
+            stroke="currentColor"
             strokeWidth="10"
             mask="url(#mask-2)"
             x="-51"
@@ -41,7 +41,7 @@ icons.borderWidthNone = <svg viewBox="0 0 104 104">
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g transform="translate(2.000000, 2.000000)">
         <g>
-          <mask fill="white">
+          <mask fill="currentColor">
             <use xlinkHref="#path-1" />
           </mask>
           <use stroke="#FFFFFF" strokeWidth="3" xlinkHref="#path-1" />
