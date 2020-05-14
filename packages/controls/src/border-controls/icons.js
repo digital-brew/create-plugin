@@ -34,22 +34,17 @@ icons.borderRadiusLarge = <svg viewBox="0 0 104 104"><defs><rect height="100" wi
 
 icons.borderRadiusXLarge = <svg viewBox="0 0 104 104"><defs><rect height="100" width="100" x="0" y="0"/></defs><g fill="none" stroke="none" strokeWidth="1" fillRule="evenodd"><g transform="matrix(1 0 0 1 2 2)"><g><mask fill="#fff"><use xlinkHref="#path-1"/></mask><use stroke="#fff" strokeWidth="3" xlinkHref="#path-1"/><rect height="118" rx="50" stroke="currentColor" width="118" x="-51" y="-48" strokeWidth="10"/></g></g></g></svg>;
 
-icons.borderWidthNone = <svg viewBox="0 0 104 104">
+icons.borderWidthNone = <svg viewBox="0 0 100 100">
     <defs>
       <rect x="0" y="0" width="100" height="100" />
     </defs>
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-      <g transform="translate(2.000000, 2.000000)">
+      <g>
         <g>
-          <mask fill="currentColor">
+          <mask fill="white">
             <use xlinkHref="#path-1" />
           </mask>
-          <use stroke="currentColor" strokeWidth="3" xlinkHref="#path-1" />
-          <path
-            d="M16,16 L84,16 L84,84 L16,84 L16,16 Z"
-            fill="currentColor"
-            mask="url(#mask-2)"
-          />
+          <g />
         </g>
       </g>
     </g>
