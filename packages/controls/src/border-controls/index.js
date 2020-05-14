@@ -44,7 +44,7 @@ const BorderControls = ( props ) => {
 					<Dropdown						
 						renderToggle={ ( { isOpen, onToggle } ) => (
 							<Button
-								icon={ icons.borderRadiusXLarge }
+								icon={ icons.borderRadius }
 								label={ __( 'Border Radius', 'esnext-example' ) }
 								onClick={ onToggle }
 							/>
