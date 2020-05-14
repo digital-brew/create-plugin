@@ -80,7 +80,7 @@ const Edit = ( props ) => {
 			[ `${ borderRadius }` ]: ! useCustomBorderRadius,
 			[ `${ borderWidth }` ]: ! useCustomBorderWidth,
 		} );
- 
+ console.log( containerClasses )
 	const containerStyle = {
 	 borderColor,
 	 borderRadius: useCustomBorderRadius ? customBorderRadius : null,

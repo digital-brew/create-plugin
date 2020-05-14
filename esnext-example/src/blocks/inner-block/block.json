@@ -3,7 +3,7 @@
 	"attributes": {
 	"borderRadius" : {
 		"type": "string",
-		"default": "rounded-xl"
+		"default": "rounded-lg"
 		},
 		"customBorderRadius": {
 		"type": "number",

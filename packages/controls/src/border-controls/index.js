@@ -140,7 +140,7 @@ const BorderControls = ( props ) => {
 									{
 										[
 											{ 
-												label: __( 'None', 'esnext-example' ), icon: icons.borderWidth ,value: 'border-0' 
+												label: __( 'None', 'esnext-example' ), icon: icons.borderWidth, value: 'border-0' 
 											},
 											{ 
 												label: __( 'Small', 'esnext-example' ), icon: icons.borderWidthSmall, value: 'border' 
@@ -149,10 +149,10 @@ const BorderControls = ( props ) => {
 												label: __( 'Medium', 'esnext-example' ), icon: icons.borderWidthMedium, value: 'border-2' 
 											},
 											{ 
-												label: __( 'Large', 'esnext-example' ), icon: icons.borderWidthLarge ,value: 'border-4' 
+												label: __( 'Large', 'esnext-example' ), icon: icons.borderWidthLarge, value: 'border-4' 
 											},
 											{ 
-												label: __( 'X-Large', 'esnext-example' ), icon: icons.borderWidthXLarge ,value: 'border-8' 
+												label: __( 'X-Large', 'esnext-example' ), icon: icons.borderWidthXLarge, value: 'border-8' 
 											},
 										].map( ( item ) => {
 											return(
