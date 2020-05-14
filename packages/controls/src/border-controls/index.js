@@ -37,7 +37,7 @@ const BorderControls = ( props ) => {
 		<Fragment>
 			<BlockControls>
 			{
-				( borderWithToolbar || borderRadiusToolbar ) &&
+				( borderWidthToolbar || borderRadiusToolbar ) &&
 				<ToolbarGroup>
 				{
 					borderRadiusToolbar &&
