@@ -13,6 +13,7 @@ import {
 /**
  * Internal Dependencies
  */
+
 if ( module.hot ) {
 	hotVariationLoader( {
 		getContext: () => require.context( './blocks', true, /variations\.js$/ ),
