@@ -1,6 +1,7 @@
 {
   "name": "@blockhandbook/tailwindcss",
   "version": "0.1.13",
+  "main": "build/index.js",
   "description": "Utilities that make it easy to add Tailwindcss to a WordPress block editor plugin",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
