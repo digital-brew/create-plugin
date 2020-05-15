@@ -1,9 +1,9 @@
 /**
  * External Dependencies
  */
-// import { BorderControls } from '../../../../packages/controls/src';
-import { controls } from '@blockhandbook/controls';
-const { BorderControls } = controls;
+// import { BorderControls } from '../../../../packages/tailwindcss/build';
+import { BorderControls } from '@blockhandbook/tailwindcss';
+// const { BorderControls } = controls;
 
 /**
  * WordPress Dependencies
