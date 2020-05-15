@@ -17,14 +17,12 @@ The @blockhandbook/block-hot-loader npm package is coupled with browsersync and 
 * [Frontend Hot Reloading](#frontend)
 * [Variation Hot Reloading](#variations)
 
-```text
 ### Free Course
 
 Reading documentation got you down?  We'll walk you through this entire setup in our FREE 6-Lesson Blazing Fast Block Development video course:
 
 * [Take our FREE course](https://blockhandbook.com)
 * [Follow us on Twitter](https://twitter.com/blockhandbook)
-```
 
 ## Installation
 
