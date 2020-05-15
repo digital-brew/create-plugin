@@ -21,6 +21,7 @@ const BorderControls = ( props ) => {
 		slug,
 		borderWidthToolbar = true,
 		borderRadiusToolbar = true,
+		initialOpen = false,
 		attributes: {
 			borderColor,
 			borderRadius,
@@ -32,6 +33,17 @@ const BorderControls = ( props ) => {
 			useCustomBorderWidth,
 		},
 	} = props;
+
+	const syncButton = ( property, object, icon ) => <Button 
+		onClick={ () => setAttributes( {
+			[ property ]: {
+				...object,
+				"sync": ! object.sync,
+			}
+		} )
+		} 
+		icon={ icon } 
+	/>;
 
 	return (
 		<Fragment>
@@ -89,29 +101,64 @@ const BorderControls = ( props ) => {
 									</MenuGroup>
 								}
 								{
-									useCustomBorderRadius &&
-									<MenuGroup>
-									<div className={ slug }	>
-										<div className="px-3 pb-0 pt-3">
-										{
-											useCustomBorderRadius &&
+									useCustomBorderRadius && ! customBorderRadius.sync &&
+									[
+										{ label: __( 'Top Left' ), value: "topLeft" },
+										{ label: __( 'Top Right' ), value: "topRight" },
+										{ label: __( 'Bottom Right' ), value: "bottomRight" },
+										{ label: __( 'Bottom Left' ), value: "bottomLeft" },							
+									].map( ( side ) => {
+										return(
 											<RangeControl
-												value={ customBorderRadius }
-												showTooltip={ false }
+												key={ side.value }
+												label={ side.label }
+												value={ customBorderRadius[ side.value ] }
+													beforeIcon={ syncButton( 'customBorderRadius', customBorderRadius, 'unlock' ) 
+												}
 												onChange={
 													( value ) => {
-														setAttributes( { customBorderRadius: value } );
+														setAttributes( { 
+														customBorderRadius: 
+														{ 
+															...customBorderRadius,
+															[ side.value ]: value
+														}
+													} )
 													}
 												}
-												initialPosition={ customBorderRadius }
+												initialPosition={ customBorderRadius.topLeft }
 												min={ 0 }
 												max={ 200 }
 												step={ 1 }
 											/>
+										)
+									} )
+								}
+								{
+									useCustomBorderRadius && customBorderRadius.sync &&
+									<RangeControl
+										label={ __( 'Border radius', 'esnext-example' ) }
+										value={ customBorderRadius.topLeft }
+										beforeIcon={ syncButton( 'customBorderRadius', customBorderRadius, 'lock' ) }
+										onChange={
+											( value ) => {
+												setAttributes( { 
+												customBorderRadius: 
+												{ 
+													...customBorderRadius,
+													"topLeft": value,
+													"bottomLeft": value,
+													"topRight": value,
+													"bottomRight": value
+												}
+											} )
+											}
 										}
-										</div>
-									</div>
-									</MenuGroup>				
+										initialPosition={ customBorderRadius.topLeft }
+										min={ 0 }
+										max={ 200 }
+										step={ 1 }
+									/>
 								}		
 								<MenuGroup>				
 								<div className={ slug }	>
@@ -179,30 +226,65 @@ const BorderControls = ( props ) => {
 								</MenuGroup>
 								}
 								{
-									useCustomBorderWidth &&
-									<MenuGroup>
-									<div className={ slug }	>
-										<div className="px-3 pb-0 pt-3">
-										{
-											useCustomBorderWidth &&
+									useCustomBorderWidth && ! customBorderWidth.sync &&
+									[
+										{ label: __( 'Top' ), value: "top" },
+										{ label: __( 'Right' ), value: "right" },
+										{ label: __( 'Bottom' ), value: "bottom" },
+										{ label: __( 'Left' ), value: "left" },
+									].map( ( side ) => {
+										return(
 											<RangeControl
-												value={ customBorderWidth }
-												showTooltip={ false }
+												key={ side.value }
+												label={ side.label }
+												value={ customBorderWidth[ side.value ] }
+													beforeIcon={ syncButton( 'customBorderWidth', customBorderWidth, 'unlock' ) 
+												}
 												onChange={
 													( value ) => {
-														setAttributes( { customBorderWidth: value } );
+														setAttributes( { 
+															customBorderWidth: 
+														{ 
+															...customBorderWidth,
+															[ side.value ]: value
+														}
+													} )
 													}
 												}
-												initialPosition={ customBorderWidth }
+												initialPosition={ customBorderWidth[ side.value ] }
 												min={ 0 }
-												max={ 50 }
+												max={ 200 }
 												step={ 1 }
 											/>
+										)
+									} )
+								}
+								{
+									useCustomBorderWidth && customBorderWidth.sync &&
+									<RangeControl
+										label={ __( 'Border width', 'esnext-example' ) }
+										value={ customBorderWidth.top }
+										beforeIcon={ syncButton( 'customBorderWidth', customBorderWidth, 'lock' ) }
+										onChange={
+											( value ) => {
+												setAttributes( { 
+												customBorderWidth: 
+												{ 
+													...customBorderWidth,
+													"top": value,
+													"bottom": value,
+													"left": value,
+													"right": value
+												}
+											} )
+											}
 										}
-										</div>
-									</div>
-									</MenuGroup>				
-								}		
+										initialPosition={ customBorderWidth.top }
+										min={ 0 }
+										max={ 200 }
+										step={ 1 }
+									/>
+								}
 								<MenuGroup>				
 								<div className={ slug }	>
 									<ToggleControl
@@ -225,7 +307,7 @@ const BorderControls = ( props ) => {
 			<InspectorControls>
 				<PanelBody
 					title={ __( 'Border Settings', 'esnext-example' ) }
-					initialOpen={ false }
+					initialOpen={ initialOpen }
 				>
 					<BaseControl
 						id="border-radius"
@@ -241,19 +323,62 @@ const BorderControls = ( props ) => {
 						{ useCustomBorderRadius ? 'Defaults' : 'Custom' }
 					</Button>
 					{
-						useCustomBorderRadius &&
+						useCustomBorderRadius && ! customBorderRadius.sync &&
+						[
+							{ label: __( 'Top Left' ), value: "topLeft" },
+							{ label: __( 'Top Right' ), value: "topRight" },
+							{ label: __( 'Bottom Right' ), value: "bottomRight" },
+							{ label: __( 'Bottom Left' ), value: "bottomLeft" },							
+						].map( ( side ) => {
+							return(
+								<RangeControl
+									key={ side.value }
+									label={ side.label }
+									value={ customBorderRadius[ side.value ] }
+										beforeIcon={ syncButton( 'customBorderRadius', customBorderRadius, 'unlock' ) 
+									}
+									onChange={
+										( value ) => {
+											setAttributes( { 
+											customBorderRadius: 
+											{ 
+												...customBorderRadius,
+												[ side.value ]: value
+											}
+										} )
+										}
+									}
+									initialPosition={ customBorderRadius.topLeft }
+									min={ 0 }
+									max={ 200 }
+									step={ 1 }
+								/>
+							)
+						} )
+					}
+					{
+						useCustomBorderRadius && customBorderRadius.sync &&
 						<RangeControl
-							value={ customBorderRadius }
+							value={ customBorderRadius.topLeft }
+							beforeIcon={ syncButton( 'customBorderRadius', customBorderRadius, 'lock' ) }
 							onChange={
 								( value ) => {
-									setAttributes( { customBorderRadius: value } );
+									setAttributes( { 
+									customBorderRadius: 
+									{ 
+										...customBorderRadius,
+										"topLeft": value,
+										"bottomLeft": value,
+										"topRight": value,
+										"bottomRight": value
+									}
+								} )
 								}
 							}
-							initialPosition={ customBorderRadius }
+							initialPosition={ customBorderRadius.topLeft }
 							min={ 0 }
 							max={ 200 }
 							step={ 1 }
-							allowReset
 						/>
 					}
 					{
@@ -298,19 +423,62 @@ const BorderControls = ( props ) => {
 						{ useCustomBorderWidth ? __( 'Defaults', 'esnext-example' ) : __( 'Custom', 'esnext-example' ) }
 					</Button>
 					{
-						useCustomBorderWidth &&
+						useCustomBorderWidth && ! customBorderWidth.sync &&
+						[
+							{ label: __( 'Top' ), value: "top" },
+							{ label: __( 'Right' ), value: "right" },
+							{ label: __( 'Bottom' ), value: "bottom" },
+							{ label: __( 'Left' ), value: "left" },
+						].map( ( side ) => {
+							return(
+								<RangeControl
+									key={ side.value }
+									label={ side.label }
+									value={ customBorderWidth[ side.value ] }
+										beforeIcon={ syncButton( 'customBorderWidth', customBorderWidth, 'unlock' ) 
+									}
+									onChange={
+										( value ) => {
+											setAttributes( { 
+												customBorderWidth: 
+											{ 
+												...customBorderWidth,
+												[ side.value ]: value
+											}
+										} )
+										}
+									}
+									initialPosition={ customBorderWidth[ side.value ] }
+									min={ 0 }
+									max={ 200 }
+									step={ 1 }
+								/>
+							)
+						} )
+					}
+					{
+						useCustomBorderWidth && customBorderWidth.sync &&
 						<RangeControl
-							value={ customBorderWidth }
+							value={ customBorderWidth.top }
+							beforeIcon={ syncButton( 'customBorderWidth', customBorderWidth, 'lock' ) }
 							onChange={
 								( value ) => {
-									setAttributes( { customBorderWidth: value } );
+									setAttributes( { 
+									customBorderWidth: 
+									{ 
+										...customBorderWidth,
+										"top": value,
+										"bottom": value,
+										"left": value,
+										"right": value
+									}
+								} )
 								}
 							}
-							initialPosition={ customBorderWidth }
+							initialPosition={ customBorderWidth.top }
 							min={ 0 }
-							max={ 50 }
+							max={ 200 }
 							step={ 1 }
-							allowReset
 						/>
 					}
 					{

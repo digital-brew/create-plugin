@@ -56,7 +56,7 @@
 	},
 	"devDependencies": {
 		"@blockhandbook/block-hot-loader": "^1.2.17",
-		"@blockhandbook/controls": "^0.1.63",
+		"@blockhandbook/controls": "^0.1.64",
 		"@blockhandbook/data": "^0.1.34",
 		"@blockhandbook/tailwindcss": "^0.1.14",
 		"@wordpress/env": "^1.3.0",

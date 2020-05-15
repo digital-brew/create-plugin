@@ -36,11 +36,11 @@ const Save = ( props ) => {
 			[ `${ borderWidth }` ]: ! useCustomBorderWidth,
 		} );
 
-	const containerStyle = {
-	 borderColor,
-	 borderRadius: useCustomBorderRadius ? customBorderRadius : null,
-	 borderWidth: useCustomBorderWidth ? customBorderWidth : null,
-	};
+		const containerStyle = {
+			borderColor,
+			borderRadius: useCustomBorderRadius ? `${ customBorderRadius.topLeft }px ${ customBorderRadius.topRight }px ${ customBorderRadius.bottomRight }px ${ customBorderRadius.bottomLeft }px` : null,
+			borderWidth: useCustomBorderWidth ? `${ customBorderWidth.top }px ${ customBorderWidth.right }px ${ customBorderWidth.bottom }px ${ customBorderWidth.left }px` : null,
+		};
 
 	/* IMPORTANT - Wrapper classes get added to the outermost wrapper element.  If you use Fragment as wrapper then the wrapper classes don't get added to the block when saving! */
 

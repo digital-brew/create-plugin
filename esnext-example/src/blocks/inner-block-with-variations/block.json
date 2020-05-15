@@ -6,8 +6,14 @@
 			"default": "rounded-lg"
 		},
 		"customBorderRadius": {
-			"type": "number",
-			"default": null
+			"type": "object",
+			"default": {
+				"topLeft": 10,
+				"bottomLeft": 10,
+				"topRight": 10,
+				"bottomRight": 10,
+				"sync": true
+			}
 		},
 		"useCustomBorderRadius" : {
 			"type": "boolean",
@@ -18,8 +24,14 @@
 			"default": "border-0"
 		},
 		"customBorderWidth": {
-			"type": "number",
-			"default": null
+			"type": "object",
+			"default": {
+				"top": 10,
+				"bottom": 10,
+				"left": 10,
+				"right": 10,
+				"sync": true
+			}
 		},
 		"useCustomBorderWidth" : {
 			"type": "boolean",

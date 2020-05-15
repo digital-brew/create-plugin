@@ -52,8 +52,8 @@ const Edit = ( props ) => {
 
 	const containerStyle = {
 		borderColor,
-		borderRadius: useCustomBorderRadius ? customBorderRadius : null,
-		borderWidth: useCustomBorderWidth ? customBorderWidth : null,
+		borderRadius: useCustomBorderRadius ? `${ customBorderRadius.topLeft }px ${ customBorderRadius.topRight }px ${ customBorderRadius.bottomRight }px ${ customBorderRadius.bottomLeft }px` : null,
+		borderWidth: useCustomBorderWidth ? `${ customBorderWidth.top }px ${ customBorderWidth.right }px ${ customBorderWidth.bottom }px ${ customBorderWidth.left }px` : null,
 	};
 
 	const selectVariation = ( variation ) => {

@@ -18,17 +18,29 @@ Add the following attributes to block.json:
    "type": "number",
    "default": null
   },
-  "useCustomBorderRadius" : {
-   "type": "boolean",
-   "default": false
+  "customBorderRadius": {
+   "type": "object",
+   "default": {
+    "topLeft": 10,
+    "bottomLeft": 10,
+    "topRight": 10,
+    "bottomRight": 10,
+    "sync": true
+   }
   },
   "borderWidth" : {
    "type": "string",
    "default": "border-0"
   },
   "customBorderWidth": {
-   "type": "number",
-   "default": null
+   "type": "object",
+   "default": {
+    "top": 10,
+    "bottom": 10,
+    "left": 10,
+    "right": 10,
+    "sync": true
+   }
   },
   "useCustomBorderWidth" : {
    "type": "boolean",
@@ -75,8 +87,8 @@ const Edit = ( props ) => {
 
  const containerStyle = {
   borderColor,
-  borderRadius: useCustomBorderRadius ? customBorderRadius : null,
-  borderWidth: useCustomBorderWidth ? customBorderWidth : null,
+  borderRadius: useCustomBorderRadius ? `${ customBorderRadius.topLeft }px ${ customBorderRadius.topRight }px ${ customBorderRadius.bottomRight }px ${ customBorderRadius.bottomLeft }px` : null,
+  borderWidth: useCustomBorderWidth ? `${ customBorderWidth.top }px ${ customBorderWidth.right }px ${ customBorderWidth.bottom }px ${ customBorderWidth.left }px` : null,
  };
 
  return (
@@ -88,6 +100,7 @@ const Edit = ( props ) => {
     slug={ slug }
     borderRadiusToolbar={ false }
     borderWidthTooblar={ false }
+    initialOpen={ true }
     attributes={ attributes }
     setAttributes={ setAttributes }
    />
@@ -106,10 +119,20 @@ export default Edit;
 
 ## props available
 
-### borderRadiusToolbar
+```
+borderRadiusToolbar
+```
 
 Show borderRadius settings in the toolbar.  Defaults to true.
 
-### borderWidthToolbar
+```
+borderWidthToolbar
+```
 
 Show borderWidth settings in the toolbar.  Defaults to true.
+
+```
+initialOpen
+```
+
+Set border settings panel to initially open in sidebar.  Defaults to false.

@@ -24,13 +24,13 @@ const variations = [
 		},
 		innerBlocks: [
 			[
-				'core/paragraph',
+				'core/heading',
 				{
 					/* translators: content placeholder */
 					placeholder: __( 'Testimonial', 'esnext-example' ),
 					/* translators: content placeholder */
 					content: __( 'I am obsessed with building blocks!', 'esnext-example' ),
-					fontSize: 'large',
+					level: 3,
 					className: 'mt-8',
 				},
 			],
@@ -71,13 +71,13 @@ const variations = [
 		},
 		innerBlocks: [
 			[
-				'core/paragraph',
+				'core/heading',
 				{
 					/* translators: content placeholder */
 					placeholder: __( 'Testimonial', 'esnext-example' ),
 					/* translators: content placeholder */
 					content: __( 'Seriously, I love building blocks!', 'esnext-example' ),
-					fontSize: 'larger',
+					level: 3,
 					className: 'mt-8',
 				},
 			],
