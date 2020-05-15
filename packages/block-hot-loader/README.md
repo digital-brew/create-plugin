@@ -4,7 +4,22 @@ This is a collection of Hot Module Replacement utilities that make it easier to 
 
 The @blockhandbook/block-hot-loader npm package is coupled with browsersync and some webpack middleware to give you live reloading for php files and Hot Module Replacement for JS and CSS files.
 
-Don't want to read or think through all this documentation?  We'll walk you through this entire setup in our FREE 6-Lesson Blazing Fast Block Development video course:
+## Table of Contents
+
+[Installation](#installation)
+[Setup](#setup)
+[How to Use](#how-to-use)
+
+* [Block Hot Reloading](#blocks)
+* [Plugin Hot Reloading](#plugins)
+* [Filter Hot Reloading](#filters)
+* [Store Hot Reloading](#stores)
+* [Frontend Hot Reloading](#frontend)
+* [Variation Hot Reloading](#variations)
+
+### Free Course
+
+Reading documentation got you down?  We'll walk you through this entire setup in our FREE 6-Lesson Blazing Fast Block Development video course:
 
 * [Take our FREE course](https://blockhandbook.com)
 * [Follow us on Twitter](https://twitter.com/blockhandbook)
@@ -35,7 +50,9 @@ plugin-name
 ├── src
 │    ├── blocks
 │    │   ├── block-1
-│    │   │   └── index.js
+│    │   │   ├── index.js
+│    │   │   ├── variations.js
+│    │   │   └── frontend.js
 │    │   ├── block-2
 │    │   │   └── index.js
 │    │   └── block-3
@@ -747,7 +764,7 @@ if ( module.hot ) {
 
 ### Variations
 
-For hot-reloading block variations. For hot-reloading block variations blocks you'll want a file structure similar to the one below:
+For hot-reloading block variations blocks you'll want a file structure similar to the one below:
 
 ```markdown
 plugin-name
@@ -774,7 +791,7 @@ plugin-name
 
 ```
 
-You'll need to export the block's name, an array of the block's variations , in each block's variations.js file so it can be automatically reloaded:
+You'll need to export the block's name and an array of the block's variations, in each block's variations.js file so it can be automatically refreshed:
 
 ```javascript
 /**
@@ -842,7 +859,7 @@ const variations = [
 export { name, variations };
 ```
 
-You'd simply use the 'wp_enqueue_scripts' hook to enqueue the ./src/variations.js file in your php.  I highly recommend using the wp-scripts package too, so then you can have the frontend WordPress dependencies automatically included as well by doing something like this in your php:
+Use the 'admin_enqueue_scripts' hook to enqueue the ./src/variations.js file in your php.  I highly recommend using the wp-scripts package too, so then you can have the variations WordPress dependencies automatically included as well by doing something like this in your php:
 
 ```php
 function enqueue_variations_scripts() {
@@ -862,7 +879,7 @@ function enqueue_variations_scripts() {
 add_action( 'admin_enqueue_scripts', 'enqueue_variations_scripts' );
 ```
 
-Finally, you'll add the hotFrontendLoader function to your root ./src/variations.js file.  I didn't include this in the root index.js file b/c we're going to want to only enqueue this script on the backend with php.
+Finally, you'll add the hotVariationsLoader function to your root ./src/variations.js file.  I didn't include this in the root index.js file b/c we're going to want to only enqueue this script on the backend with php.
 
 You can use a different directory name by changing './blocks' to whatever directory name you used.  We've also included a registerVariations function for non-HMR use ( production ).  Here's what your src/variations.js file would look like to add HMR for development and to autoload all variations scripts in production:
 
