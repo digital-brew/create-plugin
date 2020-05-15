@@ -7,7 +7,7 @@ This is a collection of utilities that make it easy to add Tailwindcss to your W
 ## Installation
 
 ```bash
-npm i @blockhandbook/block-tailwindcss --save-dev
+npm i @blockhandbook/tailwindcss --save-dev
 ```
 
 _This package assumes that your code will run in an ES2015+ environment._
