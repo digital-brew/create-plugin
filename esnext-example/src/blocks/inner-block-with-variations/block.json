@@ -1,5 +1,5 @@
 {
-	"name": "esnext-example/inner-block",
+	"name": "esnext-example/inner-block-with-variations",
 	"attributes": {
 		"borderRadius" : {
 			"type": "string",
@@ -30,6 +30,9 @@
 			"default": "border-solid"
 		},
 		"borderColor" : {
+			"type": "string"
+		},
+		"variationName": {
 			"type": "string"
 		}
 	}

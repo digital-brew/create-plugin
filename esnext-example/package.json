@@ -55,7 +55,7 @@
 		"zip": "bestzip ./$npm_package_config_slug.zip ./src ./class-plugin.php ./readme.txt ./LICENSE [ ./build ./languages ./includes ./vendor ]"
 	},
 	"devDependencies": {
-		"@blockhandbook/block-hot-loader": "^1.2.13",
+		"@blockhandbook/block-hot-loader": "^1.2.14",
 		"@blockhandbook/block-tailwindcss": "^0.1.9",
 		"@blockhandbook/controls": "^0.1.59",
 		"@blockhandbook/data": "^0.1.34",
