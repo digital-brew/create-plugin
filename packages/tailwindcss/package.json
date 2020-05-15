@@ -1,6 +1,6 @@
 {
   "name": "@blockhandbook/tailwindcss",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "main": "build/index.js",
   "description": "Utilities that make it easy to add Tailwindcss to a WordPress block editor plugin",
   "scripts": {
@@ -30,11 +30,11 @@
   },
   "homepage": "https://github.com/blockhandbook/create-plugin/tree/master/packages/tailwindcss#readme",
   "dependencies": {
+    "@wordpress/scripts": "^9.0.0",
     "classnames": "^2.2.6",
     "cross-env": "^7.0.2",
     "postcss-cli": "^7.1.0",
     "postcss-prepend-selector": "^0.3.1",
-    "tailwindcss": "^1.4.5",
-    "@wordpress/scripts": "^9.0.0"
+    "tailwindcss": "^1.4.5"
   }
 }
