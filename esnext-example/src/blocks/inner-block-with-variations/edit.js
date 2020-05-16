@@ -28,11 +28,6 @@ const Edit = ( props ) => {
 			borderStyle,
 			borderWidth,
 			boxShadow,
-			boxShadowColor,
-			customBorderRadius,
-			customBoxShadow,
-			useCustomBorderRadius,
-			useCustomBoxShadow,
 			variationName,
 		}
 	} = props;
@@ -48,26 +43,26 @@ const Edit = ( props ) => {
 	} );
 
 	const rowClasses = classnames(
-		`p-10 bg-white ${ borderStyle } overflow-hidden`,
+		`p-10 bg-white ${ borderStyle.style } overflow-hidden`,
 		{
-			[ `${ borderRadius }` ]: ! useCustomBorderRadius,
+			[ `${ borderRadius.preset }` ]: borderRadius.usePreset,
 			[ `${ borderWidth.preset }` ]: borderWidth.usePreset,
-			[ `${ boxShadow }` ]: ! useCustomBoxShadow,
-		} 
+			[ `${ boxShadow.preset }` ]: boxShadow.usePreset,
+		}
 	);
 
 	const containerStyle = {
-		'--tw-box-shadow-color': boxShadowColor,
+		'--tw-box-shadow-color': boxShadow.color,
 	}
 
 	const rowStyle = {
-		borderColor,
+		borderColor: borderColor.color,
 		borderRadius: 
-			useCustomBorderRadius ? `${ customBorderRadius.topLeft }px ${ customBorderRadius.topRight }px ${ customBorderRadius.bottomRight }px ${ customBorderRadius.bottomLeft }px` : null,
+			! borderRadius.usePreset ? `${ borderRadius.topLeft }px ${ borderRadius.topRight }px ${ borderRadius.bottomRight }px ${ borderRadius.bottomLeft }px` : null,
 		borderWidth: 
 			! borderWidth.usePreset ? `${ borderWidth.top }px ${ borderWidth.right }px ${ borderWidth.bottom }px ${ borderWidth.left }px` : null,
 		boxShadow: 
-			useCustomBoxShadow ? `${ customBoxShadow.x }px ${ customBoxShadow.y }px ${ customBoxShadow.blur }px ${ customBoxShadow.spread }px rgba( ${ boxShadowColor }, ${ customBoxShadow.opacity / 100 } )` : null
+			! boxShadow.usePreset ? `${ boxShadow.x }px ${ boxShadow.y }px ${ boxShadow.blur }px ${ boxShadow.spread }px rgba( ${ boxShadow.color }, ${ boxShadow.opacity / 100 } )` : null
 	};
 
 	const selectVariation = ( variation ) => {

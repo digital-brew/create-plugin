@@ -1,23 +1,19 @@
 {
 	"name": "esnext-example/inner-block-with-variations",
 	"attributes": {
-		"borderRadius" : {
-			"type": "string",
-			"default": "rounded-lg"
-		},
-		"customBorderRadius": {
+		"borderRadius": {
 			"type": "object",
 			"default": {
 				"topLeft": 10,
 				"bottomLeft": 10,
 				"topRight": 10,
 				"bottomRight": 10,
-				"sync": true
+				"sync": true,
+				"usePreset": true,
+				"preset": "rounded-lg",
+				"toolbar": true,
+				"sidebar": true
 			}
-		},
-		"useCustomBorderRadius" : {
-			"type": "boolean",
-			"default": false
 		},
 		"borderWidth": {
 			"type": "object",
@@ -34,37 +30,36 @@
 			}
 		},
 		"borderStyle": {
-			"type": "string",
-			"default": "border-solid"
+			"type": "object",
+			"default": {
+				"style": "border-solid",
+				"sidebar": true
+			}
 		},
 		"borderColor": {
-			"type": "string",
-			"default": "#000000"
-		},
-		"variationName": {
-			"type": "string"
+			"type": "object",
+			"default": {
+				"color": "#000000",
+				"sidebar": true
+			}
 		},
 		"boxShadow" : {
-			"type": "string",
-			"default": "shadow-xl"
-		},
-		"useCustomBoxShadow" : {
-			"type": "boolean",
-			"default": false
-		},
-		"customBoxShadow" : {
 			"type": "object",
 			"default": {
 				"x": 6,
 				"y": 6,
 				"blur": 0,
 				"spread": 0,
-				"opacity": 20
+				"opacity": 20,
+				"usePreset": true,
+				"preset": "shadow-xl",
+				"toolbar": true,
+				"sidebar": true,
+				"color": "#000000"
+			},
+			"variationName": {
+				"type": "string"
 			}
-		},
-		"boxShadowColor" : {
-			"type": "string",
-			"default": "#000000"
 		}
 	}
 }

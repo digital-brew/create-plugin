@@ -1,9 +1,9 @@
 /**
  * External Dependencies
  */
-import { BorderControls } from '../../../../packages/tailwindcss/src';
-import { tailwindcss } from '@blockhandbook/tailwindcss';
-const { BoxShadowControls } = tailwindcss;
+import { BorderControls, BoxShadowControls  } from '../../../../packages/tailwindcss/src';
+// import { tailwindcss } from '@blockhandbook/tailwindcss';
+// const { BoxShadowControls } = tailwindcss;
 
 /**
  * WordPress Dependencies
