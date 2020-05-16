@@ -1,9 +1,6 @@
 /**
  * External Dependencies
  */
-// import { BorderControls } from '../../../../packages/controls/src';
-import { controls } from '@blockhandbook/controls';
-const { BorderControls } = controls;
 
 /**
  * WordPress Dependencies
@@ -29,11 +26,6 @@ const Controls = ( props ) => {
 		<>
 			<BlockControls></BlockControls>
 			<InspectorControls></InspectorControls>
-			<BorderControls
-				attributes={ attributes }
-				setAttributes={ setAttributes }
-				slug={ slug }
-			/>
 		</>
 	);
 }

@@ -18,35 +18,15 @@ import './style.scss';
 const Save = ( props ) => {
 	const {
 		attributes: {
-			borderColor,
-			borderRadius,
-			borderStyle,
-			borderWidth,
-			customBorderRadius,
-			customBorderWidth,
-			useCustomBorderRadius,
-			useCustomBorderWidth,
+			// put attributes here to use them
 		},
 	} = props;
-
-	const containerClasses = classnames(
-		`p-10 bg-white ${ borderStyle } overflow-hidden`,
-		{
-			[ `${ borderRadius }` ]: ! useCustomBorderRadius,
-			[ `${ borderWidth }` ]: ! useCustomBorderWidth,
-		} );
-
-	const containerStyle = {
-	 borderColor,
-	 borderRadius: useCustomBorderRadius ? customBorderRadius : null,
-	 borderWidth: useCustomBorderWidth ? customBorderWidth : null,
-	};
 
 	/* IMPORTANT - Wrapper classes get added to the outermost wrapper element.  If you use Fragment as wrapper then the wrapper classes don't get added to the block when saving! */
 
 	return (
 		<div>
-			<div className={ containerClasses } style={ containerStyle }>
+			<div className={ 'bg-white rounded p-5' }>
 				<InnerBlocks.Content />
 			</div>
 		</div>		

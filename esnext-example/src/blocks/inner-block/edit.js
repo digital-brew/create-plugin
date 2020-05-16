@@ -63,33 +63,13 @@ const Edit = ( props ) => {
 		className,
 		setAttributes,
 		attributes: {
-			borderColor,
-			borderRadius,
-			borderStyle,
-			borderWidth,
-			customBorderRadius,
-			customBorderWidth,
-			useCustomBorderRadius,
-			useCustomBorderWidth,
+			// put attributes here to use them
 		},
 	} = props;
 
-	const containerClasses = classnames(
-		`p-10 bg-white ${ borderStyle } overflow-hidden`,
-		{
-			[ `${ borderRadius }` ]: ! useCustomBorderRadius,
-			[ `${ borderWidth }` ]: ! useCustomBorderWidth,
-		} );
-
-	const containerStyle = {
-	 borderColor,
-	 borderRadius: useCustomBorderRadius ? customBorderRadius : null,
-	 borderWidth: useCustomBorderWidth ? customBorderWidth : null,
-	};
-
 	return (
 		<div className={ className }>
-			<div className={ containerClasses } style={ containerStyle }>
+			<div className={ 'bg-white rounded p-5' }>
 				<Controls
 					className={ className }
 					attributes={ attributes }
@@ -101,7 +81,7 @@ const Edit = ( props ) => {
 					templateLock={ true }
 				/>
 			</div>
-		</div>		
+		</div>
 	);
 }
 
