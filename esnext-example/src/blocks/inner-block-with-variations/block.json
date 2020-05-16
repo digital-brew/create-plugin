@@ -46,6 +46,28 @@
 		},
 		"variationName": {
 			"type": "string"
+		},
+		"boxShadow" : {
+			"type": "string",
+			"default": "shadow-xl"
+		},
+		"useCustomBoxShadow" : {
+			"type": "boolean",
+			"default": false
+		},
+		"customBoxShadow" : {
+			"type": "object",
+			"default": {
+				"x": 6,
+				"y": 6,
+				"blur": 0,
+				"spread": 0,
+				"opacity": 20
+			}
+		},
+		"boxShadowColor" : {
+			"type": "string",
+			"default": "#000000"
 		}
 	}
 }

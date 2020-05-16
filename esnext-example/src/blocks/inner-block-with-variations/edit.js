@@ -27,13 +27,19 @@ const Edit = ( props ) => {
 			borderRadius,
 			borderStyle,
 			borderWidth,
+			boxShadow,
+			boxShadowColor,
 			customBorderRadius,
 			customBorderWidth,
+			customBoxShadow,
 			useCustomBorderRadius,
 			useCustomBorderWidth,
+			useCustomBoxShadow,
 			variationName,
 		}
 	} = props;
+
+	console.log( boxShadowColor, useCustomBoxShadow, customBoxShadow)
 
 	const template = variations.find( ( variation ) => {
 		const { name } = variation;
@@ -43,17 +49,24 @@ const Edit = ( props ) => {
 		return false;
 	} );
 
-	const containerClasses = classnames(
+	const rowClasses = classnames(
 		`p-10 bg-white ${ borderStyle } overflow-hidden`,
 		{
 			[ `${ borderRadius }` ]: ! useCustomBorderRadius,
 			[ `${ borderWidth }` ]: ! useCustomBorderWidth,
-		} );
+			[ `${ boxShadow }` ]: ! useCustomBoxShadow,
+		} 
+	);
 
 	const containerStyle = {
+		'--tw-box-shadow-color': boxShadowColor,
+	}
+
+	const rowStyle = {
 		borderColor,
 		borderRadius: useCustomBorderRadius ? `${ customBorderRadius.topLeft }px ${ customBorderRadius.topRight }px ${ customBorderRadius.bottomRight }px ${ customBorderRadius.bottomLeft }px` : null,
 		borderWidth: useCustomBorderWidth ? `${ customBorderWidth.top }px ${ customBorderWidth.right }px ${ customBorderWidth.bottom }px ${ customBorderWidth.left }px` : null,
+		boxShadow: useCustomBoxShadow ? `${ customBoxShadow.x }px ${ customBoxShadow.y }px ${ customBoxShadow.blur }px ${ customBoxShadow.spread }px rgba( ${ boxShadowColor }, ${ customBoxShadow.opacity / 100 } )` : null
 	};
 
 	const selectVariation = ( variation ) => {
@@ -74,8 +87,8 @@ const Edit = ( props ) => {
 	}
 
 	return (
-		<div className={ className }>			
-			<div className={ containerClasses } style={ containerStyle }>
+		<div className={ className } style={ containerStyle }>			
+			<div className={ rowClasses } style={ rowStyle }>
 				<Controls
 					className={ className }
 					attributes={ attributes }

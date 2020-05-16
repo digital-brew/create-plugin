@@ -1,7 +1,7 @@
 /**
  * External Dependencies
  */
-// import { BorderControls } from '../../../../packages/tailwindcss/src';
+import { BoxShadowControls } from '../../../../packages/tailwindcss/src';
 import { tailwindcss } from '@blockhandbook/tailwindcss';
 const { BorderControls } = tailwindcss;
 
@@ -20,9 +20,8 @@ const slug = pkg.config.slug;
 
 const Controls = ( props ) => {
 	const {
-		setAttributes,
-		className,
 		attributes,
+		setAttributes,
 	} = props;
 
 	return (
@@ -30,6 +29,11 @@ const Controls = ( props ) => {
 			<BlockControls></BlockControls>
 			<InspectorControls></InspectorControls>
 			<BorderControls
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				slug={ slug }
+			/>
+			<BoxShadowControls
 				attributes={ attributes }
 				setAttributes={ setAttributes }
 				slug={ slug }

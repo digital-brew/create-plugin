@@ -35,12 +35,12 @@ class Register_Block_Patterns {
 	 */
 	public function register_block_patterns() {
 
-		if ( function_exists( 'register_pattern' ) ) {
+		if ( function_exists( 'register_block_pattern' ) ) {
 			/**
 			* Register block patterns
 			* Tool to escape strings: https://onlinestringtools.com/escape-string
 			*/
-			register_pattern(
+			register_block_pattern(
 				'esnext-example/hero',
 				array(
 					'title'   => __( 'Hero', 'esnext-example' ),
