@@ -148,10 +148,10 @@ A handful of common controls are bundled in this package:
 
 Toolbar & InspectorControls for adding box shadow settings to blocks:
 ![BoxShadowControls in the WordPress block editor sidebar & toolbar](https://blockhandbook.com/wp-content/uploads/2020/05/BoxShadowControls-screenshot.png)
-[Documentation]<https://github.com/blockhandbook/create-plugin/tree/master/packages/tailwindcss/src/controls/box-shadow-controls>
+[Documentation](https://github.com/blockhandbook/create-plugin/tree/master/packages/tailwindcss/src/controls/box-shadow-controls)
 
 ### BorderControls
 
 Toolbar & InspectorControls for adding border settings to blocks:
 ![BorderControls in the WordPress block editor sidebar & toolbar](https://blockhandbook.com/wp-content/uploads/2020/05/Copy-of-BorderControls-Screenshot.png)
-[Documentation]<https://github.com/blockhandbook/create-plugin/tree/master/packages/tailwindcss/src/controls/border-controls>
+[Documentation](https://github.com/blockhandbook/create-plugin/tree/master/packages/tailwindcss/src/controls/border-controls)
