@@ -139,3 +139,17 @@ To use in production run:
 ```bash
 npm run build
 ```
+
+## Controls
+
+A handful of common controls are bundled in this package:
+
+### BoxShadowControls
+
+Toolbar & InspectorControls for adding box shadow settings to blocks:
+![BoxShadowControls in the WordPress block editor sidebar & toolbar](https://blockhandbook.com/wp-content/uploads/2020/05/BoxShadowControls-screenshot.png)
+
+### BorderControls
+
+Toolbar & InspectorControls for adding border settings to blocks:
+![BorderControls in the WordPress block editor sidebar & toolbar](https://blockhandbook.com/wp-content/uploads/2020/05/Copy-of-BorderControls-Screenshot.png)

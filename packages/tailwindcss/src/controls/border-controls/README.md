@@ -1,8 +1,8 @@
 
 # BorderControls
 
-Toolbar & InspectorControls for adding border radius settings to blocks:
-![BorderControls in the WordPress block editor sidebar & toolbar](https://blockhandbook.com/wp-content/uploads/2020/05/BorderControls-Screenshot.png)
+Toolbar & InspectorControls for adding border settings to blocks:
+![BorderControls in the WordPress block editor sidebar & toolbar](https://blockhandbook.com/wp-content/uploads/2020/05/Copy-of-BorderControls-Screenshot.png)
 
 Add the following attributes to block.json:
 
@@ -59,8 +59,7 @@ Add the following attributes to block.json:
 How to use it:
 
 ```javascript
-import { controls } from '@blockhandbook/controls';
-const { PostsControls } = controls;
+import { BorderControls } from '@blockhandbook/tailwindcss';
 
 const Edit = ( props ) => {
  const {
