@@ -25,10 +25,8 @@ const Save = ( props ) => {
 			boxShadow,
 			boxShadowColor,
 			customBorderRadius,
-			customBorderWidth,
 			customBoxShadow,
 			useCustomBorderRadius,
-			useCustomBorderWidth,
 			useCustomBoxShadow,
 		},
 	} = props;
@@ -37,7 +35,7 @@ const Save = ( props ) => {
 		`p-10 bg-white ${ borderStyle } overflow-hidden`,
 		{
 			[ `${ borderRadius }` ]: ! useCustomBorderRadius,
-			[ `${ borderWidth }` ]: ! useCustomBorderWidth,
+			[ `${ borderWidth.preset }` ]: borderWidth.usePreset,
 			[ `${ boxShadow }` ]: ! useCustomBoxShadow,
 		} 
 	);
@@ -49,7 +47,7 @@ const Save = ( props ) => {
 	const rowStyle = {
 		borderColor,
 		borderRadius: useCustomBorderRadius ? `${ customBorderRadius.topLeft }px ${ customBorderRadius.topRight }px ${ customBorderRadius.bottomRight }px ${ customBorderRadius.bottomLeft }px` : null,
-		borderWidth: useCustomBorderWidth ? `${ customBorderWidth.top }px ${ customBorderWidth.right }px ${ customBorderWidth.bottom }px ${ customBorderWidth.left }px` : null,
+		borderWidth: ! borderWidth.usePreset ? `${ borderWidth.top }px ${ borderWidth.right }px ${ borderWidth.bottom }px ${ borderWidth.left }px` : null,
 		boxShadow: useCustomBoxShadow ? `${ customBoxShadow.x }px ${ customBoxShadow.y }px ${ customBoxShadow.blur }px ${ customBoxShadow.spread }px rgba( ${ boxShadowColor }, ${ customBoxShadow.opacity / 100 } )` : null
 	};
 

@@ -19,7 +19,17 @@ const variations = [
 		title: __( 'Big Bordered', 'esnext-example' ),
 		icon: icons.bigBordered,
 		attributes: {
-			"borderWidth": "border-8",
+			"borderWidth": {
+				"top": 10,
+				"bottom": 10,
+				"left": 10,
+				"right": 10,
+				"sync": true,
+				"usePreset": true,
+				"preset": "border-8",
+				"toolbar": true,
+				"sidebar": true
+			},
 			"borderRadius": "rounded-none",
 		},
 		innerBlocks: [
@@ -65,7 +75,17 @@ const variations = [
 		title: __( 'Rounded Big Bordered', 'esnext-example' ),
 		icon: icons.roundedBigBordered,
 		attributes: {
-			"borderWidth": "border-8",
+			"borderWidth": {
+				"top": 10,
+				"bottom": 10,
+				"left": 10,
+				"right": 10,
+				"sync": true,
+				"usePreset": true,
+				"preset": "border-8",
+				"toolbar": true,
+				"sidebar": true
+			},
 			"customBorderRadius": 30,
 			"useCustomBorderRadius": true
 		},

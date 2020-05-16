@@ -19,18 +19,15 @@ const BorderControls = ( props ) => {
 	const {
 		setAttributes,
 		slug,
-		borderWidthToolbar = true,
 		borderRadiusToolbar = true,
 		initialOpen = false,
 		attributes: {
 			borderColor,
-			borderRadius,
 			borderStyle,
+			borderRadius,
 			borderWidth,
 			customBorderRadius,
-			customBorderWidth,
 			useCustomBorderRadius,
-			useCustomBorderWidth,
 		},
 	} = props;
 
@@ -49,7 +46,7 @@ const BorderControls = ( props ) => {
 		<Fragment>
 			<BlockControls>
 			{
-				( borderWidthToolbar || borderRadiusToolbar ) &&
+				( borderWidth.toolbar || borderRadiusToolbar ) &&
 				<ToolbarGroup>
 				{
 					borderRadiusToolbar &&
@@ -177,7 +174,7 @@ const BorderControls = ( props ) => {
 					/>
 				}
 				{
-					borderWidthToolbar &&
+					borderWidth.toolbar &&
 					<Dropdown						
 						renderToggle={ ( { isOpen, onToggle } ) => (
 							<Button
@@ -191,7 +188,7 @@ const BorderControls = ( props ) => {
 								<div className="block-editor-block-settings-menu__popover">
 									<div className="components-dropdown-menu__menu esnext-example">	
 								{
-									!	useCustomBorderWidth &&
+									borderWidth.usePreset && borderWidth.toolbar &&
 									<MenuGroup>
 									{
 										[
@@ -214,9 +211,14 @@ const BorderControls = ( props ) => {
 											return(
 												<MenuItem
 													icon={ item.icon }
-													className={ borderWidth === item.value ? 'is-active components-dropdown-menu__menu-item' : 'components-dropdown-menu__menu-item' }
+													className={ borderWidth.preset === item.value ? 'is-active components-dropdown-menu__menu-item' : 'components-dropdown-menu__menu-item' }
 													key={ item.label } 
-													onClick={ () => setAttributes( { borderWidth: item.value } ) }
+													onClick={ () => setAttributes( { 
+														borderWidth: { 
+															...borderWidth,
+															preset: item.value
+														}
+													} ) }
 												>
 													{ item.label }
 												</MenuItem>
@@ -226,7 +228,7 @@ const BorderControls = ( props ) => {
 								</MenuGroup>
 								}
 								{
-									useCustomBorderWidth && ! customBorderWidth.sync &&
+									! borderWidth.usePreset && ! borderWidth.sync &&borderWidth.toolbar &&
 									[
 										{ label: __( 'Top' ), value: "top" },
 										{ label: __( 'Right' ), value: "right" },
@@ -237,21 +239,21 @@ const BorderControls = ( props ) => {
 											<RangeControl
 												key={ side.value }
 												label={ side.label }
-												value={ customBorderWidth[ side.value ] }
-													beforeIcon={ syncButton( 'customBorderWidth', customBorderWidth, 'unlock' ) 
+												value={ borderWidth[ side.value ] }
+													beforeIcon={ syncButton( 'borderWidth', borderWidth, 'unlock' ) 
 												}
 												onChange={
 													( value ) => {
 														setAttributes( { 
-															customBorderWidth: 
+															borderWidth: 
 														{ 
-															...customBorderWidth,
+															...borderWidth,
 															[ side.value ]: value
 														}
 													} )
 													}
 												}
-												initialPosition={ customBorderWidth[ side.value ] }
+												initialPosition={ borderWidth[ side.value ] }
 												min={ 0 }
 												max={ 200 }
 												step={ 1 }
@@ -260,17 +262,17 @@ const BorderControls = ( props ) => {
 									} )
 								}
 								{
-									useCustomBorderWidth && customBorderWidth.sync &&
+									! borderWidth.usePreset && borderWidth.sync && borderWidth.toolbar &&
 									<RangeControl
 										label={ __( 'Border width', 'esnext-example' ) }
-										value={ customBorderWidth.top }
-										beforeIcon={ syncButton( 'customBorderWidth', customBorderWidth, 'lock' ) }
+										value={ borderWidth.top }
+										beforeIcon={ syncButton( 'borderWidth', borderWidth, 'lock' ) }
 										onChange={
 											( value ) => {
 												setAttributes( { 
-												customBorderWidth: 
+													borderWidth: 
 												{ 
-													...customBorderWidth,
+													...borderWidth,
 													"top": value,
 													"bottom": value,
 													"left": value,
@@ -279,7 +281,7 @@ const BorderControls = ( props ) => {
 											} )
 											}
 										}
-										initialPosition={ customBorderWidth.top }
+										initialPosition={ borderWidth.top }
 										min={ 0 }
 										max={ 200 }
 										step={ 1 }
@@ -290,8 +292,12 @@ const BorderControls = ( props ) => {
 									<ToggleControl
 										className="px-3 pt-3"
 										label={ __( 'Custom', 'esnext-example' ) }
-										checked={ useCustomBorderWidth }
-										onChange={ ( ) => setAttributes( { useCustomBorderWidth: ! useCustomBorderWidth } ) }
+										checked={ borderWidth.sync }
+										onChange={ ( ) => setAttributes( { 
+											borderWidth: {
+												...borderWidth,
+												sync: ! borderWidth.sync
+											} } ) }
 									/>
 								</div>
 								</MenuGroup>	
@@ -409,106 +415,119 @@ const BorderControls = ( props ) => {
 						</div>
 					}
 					</BaseControl>
-					<BaseControl
-						id="border-width"
-						className={ slug }
-						label={ __( 'Border Width', 'esnext-example' ) }
-					>
-					<Button 
-						className="float-right mb-3"
-						isTertiary
-						isSmall
-						onClick={ () => setAttributes( { useCustomBorderWidth: ! useCustomBorderWidth } ) }
+					{
+						borderWidth.sidebar &&
+						<BaseControl
+							id="border-width"
+							className={ slug }
+							label={ __( 'Border Width', 'esnext-example' ) }
 						>
-						{ useCustomBorderWidth ? __( 'Defaults', 'esnext-example' ) : __( 'Custom', 'esnext-example' ) }
-					</Button>
-					{
-						useCustomBorderWidth && ! customBorderWidth.sync &&
-						[
-							{ label: __( 'Top' ), value: "top" },
-							{ label: __( 'Right' ), value: "right" },
-							{ label: __( 'Bottom' ), value: "bottom" },
-							{ label: __( 'Left' ), value: "left" },
-						].map( ( side ) => {
-							return(
-								<RangeControl
-									key={ side.value }
-									label={ side.label }
-									value={ customBorderWidth[ side.value ] }
-										beforeIcon={ syncButton( 'customBorderWidth', customBorderWidth, 'unlock' ) 
-									}
-									onChange={
-										( value ) => {
-											setAttributes( { 
-												customBorderWidth: 
-											{ 
-												...customBorderWidth,
-												[ side.value ]: value
-											}
-										} )
+						<Button
+							className="float-right mb-3"
+							isTertiary
+							isSmall
+							onClick={ () => setAttributes( { 
+								borderWidth: {
+									...borderWidth,
+									usePreset: ! borderWidth.usePreset,
+								}
+							} ) }
+							>
+							{ ! borderWidth.usePreset ? __( 'Defaults', 'esnext-example' ) : __( 'Custom', 'esnext-example' ) }
+						</Button>
+						{
+							! borderWidth.usePreset && ! borderWidth.sync &&
+							[
+								{ label: __( 'Top' ), value: "top" },
+								{ label: __( 'Right' ), value: "right" },
+								{ label: __( 'Bottom' ), value: "bottom" },
+								{ label: __( 'Left' ), value: "left" },
+							].map( ( side ) => {
+								return(
+									<RangeControl
+										key={ side.value }
+										label={ side.label }
+										value={ borderWidth[ side.value ] }
+											beforeIcon={ syncButton( 'borderWidth', borderWidth, 'unlock' ) 
 										}
-									}
-									initialPosition={ customBorderWidth[ side.value ] }
-									min={ 0 }
-									max={ 200 }
-									step={ 1 }
-								/>
-							)
-						} )
-					}
-					{
-						useCustomBorderWidth && customBorderWidth.sync &&
-						<RangeControl
-							value={ customBorderWidth.top }
-							beforeIcon={ syncButton( 'customBorderWidth', customBorderWidth, 'lock' ) }
-							onChange={
-								( value ) => {
-									setAttributes( { 
-									customBorderWidth: 
-									{ 
-										...customBorderWidth,
-										"top": value,
-										"bottom": value,
-										"left": value,
-										"right": value
-									}
-								} )
-								}
-							}
-							initialPosition={ customBorderWidth.top }
-							min={ 0 }
-							max={ 200 }
-							step={ 1 }
-						/>
-					}
-					{
-						! useCustomBorderWidth &&
-						<div className="flex justify-between">							
-								<ButtonGroup
-									id="border-width"
-								>
-								{
-									[
-										{ label: __( 'None', 'esnext-example' ), value: 'border-0' },
-										{ label: 'S', value: 'border' },
-										{ label: 'M', value: 'border-2' },
-										{ label: 'L', value: 'border-4' },
-										{ label: 'XL', value: 'border-8' },
-									].map( ( item ) => {
-										return (
-											<Button
-												key={ item.label }
-												isPrimary={ borderWidth === item.value }
-												isSecondary={ borderWidth !== item.value }
-												onClick={ ( ) => setAttributes( { borderWidth: item.value } ) }
-											>{ item.label }</Button>
-										);
+										onChange={
+											( value ) => {
+												setAttributes( { 
+													borderWidth: 
+												{ 
+													...borderWidth,
+													[ side.value ]: value,
+												}
+											} )
+											}
+										}
+										initialPosition={ borderWidth[ side.value ] }
+										min={ 0 }
+										max={ 200 }
+										step={ 1 }
+									/>
+								)
+							} )
+						}
+						{
+							! borderWidth.usePreset && borderWidth.sync &&
+							<RangeControl
+								value={ borderWidth.top }
+								beforeIcon={ syncButton( 'borderWidth', borderWidth, 'lock' ) }
+								onChange={
+									( value ) => {
+										setAttributes( { 
+											borderWidth: 
+										{ 
+											...borderWidth,
+											"top": value,
+											"bottom": value,
+											"left": value,
+											"right": value
+										}
 									} )
+									}
 								}
-							</ButtonGroup>
-						</div>
+								initialPosition={ borderWidth.top }
+								min={ 0 }
+								max={ 200 }
+								step={ 1 }
+							/>
+						}
+						{
+							borderWidth.usePreset &&
+							<div className="flex justify-between">							
+									<ButtonGroup
+										id="border-width"
+									>
+									{
+										[
+											{ label: __( 'None', 'esnext-example' ), value: 'border-0' },
+											{ label: 'S', value: 'border' },
+											{ label: 'M', value: 'border-2' },
+											{ label: 'L', value: 'border-4' },
+											{ label: 'XL', value: 'border-8' },
+										].map( ( item ) => {
+											return (
+												<Button
+													key={ item.label }
+													isPrimary={ borderWidth.preset === item.value }
+													isSecondary={ borderWidth.preset !== item.value }
+													onClick={ ( ) => setAttributes( { 
+														borderWidth: {
+															...borderWidth,
+															preset: item.value
+														}
+													} ) }
+												>{ item.label }</Button>
+											);
+										} )
+									}
+								</ButtonGroup>
+							</div>
+						}
+						</BaseControl>
 					}
-					</BaseControl>
 					<SelectControl
 						label={ __( 'Border Style', 'esnext-example' ) }
 						value={ borderStyle }

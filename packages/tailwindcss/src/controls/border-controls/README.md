@@ -28,23 +28,19 @@ Add the following attributes to block.json:
     "sync": true
    }
   },
-  "borderWidth" : {
-   "type": "string",
-   "default": "border-0"
-  },
-  "customBorderWidth": {
+  "borderWidth": {
    "type": "object",
    "default": {
     "top": 10,
     "bottom": 10,
     "left": 10,
     "right": 10,
-    "sync": true
+    "sync": true,
+    "usePreset": true,
+    "preset": "border-0",
+    "toolbar": true,
+    "sidebar": true
    }
-  },
-  "useCustomBorderWidth" : {
-   "type": "boolean",
-   "default": false
   },
   "borderStyle" : {
    "type": "string",
@@ -71,9 +67,7 @@ const Edit = ( props ) => {
    borderStyle,
    borderWidth,
    customBorderRadius,
-   customBorderWidth,
    useCustomBorderRadius,
-   useCustomBorderWidth,
   },
  } = props;
 
@@ -81,13 +75,14 @@ const Edit = ( props ) => {
   `${ borderStyle } overflow-hidden`,
   {
     [ `${ borderRadius }` ]: ! useCustomBorderRadius,
-    [ `${ borderWidth }` ]: ! useCustomBorderWidth,
+    [ `${ borderWidth.preset }` ]: borderWidth.usePreset,
   } );
 
  const containerStyle = {
   borderColor,
   borderRadius: useCustomBorderRadius ? `${ customBorderRadius.topLeft }px ${ customBorderRadius.topRight }px ${ customBorderRadius.bottomRight }px ${ customBorderRadius.bottomLeft }px` : null,
-  borderWidth: useCustomBorderWidth ? `${ customBorderWidth.top }px ${ customBorderWidth.right }px ${ customBorderWidth.bottom }px ${ customBorderWidth.left }px` : null,
+  borderWidth:
+   ! borderWidth.usePreset ? `${ borderWidth.top }px ${ borderWidth.right }px ${ borderWidth.bottom }px ${ borderWidth.left }px` : null,
  };
 
  return (
@@ -118,19 +113,7 @@ export default Edit;
 
 ## props available
 
-```
-borderRadiusToolbar
-```
-
-Show borderRadius settings in the toolbar.  Defaults to true.
-
-```
-borderWidthToolbar
-```
-
-Show borderWidth settings in the toolbar.  Defaults to true.
-
-```
+```text
 initialOpen
 ```
 

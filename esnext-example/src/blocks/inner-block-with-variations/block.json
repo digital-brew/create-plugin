@@ -19,30 +19,27 @@
 			"type": "boolean",
 			"default": false
 		},
-		"borderWidth" : {
-			"type": "string",
-			"default": "border-0"
-		},
-		"customBorderWidth": {
+		"borderWidth": {
 			"type": "object",
 			"default": {
 				"top": 10,
 				"bottom": 10,
 				"left": 10,
 				"right": 10,
-				"sync": true
+				"sync": true,
+				"usePreset": true,
+				"preset": "border-0",
+				"toolbar": true,
+				"sidebar": true
 			}
 		},
-		"useCustomBorderWidth" : {
-			"type": "boolean",
-			"default": false
-		},
-		"borderStyle" : {
+		"borderStyle": {
 			"type": "string",
 			"default": "border-solid"
 		},
-		"borderColor" : {
-			"type": "string"
+		"borderColor": {
+			"type": "string",
+			"default": "#000000"
 		},
 		"variationName": {
 			"type": "string"
