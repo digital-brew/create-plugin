@@ -1,6 +1,6 @@
 {
   "name": "@blockhandbook/controls",
-  "version": "0.1.70",
+  "version": "0.1.71",
   "main": "build/index.js",
   "description": "A library of components for creating common InspectorControls and BlockControls patterns for WordPress plugins built for the block editor.",
   "scripts": {
@@ -16,7 +16,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@blockhandbook/tailwindcss": "^0.2.1",
+    "@blockhandbook/tailwindcss": "^0.2.2",
     "@wordpress/api-fetch": "^3.14.0",
     "@wordpress/block-editor": "^3.10.0",
     "@wordpress/components": "^9.5.0",
