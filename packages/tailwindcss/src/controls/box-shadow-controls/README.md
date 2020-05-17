@@ -112,7 +112,7 @@ module.exports = config;
 
 ```
 
-Finally, add the following styles to whatever file you're using as your global block css file. I'm using a common.scss file in this structure:
+Add the following styles to whatever file you're using as your global block css file. I'm using a common.scss file in this structure:
 
 ```text
 plugin-name
