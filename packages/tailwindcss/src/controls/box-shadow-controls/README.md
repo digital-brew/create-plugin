@@ -62,7 +62,6 @@ const Edit = ( props ) => {
     <div className={ rowClasses } rowStyle={ rowStyle }>
       <BoxShadowControls
         slug={ slug }
-        boxShadowToolbar={ false }
         initialOpen={ true }
         attributes={ attributes }
         setAttributes={ setAttributes }

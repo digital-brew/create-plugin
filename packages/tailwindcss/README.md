@@ -100,7 +100,7 @@ Finally, add a build and start script to your package.json.  I'm going to assume
 {
  "name": "plugin-name",
  "scripts": {
-   "start": "wp-scripts start && npm run tailwind:watch",
+   "start": "wp-scripts start & npm run tailwind:watch",
    "build": "wp-scripts build && npm run tailwind:build",
    "tailwind:watch":"cross-env NODE_ENV=development postcss --config ./postcss.config.js ./src/assets/css/tailwind.css -o ./build/tailwind.css -w",
    "tailwind:build":"cross-env NODE_ENV=production postcss --config ./postcss.config.js ./src/assets/css/tailwind.css -o ./build/tailwind.css"
@@ -112,16 +112,11 @@ The [classnames](https://www.npmjs.com/package/classnames) package is baked in s
 
 ```javascript
 const rowClasses = classnames(
-  'flex',
+  `p-10 bg-white ${ borderStyle.style } overflow-hidden`,
   {
-   [ `${ borderStyle } overflow-hidden` ]: ! style.includes( 'circle' ),
-   [ `${ boxShadow }` ]: ! style.includes( 'circle' ) && ! useCustomBoxShadow,
-   [ `${ borderRadius }` ]: ! style.includes( 'circle' ) && ! useCustomBorderRadius,
-   [ `${ borderWidth }` ]: ! style.includes( 'circle' ) && ! useCustomBorderWidth,
-   'flex-row-reverse': style === 'third-flipped' || style === 'half-flipped',
-   'flex-col': style === 'stacked',
-   'flex-col-reverse': style === 'stacked-flipped',
-   relative: style === 'full' || style.includes( 'circle' ),
+   [ `${ borderRadius.preset }` ]: borderRadius.usePreset,
+   [ `${ borderWidth.preset }` ]: borderWidth.usePreset,
+   [ `${ boxShadow.preset }` ]: boxShadow.usePreset,
   }
  );
 ```
