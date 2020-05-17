@@ -1,6 +1,20 @@
 {
 	"name": "esnext-example/inner-block-with-variations",
 	"attributes": {
+		"padding": {
+			"type": "object",
+			"default": {
+				"top": 10,
+				"bottom": 10,
+				"left": 10,
+				"right": 10,
+				"sync": true,
+				"usePreset": true,
+				"preset": "p-16",
+				"toolbar": true,
+				"sidebar": true
+			}
+		},
 		"borderRadius": {
 			"type": "object",
 			"default": {

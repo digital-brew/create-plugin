@@ -28,11 +28,12 @@ const Edit = ( props ) => {
 			borderStyle,
 			borderWidth,
 			boxShadow,
+			padding,
 			variationName,
 		}
 	} = props;
 
-	console.log( attributes )
+	console.log( padding )
 
 	const variationTemplate = variations.find( ( variation ) => {
 		const { name } = variation;
@@ -43,11 +44,12 @@ const Edit = ( props ) => {
 	} );
 
 	const rowClasses = classnames(
-		`p-10 bg-white ${ borderStyle.style } overflow-hidden`,
+		`bg-white ${ borderStyle.style } overflow-hidden`,
 		{
 			[ `${ borderRadius.preset }` ]: borderRadius.usePreset,
 			[ `${ borderWidth.preset }` ]: borderWidth.usePreset,
 			[ `${ boxShadow.preset }` ]: boxShadow.usePreset,
+			[ `${ padding.preset }` ]: padding.usePreset,
 		}
 	);
 
@@ -57,6 +59,8 @@ const Edit = ( props ) => {
 
 	const rowStyle = {
 		borderColor: borderColor.color,
+		padding: 
+			! padding.usePreset ? `${ padding.top }px ${ padding.right }px ${ padding.bottom }px ${ padding.left }px` : null,
 		borderRadius: 
 			! borderRadius.usePreset ? `${ borderRadius.topLeft }px ${ borderRadius.topRight }px ${ borderRadius.bottomRight }px ${ borderRadius.bottomLeft }px` : null,
 		borderWidth: 

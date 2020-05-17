@@ -41,6 +41,17 @@ const variations = [
 				"toolbar": true,
 				"sidebar": true
 			},
+			"padding": {
+				"top": 10,
+				"bottom": 10,
+				"left": 10,
+				"right": 10,
+				"sync": true,
+				"usePreset": true,
+				"preset": "p-16",
+				"toolbar": true,
+				"sidebar": true
+			}
 		},
 		innerBlocks: [
 			[
@@ -93,6 +104,17 @@ const variations = [
 				"sync": true,
 				"usePreset": false,
 				"preset": "rounded-lg",
+				"toolbar": true,
+				"sidebar": true
+			},
+			"padding": {
+				"top": 10,
+				"bottom": 10,
+				"left": 10,
+				"right": 10,
+				"sync": true,
+				"usePreset": true,
+				"preset": "p-8",
 				"toolbar": true,
 				"sidebar": true
 			},

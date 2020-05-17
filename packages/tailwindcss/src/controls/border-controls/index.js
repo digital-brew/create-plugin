@@ -111,7 +111,7 @@ const BorderControls = ( props ) => {
 												key={ side.value }
 												label={ side.label }
 												value={ borderRadius[ side.value ] }
-													beforeIcon={ syncButton( 'v', borderRadius, 'unlock' ) 
+													beforeIcon={ syncButton( 'borderRadius', borderRadius, 'unlock' ) 
 												}
 												onChange={
 													( value ) => {
