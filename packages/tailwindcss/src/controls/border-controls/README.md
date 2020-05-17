@@ -8,24 +8,20 @@ Add the following attributes to block.json:
 
 ```json
 {
- "name": "plugin-name/dynamic-block",
+ "name": "plugin-name/block-name",
  "attributes": {
-  "borderRadius" : {
-   "type": "string",
-   "default": "rounded-xl"
-  },
-  "customBorderRadius": {
-   "type": "number",
-   "default": null
-  },
-  "customBorderRadius": {
+  "borderRadius": {
    "type": "object",
    "default": {
     "topLeft": 10,
     "bottomLeft": 10,
     "topRight": 10,
     "bottomRight": 10,
-    "sync": true
+    "sync": true,
+    "usePreset": true,
+    "preset": "rounded-lg",
+    "toolbar": true,
+    "sidebar": true
    }
   },
   "borderWidth": {
@@ -42,13 +38,20 @@ Add the following attributes to block.json:
     "sidebar": true
    }
   },
-  "borderStyle" : {
-   "type": "string",
-   "default": "border-solid"
+  "borderStyle": {
+   "type": "object",
+   "default": {
+    "style": "border-solid",
+    "sidebar": true
+   }
   },
-  "borderColor" : {
-   "type": "string"
-  }
+  "borderColor": {
+   "type": "object",
+   "default": {
+    "color": "#000000",
+    "sidebar": true
+   }
+  },
  }
 ```
 
@@ -66,21 +69,21 @@ const Edit = ( props ) => {
    borderRadius,
    borderStyle,
    borderWidth,
-   customBorderRadius,
-   useCustomBorderRadius,
   },
  } = props;
 
  const containerClasses = classnames(
-  `${ borderStyle } overflow-hidden`,
+  `p-10 bg-white ${ borderStyle.style } overflow-hidden`,
   {
-    [ `${ borderRadius }` ]: ! useCustomBorderRadius,
-    [ `${ borderWidth.preset }` ]: borderWidth.usePreset,
-  } );
+   [ `${ borderRadius.preset }` ]: borderRadius.usePreset,
+   [ `${ borderWidth.preset }` ]: borderWidth.usePreset,
+  }
+ );
 
  const containerStyle = {
-  borderColor,
-  borderRadius: useCustomBorderRadius ? `${ customBorderRadius.topLeft }px ${ customBorderRadius.topRight }px ${ customBorderRadius.bottomRight }px ${ customBorderRadius.bottomLeft }px` : null,
+  borderColor: borderColor.color,
+  borderRadius:
+   ! borderRadius.usePreset ? `${ borderRadius.topLeft }px ${ borderRadius.topRight }px ${ borderRadius.bottomRight }px ${ borderRadius.bottomLeft }px` : null,
   borderWidth:
    ! borderWidth.usePreset ? `${ borderWidth.top }px ${ borderWidth.right }px ${ borderWidth.bottom }px ${ borderWidth.left }px` : null,
  };
@@ -92,8 +95,6 @@ const Edit = ( props ) => {
   >
    <BorderControls
     slug={ slug }
-    borderRadiusToolbar={ false }
-    borderWidthTooblar={ false }
     initialOpen={ true }
     attributes={ attributes }
     setAttributes={ setAttributes }

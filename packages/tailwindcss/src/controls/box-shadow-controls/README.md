@@ -11,27 +11,19 @@ Add the following attributes to block.json:
  "name": "plugin-name/dynamic-block",
  "attributes": {
   "boxShadow" : {
-   "type": "string",
-   "default": "shadow-xl"
-  },
-  "useCustomBoxShadow" : {
-   "type": "boolean",
-   "default": false
-  },
-  "customBoxShadow" : {
    "type": "object",
    "default": {
     "x": 6,
     "y": 6,
     "blur": 0,
     "spread": 0,
-    "opacity": 20
-   }
-  },
-  "boxShadowColor" : {
-   "type": "string",
-   "default": "#000000"
-  }
+    "opacity": 20,
+    "usePreset": true,
+    "preset": "shadow-xl",
+    "toolbar": true,
+    "sidebar": true,
+    "color": "#000000"
+   },
  }
 ```
 
@@ -45,37 +37,27 @@ const Edit = ( props ) => {
   setAttributes,
   attributes,
   attributes: {
-   borderColor,
-   borderRadius,
-   borderStyle,
-   borderWidth,
-   customBorderRadius,
-   customBorderWidth,
-   useCustomBorderRadius,
-   useCustomBorderWidth,
+   boxShadow,
   },
  } = props;
 
  const rowClasses = classnames(
-  `p-10 bg-white overflow-hidden`,
   {
-   [ `${ boxShadow }` ]: ! useCustomBoxShadow,
+   [ `${ boxShadow.preset }` ]: boxShadow.usePreset,
   }
  );
 
  const containerStyle = {
-  '--tw-box-shadow-color': boxShadowColor,
+  '--tw-box-shadow-color': boxShadow.color,
  }
 
  const rowStyle = {
-  boxShadow: useCustomBoxShadow ? `${ customBoxShadow.x }px ${ customBoxShadow.y }px ${ customBoxShadow.blur }px ${ customBoxShadow.spread }px rgba( ${ boxShadowColor }, ${ customBoxShadow.opacity / 100 } )` : null
+  boxShadow:
+   ! boxShadow.usePreset ? `${ boxShadow.x }px ${ boxShadow.y }px ${ boxShadow.blur }px ${ boxShadow.spread }px rgba( ${ boxShadow.color }, ${ boxShadow.opacity / 100 } )` : null
  };
 
  return (
-  <div
-    className={ containerClasses }
-    style={ containerStyle }
-  >
+  <div style={ containerStyle } >
     <div className={ rowClasses } rowStyle={ rowStyle }>
       <BoxShadowControls
         slug={ slug }
@@ -170,12 +152,6 @@ Finally, add the following to your global block css file ( common.scss ):
 ```
 
 ## props available
-
-```text
-boxShadowToolbar
-```
-
-Show boxShadow settings in the toolbar.  Defaults to true.
 
 ```test
 initialOpen
