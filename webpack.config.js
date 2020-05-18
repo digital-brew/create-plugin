@@ -26,7 +26,8 @@ const config = {
 	},
 	mode: 'production',
 	entry: blockhandbookPackages.reduce( ( memo, packageName ) => {
-		const name = camelCaseDash( packageName );
+		// const name = camelCaseDash( packageName );
+		const name = packageName;
 		memo[ name ] = `./packages/${ packageName }/src`;
 		return memo;
 	}, {} ),
