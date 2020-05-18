@@ -29,11 +29,10 @@ const Edit = ( props ) => {
 			borderWidth,
 			boxShadow,
 			padding,
+			margin,
 			variationName,
 		}
 	} = props;
-
-	console.log( padding )
 
 	const variationTemplate = variations.find( ( variation ) => {
 		const { name } = variation;
@@ -50,6 +49,7 @@ const Edit = ( props ) => {
 			[ `${ borderWidth.preset }` ]: borderWidth.usePreset,
 			[ `${ boxShadow.preset }` ]: boxShadow.usePreset,
 			[ `${ padding.preset }` ]: padding.usePreset,
+			[ `${ margin.preset }` ]: margin.usePreset,
 		}
 	);
 
@@ -59,6 +59,8 @@ const Edit = ( props ) => {
 
 	const rowStyle = {
 		borderColor: borderColor.color,
+		margin: 
+			! margin.usePreset ? `${ margin.top }px ${ margin.right }px ${ margin.bottom }px ${ margin.left }px` : null,
 		padding: 
 			! padding.usePreset ? `${ padding.top }px ${ padding.right }px ${ padding.bottom }px ${ padding.left }px` : null,
 		borderRadius: 

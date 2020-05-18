@@ -15,6 +15,20 @@
 				"sidebar": true
 			}
 		},
+		"margin": {
+			"type": "object",
+			"default": {
+				"top": 10,
+				"bottom": 10,
+				"left": 10,
+				"right": 10,
+				"sync": true,
+				"usePreset": true,
+				"preset": "m-0",
+				"toolbar": true,
+				"sidebar": true
+			}
+		},
 		"borderRadius": {
 			"type": "object",
 			"default": {

@@ -1,7 +1,7 @@
 /**
  * External Dependencies
  */
-import { PaddingControls } from '../../../../packages/tailwindcss/src';
+import { PaddingControls, MarginControls } from '../../../../packages/tailwindcss/src';
 import { tailwindcss } from '@blockhandbook/tailwindcss';
 const { BorderControls, BoxShadowControls } = tailwindcss;
 
@@ -28,6 +28,11 @@ const Controls = ( props ) => {
 		<>
 			<BlockControls></BlockControls>
 			<InspectorControls></InspectorControls>
+			<MarginControls
+				attributes={ attributes }
+				setAttributes={ setAttributes }
+				slug={ slug }
+			/>
 			<PaddingControls
 				attributes={ attributes }
 				setAttributes={ setAttributes }

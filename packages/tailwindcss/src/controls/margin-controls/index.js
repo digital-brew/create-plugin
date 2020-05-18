@@ -14,16 +14,16 @@ import { BlockControls, InspectorControls } from '@wordpress/block-editor';
  */
 import icons from './icons';
 
-const PaddingControls = ( props ) => {
+const MarginControls = ( props ) => {
 	const {
 		setAttributes,
 		slug,
 		initialOpen = false,
 		attributes: {
-			padding,
+			margin,
 		},
 	} = props;
-	console.log( padding )
+	console.log( margin )
 	const syncButton = ( property, object, icon ) => <Button 
 		onClick={ () => setAttributes( {
 			[ property ]: {
@@ -41,13 +41,13 @@ const PaddingControls = ( props ) => {
 			{
 				<ToolbarGroup>
 				{
-					padding.toolbar &&
+					margin.toolbar &&
 					<Dropdown
 						focusOnMount={ false }				
 						renderToggle={ ( { isOpen, onToggle } ) => (
 							<Button
-								icon={ icons.padding }
-								label={ __( 'Padding', 'esnext-example' ) }
+								icon={ icons.margin }
+								label={ __( 'Margin', 'esnext-example' ) }
 								onClick={ onToggle }
 							/>
 						) }
@@ -56,34 +56,34 @@ const PaddingControls = ( props ) => {
 								<div className="block-editor-block-settings-menu__popover">
 									<div className="components-dropdown-menu__menu esnext-example">	
 								{
-									padding.usePreset &&
+									margin.usePreset &&
 									<MenuGroup>
 									{
 									[
 										{ 
-											label: __( 'None', 'esnext-example' ), icon: icons.paddingNone, value: 'p-0' 
+											label: __( 'None', 'esnext-example' ), icon: icons.marginNone, value: 'm-0' 
 										},
 										{ 
-											label: __( 'Small', 'esnext-example' ), icon: icons.paddingSmall, value: 'p-2' 
+											label: __( 'Small', 'esnext-example' ), icon: icons.marginSmall, value: 'm-2' 
 										},
 										{ 
-											label: __( 'Medium', 'esnext-example' ), icon: icons.paddingMedium, value: 'p-4' 
+											label: __( 'Medium', 'esnext-example' ), icon: icons.marginMedium, value: 'm-4' 
 										},
 										{ 
-											label: __( 'Large', 'esnext-example' ), icon: icons.paddingLarge, value: 'p-8' 
+											label: __( 'Large', 'esnext-example' ), icon: icons.marginLarge, value: 'm-8' 
 										},
 										{ 
-											label: __( 'X-Large', 'esnext-example' ), icon: icons.paddingXLarge, value: 'p-16' 
+											label: __( 'X-Large', 'esnext-example' ), icon: icons.marginXLarge, value: 'm-16' 
 										},
 									].map( ( item ) => {
 										return(
 											<MenuItem
 												icon={ item.icon }
-												className={ padding.preset === item.value ? 'is-active components-dropdown-menu__menu-item' : 'components-dropdown-menu__menu-item' }
+												className={ margin.preset === item.value ? 'is-active components-dropdown-menu__menu-item' : 'components-dropdown-menu__menu-item' }
 												key={ item.label } 
 												onClick={ () => setAttributes( { 
-													padding: {
-														...padding,
+													margin: {
+														...margin,
 														preset: item.value,
 													} } 
 												) }
@@ -96,7 +96,7 @@ const PaddingControls = ( props ) => {
 									</MenuGroup>
 								}
 								{
-									! padding.usePreset && ! padding.sync &&
+									! margin.usePreset && ! margin.sync &&
 									[
 										{ label: __( 'Top Left' ), value: "topLeft" },
 										{ label: __( 'Top Right' ), value: "topRight" },
@@ -107,21 +107,21 @@ const PaddingControls = ( props ) => {
 											<RangeControl
 												key={ side.value }
 												label={ side.label }
-												value={ padding[ side.value ] }
-													beforeIcon={ syncButton( 'padding', padding, 'unlock' ) 
+												value={ margin[ side.value ] }
+													beforeIcon={ syncButton( 'margin', margin, 'unlock' ) 
 												}
 												onChange={
 													( value ) => {
 														setAttributes( { 
-															padding: 
+															margin: 
 														{ 
-															...padding,
+															...margin,
 															[ side.value ]: value
 														}
 													} )
 													}
 												}
-												initialPosition={ padding.top }
+												initialPosition={ margin.top }
 												min={ 0 }
 												max={ 200 }
 												step={ 1 }
@@ -130,17 +130,17 @@ const PaddingControls = ( props ) => {
 									} )
 								}
 								{
-									! padding.usePreset && padding.sync &&
+									! margin.usePreset && margin.sync &&
 									<RangeControl
-										label={ __( 'Padding', 'esnext-example' ) }
-										value={ padding.top }
-										beforeIcon={ syncButton( 'padding', padding, 'lock' ) }
+										label={ __( 'Margin', 'esnext-example' ) }
+										value={ margin.top }
+										beforeIcon={ syncButton( 'margin', margin, 'lock' ) }
 										onChange={
 											( value ) => {
 												setAttributes( { 
-													padding: 
+													margin: 
 												{ 
-													...padding,
+													...margin,
 													"top": value,
 													"bottom": value,
 													"left": value,
@@ -149,7 +149,7 @@ const PaddingControls = ( props ) => {
 											} )
 											}
 										}
-										initialPosition={ padding.top }
+										initialPosition={ margin.top }
 										min={ 0 }
 										max={ 200 }
 										step={ 1 }
@@ -160,11 +160,11 @@ const PaddingControls = ( props ) => {
 									<ToggleControl
 										className="px-3 pt-3"
 										label={ __( 'Custom', 'esnext-example' ) }
-										checked={ ! padding.usePreset }
+										checked={ ! margin.usePreset }
 										onChange={ ( ) => setAttributes( { 
-											padding: {
-												...padding,
-												usePreset : ! padding.usePreset
+											margin: {
+												...margin,
+												usePreset : ! margin.usePreset
 											} }
 										) }
 									/>
@@ -181,31 +181,31 @@ const PaddingControls = ( props ) => {
 			</BlockControls>
 			<InspectorControls>
 				<PanelBody
-					title={ __( 'Padding Settings', 'esnext-example' ) }
+					title={ __( 'Margin Settings', 'esnext-example' ) }
 					initialOpen={ initialOpen }
 				>
 					{
-						padding.sidebar &&
+						margin.sidebar &&
 						<BaseControl
-							id="padding"
+							id="margin"
 							className={ slug }
-							label={ __( 'Padding', 'esnext-example' ) }
+							label={ __( 'Margin', 'esnext-example' ) }
 						>
 						<Button
 							className="float-right mb-3"
 							isTertiary
 							isSmall
 							onClick={ () => setAttributes( { 
-								padding: {
-									...padding,
-									usePreset: ! padding.usePreset,
+								margin: {
+									...margin,
+									usePreset: ! margin.usePreset,
 								}
 							} ) }
 							>
-							{ ! padding.usePreset ? __( 'Defaults', 'esnext-example' ) : __( 'Custom', 'esnext-example' ) }
+							{ ! margin.usePreset ? __( 'Defaults', 'esnext-example' ) : __( 'Custom', 'esnext-example' ) }
 						</Button>
 						{
-							! padding.usePreset && ! padding.sync &&
+							! margin.usePreset && ! margin.sync &&
 							[
 								{ label: __( 'Top' ), value: "top" },
 								{ label: __( 'Right' ), value: "right" },
@@ -216,21 +216,21 @@ const PaddingControls = ( props ) => {
 									<RangeControl
 										key={ side.value }
 										label={ side.label }
-										value={ padding[ side.value ] }
-											beforeIcon={ syncButton( 'padding', padding, 'unlock' ) 
+										value={ margin[ side.value ] }
+											beforeIcon={ syncButton( 'margin', margin, 'unlock' ) 
 										}
 										onChange={
 											( value ) => {
 												setAttributes( { 
-													padding: 
+													margin: 
 												{ 
-													...padding,
+													...margin,
 													[ side.value ]: value,
 												}
 											} )
 											}
 										}
-										initialPosition={ padding[ side.value ] }
+										initialPosition={ margin[ side.value ] }
 										min={ 0 }
 										max={ 200 }
 										step={ 1 }
@@ -239,16 +239,16 @@ const PaddingControls = ( props ) => {
 							} )
 						}
 						{
-							! padding.usePreset && padding.sync &&
+							! margin.usePreset && margin.sync &&
 							<RangeControl
-								value={ padding.top }
-								beforeIcon={ syncButton( 'padding', padding, 'lock' ) }
+								value={ margin.top }
+								beforeIcon={ syncButton( 'margin', margin, 'lock' ) }
 								onChange={
 									( value ) => {
 										setAttributes( { 
-											padding: 
+											margin: 
 										{ 
-											...padding,
+											...margin,
 											"top": value,
 											"bottom": value,
 											"left": value,
@@ -257,34 +257,34 @@ const PaddingControls = ( props ) => {
 									} )
 									}
 								}
-								initialPosition={ padding.top }
+								initialPosition={ margin.top }
 								min={ 0 }
 								max={ 200 }
 								step={ 1 }
 							/>
 						}
 						{
-							padding.usePreset &&
+							margin.usePreset &&
 							<div className="flex justify-between">							
 									<ButtonGroup
-										id="padding"
+										id="margin"
 									>
 									{
 										[
 											{ label: __( 'None', 'esnext-example' ), value: 'p-0' },
-											{ label: 'S', value: 'p-2' },
-											{ label: 'M', value: 'p-4' },
-											{ label: 'L', value: 'p-8' },
-											{ label: 'XL', value: 'p-16' },
+											{ label: 'S', value: 'm-2' },
+											{ label: 'M', value: 'm-4' },
+											{ label: 'L', value: 'm-8' },
+											{ label: 'XL', value: 'm-16' },
 										].map( ( item ) => {
 											return (
 												<Button
 													key={ item.label }
-													isPrimary={ padding.preset === item.value }
-													isSecondary={ padding.preset !== item.value }
+													isPrimary={ margin.preset === item.value }
+													isSecondary={ margin.preset !== item.value }
 													onClick={ ( ) => setAttributes( { 
-														padding: {
-															...padding,
+														margin: {
+															...margin,
 															preset: item.value
 														}
 													} ) }
@@ -303,4 +303,4 @@ const PaddingControls = ( props ) => {
 	);
 }
 
-export default PaddingControls;
+export default MarginControls;
