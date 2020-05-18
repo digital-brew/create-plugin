@@ -137,34 +137,4 @@ npm run build
 
 ## Controls
 
-A handful of common controls are bundled in this package:
-
-### BoxShadowControls
-
-Toolbar & InspectorControls for adding box shadow settings to blocks:
-![BoxShadowControls in the WordPress block editor sidebar & toolbar](https://blockhandbook.com/wp-content/uploads/2020/05/BoxShadowControls-screenshot.png)
-[Documentation](https://github.com/blockhandbook/create-plugin/tree/master/packages/tailwindcss/src/controls/box-shadow-controls)
-
-### BorderControls
-
-Toolbar & InspectorControls for adding border settings to blocks:
-![BorderControls in the WordPress block editor sidebar & toolbar](https://blockhandbook.com/wp-content/uploads/2020/05/Copy-of-BorderControls-Screenshot.png)
-[Documentation](https://github.com/blockhandbook/create-plugin/tree/master/packages/tailwindcss/src/controls/border-controls)
-
-### MarginControls
-
-Toolbar & InspectorControls for adding margin settings to blocks:
-![MarginControls in the WordPress block editor sidebar & toolbar](https://blockhandbook.com/wp-content/uploads/2020/05/MarginControls-Screenshot.png)
-[Documentation](https://github.com/blockhandbook/create-plugin/tree/master/packages/tailwindcss/src/controls/margin-controls)
-
-### PaddingControls
-
-Toolbar & InspectorControls for adding padding settings to blocks:
-![BorderControls in the WordPress block editor sidebar & toolbar](https://blockhandbook.com/wp-content/uploads/2020/05/PaddingControls-screenshot.png)
-[Documentation](https://github.com/blockhandbook/create-plugin/tree/master/packages/tailwindcss/src/controls/padding-controls)
-
-### SpacingControls
-
-Toolbar & InspectorControls for adding spacing settings to blocks:
-![SpacingControls in the WordPress block editor sidebar & toolbar](https://blockhandbook.com/wp-content/uploads/2020/05/SpacingControls-screenshot.png)
-[Documentation](https://github.com/blockhandbook/create-plugin/tree/master/packages/tailwindcss/src/controls/spacing-controls)
+Checkout @blockhandbook/tailwindcss-controls for a library of common block styling controls powered by tailwindcss classes:
