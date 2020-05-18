@@ -69,13 +69,15 @@ const BoxShadowControls = ( props ) => {
 				<ToolbarGroup>
 				{
 					boxShadow.toolbar &&
-					<Dropdown	
-						focusOnMount={ false }					
+					<Dropdown					
 						renderToggle={ ( { isOpen, onToggle } ) => (
 							<Button
 								icon={ icons.boxShadow }
 								label={ __( 'Box Shadow', 'esnext-example' ) }
 								onClick={ onToggle }
+								aria-haspopup="true"
+								aria-expanded={ isOpen }
+								showTooltip
 							/>
 						) }
 						renderContent={ () => {
@@ -188,7 +190,7 @@ const BoxShadowControls = ( props ) => {
 			{
 				boxShadow.sidebar &&
 				<PanelBody
-					title={ __( 'Shadow Settings', 'esnext-example' ) }
+					title={ __( 'Shadow settings', 'esnext-example' ) }
 					initialOpen={ initialOpen }
 				>
 					<BaseControl

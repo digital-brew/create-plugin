@@ -23,7 +23,7 @@ const PaddingControls = ( props ) => {
 			padding,
 		},
 	} = props;
-	console.log( padding )
+
 	const syncButton = ( property, object, icon ) => <Button 
 		onClick={ () => setAttributes( {
 			[ property ]: {
@@ -42,15 +42,19 @@ const PaddingControls = ( props ) => {
 				<ToolbarGroup>
 				{
 					padding.toolbar &&
-					<Dropdown
-						focusOnMount={ false }				
-						renderToggle={ ( { isOpen, onToggle } ) => (
-							<Button
-								icon={ icons.padding }
-								label={ __( 'Padding', 'esnext-example' ) }
-								onClick={ onToggle }
-							/>
-						) }
+					<Dropdown				
+						renderToggle={ ( { isOpen, onToggle } ) => {
+							return(
+								<Button
+									icon={ icons.padding }
+									label={ __( 'Padding', 'esnext-example' ) }
+									onClick={ onToggle }
+									aria-haspopup="true"
+									aria-expanded={ isOpen }
+									showTooltip
+								/>
+							)							
+						} }
 						renderContent={ () => {
 							return(
 								<div className="block-editor-block-settings-menu__popover">
@@ -181,7 +185,7 @@ const PaddingControls = ( props ) => {
 			</BlockControls>
 			<InspectorControls>
 				<PanelBody
-					title={ __( 'Padding Settings', 'esnext-example' ) }
+					title={ __( 'Padding settings', 'esnext-example' ) }
 					initialOpen={ initialOpen }
 				>
 					{

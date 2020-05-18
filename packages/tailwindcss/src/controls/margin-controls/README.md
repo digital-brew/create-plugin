@@ -1,8 +1,8 @@
 
-# BorderControls
+# MarginControls
 
-Toolbar & InspectorControls for adding border settings to blocks:
-![BorderControls in the WordPress block editor sidebar & toolbar](https://blockhandbook.com/wp-content/uploads/2020/05/Copy-of-BorderControls-Screenshot.png)
+Toolbar & InspectorControls for adding margin settings to blocks:
+![MarginControls in the WordPress block editor sidebar & toolbar](https://blockhandbook.com/wp-content/uploads/2020/05/MarginControls-Screenshot.png)
 
 Add the following attributes to block.json:
 
@@ -10,21 +10,7 @@ Add the following attributes to block.json:
 {
  "name": "plugin-name/block-name",
  "attributes": {
-  "borderRadius": {
-   "type": "object",
-   "default": {
-    "topLeft": 10,
-    "bottomLeft": 10,
-    "topRight": 10,
-    "bottomRight": 10,
-    "sync": true,
-    "usePreset": true,
-    "preset": "rounded-lg",
-    "toolbar": true,
-    "sidebar": true
-   }
-  },
-  "borderWidth": {
+  "margin": {
    "type": "object",
    "default": {
     "top": 10,
@@ -33,22 +19,8 @@ Add the following attributes to block.json:
     "right": 10,
     "sync": true,
     "usePreset": true,
-    "preset": "border-0",
+    "preset": "m-0",
     "toolbar": true,
-    "sidebar": true
-   }
-  },
-  "borderStyle": {
-   "type": "object",
-   "default": {
-    "style": "border-solid",
-    "sidebar": true
-   }
-  },
-  "borderColor": {
-   "type": "object",
-   "default": {
-    "color": "#000000",
     "sidebar": true
    }
   },
@@ -59,34 +31,27 @@ How to use it:
 
 ```javascript
 import { tailwindcss } from '@blockhandbook/tailwindcss';
-const { BorderControls } = tailwindcss;
+const { MarginControls } = tailwindcss;
 
 const Edit = ( props ) => {
  const {
   setAttributes,
   attributes,
   attributes: {
-   borderColor,
-   borderRadius,
-   borderStyle,
-   borderWidth,
+   margin,
   },
  } = props;
 
  const containerClasses = classnames(
-  `p-10 bg-white ${ borderStyle.style } overflow-hidden`,
+  `p-10 bg-white`,
   {
-   [ `${ borderRadius.preset }` ]: borderRadius.usePreset,
-   [ `${ borderWidth.preset }` ]: borderWidth.usePreset,
+   [ `${ margin.preset }` ]: margin.usePreset,
   }
  );
 
  const containerStyle = {
-  borderColor: borderColor.color,
-  borderRadius:
-   ! borderRadius.usePreset ? `${ borderRadius.topLeft }px ${ borderRadius.topRight }px ${ borderRadius.bottomRight }px ${ borderRadius.bottomLeft }px` : null,
-  borderWidth:
-   ! borderWidth.usePreset ? `${ borderWidth.top }px ${ borderWidth.right }px ${ borderWidth.bottom }px ${ borderWidth.left }px` : null,
+  margin:
+   ! margin.usePreset ? `${ margin.top }px ${ margin.right }px ${ margin.bottom }px ${ margin.left }px` : null,
  };
 
  return (
@@ -94,7 +59,7 @@ const Edit = ( props ) => {
     className={ containerClasses }
     style={ containerStyle }
   >
-   <BorderControls
+   <MarginControls
     slug={ slug }
     initialOpen={ true }
     attributes={ attributes }
@@ -102,7 +67,7 @@ const Edit = ( props ) => {
    />
    <p className={ className }>
     { __(
-     'BorderControls example.',
+     'MarginControls example.',
      'plugin-name'
     ) }
    </p>

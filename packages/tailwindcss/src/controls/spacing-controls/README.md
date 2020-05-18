@@ -1,8 +1,8 @@
 
-# PaddingControls
+# SpacingControls
 
-Toolbar & InspectorControls for adding padding settings to blocks:
-![BorderControls in the WordPress block editor sidebar & toolbar](https://blockhandbook.com/wp-content/uploads/2020/05/PaddingControls-screenshot.png)
+Toolbar & InspectorControls for adding spacing settings to blocks:
+![SpacingControls in the WordPress block editor sidebar & toolbar](https://blockhandbook.com/wp-content/uploads/2020/05/SpacingControls-screenshot.png)
 
 Add the following attributes to block.json:
 
@@ -24,6 +24,20 @@ Add the following attributes to block.json:
     "sidebar": true
    }
   },
+  "margin": {
+   "type": "object",
+   "default": {
+    "top": 10,
+    "bottom": 10,
+    "left": 10,
+    "right": 10,
+    "sync": true,
+    "usePreset": true,
+    "preset": "m-0",
+    "toolbar": true,
+    "sidebar": true
+   }
+  },
  }
 ```
 
@@ -31,7 +45,7 @@ How to use it:
 
 ```javascript
 import { tailwindcss } from '@blockhandbook/tailwindcss';
-const { PaddingControls } = tailwindcss;
+const { SpacingControls } = tailwindcss;
 
 const Edit = ( props ) => {
  const {
@@ -39,17 +53,21 @@ const Edit = ( props ) => {
   attributes,
   attributes: {
    padding,
+   margin,
   },
  } = props;
 
  const containerClasses = classnames(
-  `bg-white`,
+  `p-10 bg-white`,
   {
    [ `${ padding.preset }` ]: padding.usePreset,
+   [ `${ margin.preset }` ]: margin.usePreset,
   }
  );
 
  const containerStyle = {
+  margin:
+   ! margin.usePreset ? `${ margin.top }px ${ margin.right }px ${ margin.bottom }px ${ margin.left }px` : null,
   padding:
    ! padding.usePreset ? `${ padding.top }px ${ padding.right }px ${ padding.bottom }px ${ padding.left }px` : null,
  };
@@ -59,7 +77,7 @@ const Edit = ( props ) => {
     className={ containerClasses }
     style={ containerStyle }
   >
-   <PaddingControls
+   <SpacingControls
     slug={ slug }
     initialOpen={ true }
     attributes={ attributes }
@@ -67,7 +85,7 @@ const Edit = ( props ) => {
    />
    <p className={ className }>
     { __(
-     'PaddingControls example.',
+     'SpacingControls example.',
      'plugin-name'
     ) }
    </p>
@@ -84,4 +102,4 @@ export default Edit;
 initialOpen
 ```
 
-Set border settings panel to initially open in sidebar.  Defaults to false.
+Set spacing settings panel to initially open in sidebar.  Defaults to false.

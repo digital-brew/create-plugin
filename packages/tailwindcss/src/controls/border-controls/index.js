@@ -45,13 +45,15 @@ const BorderControls = ( props ) => {
 				<ToolbarGroup>
 				{
 					borderRadius.toolbar &&
-					<Dropdown
-						focusOnMount={ false }				
+					<Dropdown			
 						renderToggle={ ( { isOpen, onToggle } ) => (
 							<Button
 								icon={ icons.borderRadius }
 								label={ __( 'Border Radius', 'esnext-example' ) }
 								onClick={ onToggle }
+								aria-haspopup="true"
+								aria-expanded={ isOpen }
+								showTooltip
 							/>
 						) }
 						renderContent={ () => {
@@ -163,7 +165,7 @@ const BorderControls = ( props ) => {
 									<ToggleControl
 										className="px-3 pt-3"
 										label={ __( 'Custom', 'esnext-example' ) }
-										checked={ borderRadius.usePreset }
+										checked={ ! borderRadius.usePreset }
 										onChange={ ( ) => setAttributes( { 
 											borderRadius: {
 												...borderRadius,
@@ -181,8 +183,7 @@ const BorderControls = ( props ) => {
 				}
 				{
 					borderWidth.toolbar &&
-					<Dropdown	
-						focusOnMount={ false }						
+					<Dropdown						
 						renderToggle={ ( { isOpen, onToggle } ) => (
 							<Button
 								icon={ icons.borderWidthXLarge }
@@ -299,11 +300,11 @@ const BorderControls = ( props ) => {
 									<ToggleControl
 										className="px-3 pt-3"
 										label={ __( 'Custom', 'esnext-example' ) }
-										checked={ borderWidth.sync }
+										checked={ ! borderWidth.usePreset }
 										onChange={ ( ) => setAttributes( { 
 											borderWidth: {
 												...borderWidth,
-												sync: ! borderWidth.sync
+												usePreset: ! borderWidth.usePreset
 											} } ) }
 									/>
 								</div>
@@ -319,7 +320,7 @@ const BorderControls = ( props ) => {
 			</BlockControls>
 			<InspectorControls>
 				<PanelBody
-					title={ __( 'Border Settings', 'esnext-example' ) }
+					title={ __( 'Border settings', 'esnext-example' ) }
 					initialOpen={ initialOpen }
 				>
 					{

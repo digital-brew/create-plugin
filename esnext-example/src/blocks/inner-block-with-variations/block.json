@@ -83,7 +83,7 @@
 				"preset": "shadow-xl",
 				"toolbar": true,
 				"sidebar": true,
-				"color": "#000000"
+				"color": "0,0,0"
 			},
 			"variationName": {
 				"type": "string"
