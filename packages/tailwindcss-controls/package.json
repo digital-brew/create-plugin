@@ -1,0 +1,43 @@
+{
+  "name": "@blockhandbook/tailwindcss-controls",
+  "version": "0.1.0",
+  "main": "build/index.js",
+  "description": "A library ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update": "npm version && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blockhandbook/create-plugin/tree/master/packages/tailwindcss-controls"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "tailwindcss",
+    "gutenberg blocks",
+    "gutenberg",
+    "block editor",
+    "wordpress",
+    "plugin",
+    "wordpress plugin",
+    "styles",
+    "styling controls",
+    "controls",
+    "inspector controls",
+    "block controls",
+    "InspectorControls",
+    "BlockControls"
+  ],
+  "author": "Lee Shadle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blockhandbook/create-plugin/tree/master/packages/tailwindcss-controls/issues"
+  },
+  "homepage": "https://github.com/blockhandbook/create-plugin/tree/master/packages/tailwindcss-controls#readme",
+  "dependencies": {
+    "@wordpress/scripts": "^9.0.0",
+    "@blockhandbook/tailwindcss": "^0.2.5"
+  }
+}
