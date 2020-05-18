@@ -31,7 +31,7 @@ const config = {
 	entry: blockhandbookPackages.reduce( ( memo, packageName ) => {
 		// const name = camelCaseDash( packageName );
 		const name = packageName;
-		memo[ name ] = `./packages/${ packageName }`;
+		memo[ name ] = `./packages/${ packageName }/src`;
 		return memo;
 	}, {} ),
 	output: ( ( ) => {
@@ -65,11 +65,11 @@ const config = {
 						rawRequest = entryModule.rootModule.rawRequest;
 						break;
 				}
-
+				console.log( data.chunk.name )
 				// FYI - I added this so that we get a camelCased
 				// basename with tailwindcss packages - i.e. - tailwindcssControls
 				if ( rawRequest ) {
-					return basename( camelCaseDash( rawRequest ) );
+					return basename( camelCaseDash( data.chunk.name ) );
 				}
 
 				return path;
