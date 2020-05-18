@@ -30,8 +30,8 @@ Add the following attributes to block.json:
 How to use it:
 
 ```javascript
-import { tailwindcss } from '@blockhandbook/tailwindcss';
-const { MarginControls } = tailwindcss;
+import { tailwindcssControls } from '@blockhandbook/tailwindcss-controls';
+const { MarginControls } = tailwindcssControls;
 
 const Edit = ( props ) => {
  const {

@@ -58,8 +58,8 @@ Add the following attributes to block.json:
 How to use it:
 
 ```javascript
-import { tailwindcss } from '@blockhandbook/tailwindcss';
-const { BorderControls } = tailwindcss;
+import { tailwindcssControls } from '@blockhandbook/tailwindcss-controls';
+const { BorderControls } = tailwindcssControls;
 
 const Edit = ( props ) => {
  const {

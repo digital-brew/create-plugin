@@ -44,8 +44,8 @@ Add the following attributes to block.json:
 How to use it:
 
 ```javascript
-import { tailwindcss } from '@blockhandbook/tailwindcss';
-const { SpacingControls } = tailwindcss;
+import { tailwindcssControls } from '@blockhandbook/tailwindcss-controls';
+const { SpacingControls } = tailwindcssControls;
 
 const Edit = ( props ) => {
  const {

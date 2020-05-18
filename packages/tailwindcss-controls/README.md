@@ -1,6 +1,6 @@
 # Tailwindcss powered controls for styling blocks built for the WordPress block editor
 
-A library of common block styling controls powered by tailwindcss classes
+A library of common block styling controls powered by tailwindcss classes.
 
 * [Follow us on Twitter](https://twitter.com/blockhandbook)
 
