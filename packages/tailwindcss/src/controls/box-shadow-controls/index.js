@@ -168,7 +168,7 @@ const BoxShadowControls = ( props ) => {
 									<ToggleControl
 										className="px-3 pt-3"
 										label={ __( 'Custom', 'esnext-example' ) }
-										checked={ boxShadow.usePreset }
+										checked={ ! boxShadow.usePreset }
 										onChange={ ( ) => setAttributes( { 
 											boxShadow: {
 												...boxShadow,

@@ -1,10 +1,10 @@
 /**
  * External Dependencies
  */
-import { BorderControls, BoxShadowControls, PaddingControls, MarginControls, SpacingControls } from '../../../../packages/tailwindcss/src';
-// import { tailwindcss } from '@blockhandbook/tailwindcss';
-// const { BorderControls, BoxShadowControls } = tailwindcss;
-
+// import { BorderControls, BoxShadowControls, PaddingControls, MarginControls, SpacingControls } from '../../../../packages/tailwindcss/src';
+import { tailwindcss } from '@blockhandbook/tailwindcss';
+const { BorderControls, BoxShadowControls, SpacingControls } = tailwindcss;
+console.log( tailwindcss)
 /**
  * WordPress Dependencies
  */
@@ -29,16 +29,6 @@ const Controls = ( props ) => {
 			<BlockControls></BlockControls>
 			<InspectorControls></InspectorControls>
 			<SpacingControls
-				attributes={ attributes }
-				setAttributes={ setAttributes }
-				slug={ slug }
-			/>
-			<MarginControls
-				attributes={ attributes }
-				setAttributes={ setAttributes }
-				slug={ slug }
-			/>
-			<PaddingControls
 				attributes={ attributes }
 				setAttributes={ setAttributes }
 				slug={ slug }
