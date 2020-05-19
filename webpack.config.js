@@ -65,7 +65,7 @@ const config = {
 						rawRequest = entryModule.rootModule.rawRequest;
 						break;
 				}
-				console.log( data.chunk.name )
+
 				// FYI - I added this so that we get a camelCased
 				// basename with tailwindcss packages - i.e. - tailwindcssControls
 				if ( rawRequest ) {

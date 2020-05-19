@@ -1,6 +1,34 @@
 {
 	"name": "esnext-example/inner-block-with-variations",
 	"attributes": {
+		"backgroundImage": {
+			"type": "object",
+			"default": {
+				"id": null,
+				"url": null,
+				"size": null,
+				"customSize": false,
+				"attachment": "bg-scroll",
+				"repeat": "bg-no-repeat",
+				"backgroundSize": "bg-cover",				
+				"position": "bg-center",
+				"opacity": "bg-100",
+				"focalPoint":{
+					"x": 0.5,
+					"y": 0.5
+				},
+				"toolbar": true,
+				"sidebar": true
+			}
+		},
+		"backgroundColor": {
+			"type": "object",
+			"default": {
+				"color":"#ffffff",
+				"opacity":"bg-100",
+				"sidebar": true
+			}
+		},
 		"padding": {
 			"type": "object",
 			"default": {
