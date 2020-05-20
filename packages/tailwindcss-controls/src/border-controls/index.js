@@ -27,15 +27,15 @@ const BorderControls = ( props ) => {
 		},
 	} = props;
 
-	const syncButton = ( property, object, icon ) => <Button 
+	const syncButton = ( property, object, icon ) => <Button
 		onClick={ () => setAttributes( {
 			[ property ]: {
 				...object,
 				"sync": ! object.sync,
 			}
 		} )
-		} 
-		icon={ icon } 
+		}
+		icon={ icon }
 	/>;
 
 	return (
@@ -45,7 +45,7 @@ const BorderControls = ( props ) => {
 				<ToolbarGroup>
 				{
 					borderRadius.toolbar &&
-					<Dropdown			
+					<Dropdown
 						renderToggle={ ( { isOpen, onToggle } ) => (
 							<Button
 								icon={ icons.borderRadius }
@@ -59,38 +59,38 @@ const BorderControls = ( props ) => {
 						renderContent={ () => {
 							return(
 								<div className="block-editor-block-settings-menu__popover">
-									<div className="components-dropdown-menu__menu esnext-example">	
+									<div className="components-dropdown-menu__menu esnext-example">
 								{
 									borderRadius.usePreset &&
 									<MenuGroup>
 									{
 									[
-										{ 
-											label: __( 'None', 'esnext-example' ), icon: icons.borderRadiusNone, value: 'rounded-none' 
+										{
+											label: __( 'None', 'esnext-example' ), icon: icons.borderRadiusNone, value: 'rounded-none'
 										},
-										{ 
-											label: __( 'Small', 'esnext-example' ), icon: icons.borderRadiusSmall, value: 'rounded-sm' 
+										{
+											label: __( 'Small', 'esnext-example' ), icon: icons.borderRadiusSmall, value: 'rounded-sm'
 										},
-										{ 
-											label: __( 'Medium', 'esnext-example' ), icon: icons.borderRadiusMedium, value: 'rounded' 
+										{
+											label: __( 'Medium', 'esnext-example' ), icon: icons.borderRadiusMedium, value: 'rounded'
 										},
-										{ 
-											label: __( 'Large', 'esnext-example' ), icon: icons.borderRadiusLarge, value: 'rounded-md' 
+										{
+											label: __( 'Large', 'esnext-example' ), icon: icons.borderRadiusLarge, value: 'rounded-md'
 										},
-										{ 
-											label: __( 'X-Large', 'esnext-example' ), icon: icons.borderRadiusXLarge, value: 'rounded-lg' 
+										{
+											label: __( 'X-Large', 'esnext-example' ), icon: icons.borderRadiusXLarge, value: 'rounded-lg'
 										},
 									].map( ( item ) => {
 										return(
 											<MenuItem
 												icon={ item.icon }
 												className={ borderRadius.preset === item.value ? 'is-active components-dropdown-menu__menu-item' : 'components-dropdown-menu__menu-item' }
-												key={ item.label } 
-												onClick={ () => setAttributes( { 
+												key={ item.label }
+												onClick={ () => setAttributes( {
 													borderRadius: {
 														...borderRadius,
 														preset: item.value,
-													} } 
+													} }
 												) }
 											>
 												{ item.label }
@@ -106,20 +106,20 @@ const BorderControls = ( props ) => {
 										{ label: __( 'Top Left' ), value: "topLeft" },
 										{ label: __( 'Top Right' ), value: "topRight" },
 										{ label: __( 'Bottom Right' ), value: "bottomRight" },
-										{ label: __( 'Bottom Left' ), value: "bottomLeft" },							
+										{ label: __( 'Bottom Left' ), value: "bottomLeft" },
 									].map( ( side ) => {
 										return(
 											<RangeControl
 												key={ side.value }
 												label={ side.label }
 												value={ borderRadius[ side.value ] }
-													beforeIcon={ syncButton( 'borderRadius', borderRadius, 'unlock' ) 
+													beforeIcon={ syncButton( 'borderRadius', borderRadius, 'unlock' )
 												}
 												onChange={
 													( value ) => {
-														setAttributes( { 
-															borderRadius: 
-														{ 
+														setAttributes( {
+															borderRadius:
+														{
 															...borderRadius,
 															[ side.value ]: value
 														}
@@ -142,9 +142,9 @@ const BorderControls = ( props ) => {
 										beforeIcon={ syncButton( 'borderRadius', borderRadius, 'lock' ) }
 										onChange={
 											( value ) => {
-												setAttributes( { 
-													borderRadius: 
-												{ 
+												setAttributes( {
+													borderRadius:
+												{
 													...borderRadius,
 													"topLeft": value,
 													"bottomLeft": value,
@@ -159,14 +159,14 @@ const BorderControls = ( props ) => {
 										max={ 200 }
 										step={ 1 }
 									/>
-								}		
-								<MenuGroup>				
+								}
+								<MenuGroup>
 								<div className={ slug }	>
 									<ToggleControl
 										className="px-3 pt-3"
 										label={ __( 'Custom', 'esnext-example' ) }
 										checked={ ! borderRadius.usePreset }
-										onChange={ ( ) => setAttributes( { 
+										onChange={ ( ) => setAttributes( {
 											borderRadius: {
 												...borderRadius,
 												usePreset : ! borderRadius.usePreset
@@ -174,16 +174,16 @@ const BorderControls = ( props ) => {
 										) }
 									/>
 								</div>
-								</MenuGroup>	
+								</MenuGroup>
 							</div>
 								</div>
-							) } 
+							) }
 						}
 					/>
 				}
 				{
 					borderWidth.toolbar &&
-					<Dropdown						
+					<Dropdown
 						renderToggle={ ( { isOpen, onToggle } ) => (
 							<Button
 								icon={ icons.borderWidthXLarge }
@@ -194,35 +194,35 @@ const BorderControls = ( props ) => {
 						renderContent={ () => {
 							return(
 								<div className="block-editor-block-settings-menu__popover">
-									<div className="components-dropdown-menu__menu esnext-example">	
+									<div className="components-dropdown-menu__menu esnext-example">
 								{
 									borderWidth.usePreset && borderWidth.toolbar &&
 									<MenuGroup>
 									{
 										[
-											{ 
-												label: __( 'None', 'esnext-example' ), icon: icons.borderWidthNone, value: 'border-0' 
+											{
+												label: __( 'None', 'esnext-example' ), icon: icons.borderWidthNone, value: 'border-0'
 											},
-											{ 
-												label: __( 'Smalls', 'esnext-example' ), icon: icons.borderWidthSmall, value: 'border' 
+											{
+												label: __( 'Small', 'esnext-example' ), icon: icons.borderWidthSmall, value: 'border'
 											},
-											{ 
-												label: __( 'Medium', 'esnext-example' ), icon: icons.borderWidthMedium, value: 'border-2' 
+											{
+												label: __( 'Medium', 'esnext-example' ), icon: icons.borderWidthMedium, value: 'border-2'
 											},
-											{ 
-												label: __( 'Large', 'esnext-example' ), icon: icons.borderWidthLarge, value: 'border-4' 
+											{
+												label: __( 'Large', 'esnext-example' ), icon: icons.borderWidthLarge, value: 'border-4'
 											},
-											{ 
-												label: __( 'X-Large', 'esnext-example' ), icon: icons.borderWidthXLarge, value: 'border-8' 
+											{
+												label: __( 'X-Large', 'esnext-example' ), icon: icons.borderWidthXLarge, value: 'border-8'
 											},
 										].map( ( item ) => {
 											return(
 												<MenuItem
 													icon={ item.icon }
 													className={ borderWidth.preset === item.value ? 'is-active components-dropdown-menu__menu-item' : 'components-dropdown-menu__menu-item' }
-													key={ item.label } 
-													onClick={ () => setAttributes( { 
-														borderWidth: { 
+													key={ item.label }
+													onClick={ () => setAttributes( {
+														borderWidth: {
 															...borderWidth,
 															preset: item.value
 														}
@@ -248,13 +248,13 @@ const BorderControls = ( props ) => {
 												key={ side.value }
 												label={ side.label }
 												value={ borderWidth[ side.value ] }
-													beforeIcon={ syncButton( 'borderWidth', borderWidth, 'unlock' ) 
+													beforeIcon={ syncButton( 'borderWidth', borderWidth, 'unlock' )
 												}
 												onChange={
 													( value ) => {
-														setAttributes( { 
-															borderWidth: 
-														{ 
+														setAttributes( {
+															borderWidth:
+														{
 															...borderWidth,
 															[ side.value ]: value
 														}
@@ -277,9 +277,9 @@ const BorderControls = ( props ) => {
 										beforeIcon={ syncButton( 'borderWidth', borderWidth, 'lock' ) }
 										onChange={
 											( value ) => {
-												setAttributes( { 
-													borderWidth: 
-												{ 
+												setAttributes( {
+													borderWidth:
+												{
 													...borderWidth,
 													"top": value,
 													"bottom": value,
@@ -295,23 +295,23 @@ const BorderControls = ( props ) => {
 										step={ 1 }
 									/>
 								}
-								<MenuGroup>				
+								<MenuGroup>
 								<div className={ slug }	>
 									<ToggleControl
 										className="px-3 pt-3"
 										label={ __( 'Custom', 'esnext-example' ) }
 										checked={ ! borderWidth.usePreset }
-										onChange={ ( ) => setAttributes( { 
+										onChange={ ( ) => setAttributes( {
 											borderWidth: {
 												...borderWidth,
 												usePreset: ! borderWidth.usePreset
 											} } ) }
 									/>
 								</div>
-								</MenuGroup>	
+								</MenuGroup>
 							</div>
 								</div>
-							) } 
+							) }
 						}
 					/>
 				}
@@ -330,11 +330,11 @@ const BorderControls = ( props ) => {
 							className={ slug }
 							label={ __( 'Border Radius', 'esnext-example' ) }
 						>
-						<Button 
+						<Button
 							className="float-right mb-3"
 							isTertiary
 							isSmall
-							onClick={ () => setAttributes( { 
+							onClick={ () => setAttributes( {
 								borderRadius: {
 									...borderRadius,
 									usePreset: ! borderRadius.usePreset,
@@ -349,20 +349,20 @@ const BorderControls = ( props ) => {
 								{ label: __( 'Top Left' ), value: "topLeft" },
 								{ label: __( 'Top Right' ), value: "topRight" },
 								{ label: __( 'Bottom Right' ), value: "bottomRight" },
-								{ label: __( 'Bottom Left' ), value: "bottomLeft" },							
+								{ label: __( 'Bottom Left' ), value: "bottomLeft" },
 							].map( ( side ) => {
 								return(
 									<RangeControl
 										key={ side.value }
 										label={ side.label }
 										value={ borderRadius[ side.value ] }
-											beforeIcon={ syncButton( 'borderRadius', borderRadius, 'unlock' ) 
+											beforeIcon={ syncButton( 'borderRadius', borderRadius, 'unlock' )
 										}
 										onChange={
 											( value ) => {
-												setAttributes( { 
-													borderRadius: 
-												{ 
+												setAttributes( {
+													borderRadius:
+												{
 													...borderRadius,
 													[ side.value ]: value
 												}
@@ -384,9 +384,9 @@ const BorderControls = ( props ) => {
 								beforeIcon={ syncButton( 'borderRadius', borderRadius, 'lock' ) }
 								onChange={
 									( value ) => {
-										setAttributes( { 
-											borderRadius: 
-										{ 
+										setAttributes( {
+											borderRadius:
+										{
 											...borderRadius,
 											"topLeft": value,
 											"bottomLeft": value,
@@ -404,7 +404,7 @@ const BorderControls = ( props ) => {
 						}
 						{
 							borderRadius.usePreset &&
-							<div className="flex justify-between">							
+							<div className="flex justify-between">
 									<ButtonGroup
 										id="border-radius"
 									>
@@ -421,7 +421,7 @@ const BorderControls = ( props ) => {
 													key={ item.label }
 													isPrimary={ borderRadius.preset === item.value }
 													isSecondary={ borderRadius.preset !== item.value }
-													onClick={ ( ) => setAttributes( { 
+													onClick={ ( ) => setAttributes( {
 														borderRadius: {
 															...borderRadius,
 															preset: item.value,
@@ -447,7 +447,7 @@ const BorderControls = ( props ) => {
 							className="float-right mb-3"
 							isTertiary
 							isSmall
-							onClick={ () => setAttributes( { 
+							onClick={ () => setAttributes( {
 								borderWidth: {
 									...borderWidth,
 									usePreset: ! borderWidth.usePreset,
@@ -469,13 +469,13 @@ const BorderControls = ( props ) => {
 										key={ side.value }
 										label={ side.label }
 										value={ borderWidth[ side.value ] }
-											beforeIcon={ syncButton( 'borderWidth', borderWidth, 'unlock' ) 
+											beforeIcon={ syncButton( 'borderWidth', borderWidth, 'unlock' )
 										}
 										onChange={
 											( value ) => {
-												setAttributes( { 
-													borderWidth: 
-												{ 
+												setAttributes( {
+													borderWidth:
+												{
 													...borderWidth,
 													[ side.value ]: value,
 												}
@@ -497,9 +497,9 @@ const BorderControls = ( props ) => {
 								beforeIcon={ syncButton( 'borderWidth', borderWidth, 'lock' ) }
 								onChange={
 									( value ) => {
-										setAttributes( { 
-											borderWidth: 
-										{ 
+										setAttributes( {
+											borderWidth:
+										{
 											...borderWidth,
 											"top": value,
 											"bottom": value,
@@ -517,7 +517,7 @@ const BorderControls = ( props ) => {
 						}
 						{
 							borderWidth.usePreset &&
-							<div className="flex justify-between">							
+							<div className="flex justify-between">
 									<ButtonGroup
 										id="border-width"
 									>
@@ -534,7 +534,7 @@ const BorderControls = ( props ) => {
 													key={ item.label }
 													isPrimary={ borderWidth.preset === item.value }
 													isSecondary={ borderWidth.preset !== item.value }
-													onClick={ ( ) => setAttributes( { 
+													onClick={ ( ) => setAttributes( {
 														borderWidth: {
 															...borderWidth,
 															preset: item.value
@@ -563,7 +563,7 @@ const BorderControls = ( props ) => {
 									{ label: __( 'Double', 'esnext-example' ), value: 'border-double' },
 								]
 							}
-							onChange={ ( value ) => setAttributes( { 
+							onChange={ ( value ) => setAttributes( {
 								borderStyle: {
 									...borderStyle,
 									"style": value,
@@ -580,7 +580,7 @@ const BorderControls = ( props ) => {
 							<ColorPalette
 								id="border-color"
 								value={ borderColor }
-								onChange={ ( color ) => setAttributes( { 
+								onChange={ ( color ) => setAttributes( {
 									borderColor: {
 										...borderColor,
 										"color": color,
