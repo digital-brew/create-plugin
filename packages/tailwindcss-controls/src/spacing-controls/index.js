@@ -25,15 +25,15 @@ const SpacingControls = ( props ) => {
 		},
 	} = props;
 
-	const syncButton = ( property, object, icon ) => <Button 
+	const syncButton = ( property, object, icon ) => <Button
 		onClick={ () => setAttributes( {
 			[ property ]: {
 				...object,
 				"sync": ! object.sync,
 			}
 		} )
-		} 
-		icon={ icon } 
+		}
+		icon={ icon }
 	/>;
 
 	return (
@@ -43,7 +43,7 @@ const SpacingControls = ( props ) => {
 				<ToolbarGroup>
 				{
 					padding.toolbar &&
-					<Dropdown				
+					<Dropdown
 						renderToggle={ ( { isOpen, onToggle } ) => {
 							return(
 								<Button
@@ -54,43 +54,43 @@ const SpacingControls = ( props ) => {
 									aria-expanded={ isOpen }
 									showTooltip
 								/>
-							)							
+							)
 						} }
 						renderContent={ () => {
 							return(
 								<div className="block-editor-block-settings-menu__popover">
-									<div className="components-dropdown-menu__menu esnext-example">	
+									<div className="components-dropdown-menu__menu esnext-example">
 								{
 									padding.usePreset &&
 									<MenuGroup>
 									{
 									[
-										{ 
-											label: __( 'None', 'esnext-example' ), icon: icons.paddingNone, value: 'p-0' 
+										{
+											label: __( 'None', 'esnext-example' ), icon: icons.paddingNone, value: 'p-0'
 										},
-										{ 
-											label: __( 'Small', 'esnext-example' ), icon: icons.paddingSmall, value: 'p-2' 
+										{
+											label: __( 'Small', 'esnext-example' ), icon: icons.paddingSmall, value: 'p-2'
 										},
-										{ 
-											label: __( 'Medium', 'esnext-example' ), icon: icons.paddingMedium, value: 'p-4' 
+										{
+											label: __( 'Medium', 'esnext-example' ), icon: icons.paddingMedium, value: 'p-4'
 										},
-										{ 
-											label: __( 'Large', 'esnext-example' ), icon: icons.paddingLarge, value: 'p-8' 
+										{
+											label: __( 'Large', 'esnext-example' ), icon: icons.paddingLarge, value: 'p-8'
 										},
-										{ 
-											label: __( 'X-Large', 'esnext-example' ), icon: icons.paddingXLarge, value: 'p-16' 
+										{
+											label: __( 'X-Large', 'esnext-example' ), icon: icons.paddingXLarge, value: 'p-16'
 										},
 									].map( ( item ) => {
 										return(
 											<MenuItem
 												icon={ item.icon }
 												className={ padding.preset === item.value ? 'is-active components-dropdown-menu__menu-item' : 'components-dropdown-menu__menu-item' }
-												key={ item.label } 
-												onClick={ () => setAttributes( { 
+												key={ item.label }
+												onClick={ () => setAttributes( {
 													padding: {
 														...padding,
 														preset: item.value,
-													} } 
+													} }
 												) }
 											>
 												{ item.label }
@@ -103,23 +103,23 @@ const SpacingControls = ( props ) => {
 								{
 									! padding.usePreset && ! padding.sync &&
 									[
-										{ label: __( 'Top Left' ), value: "topLeft" },
-										{ label: __( 'Top Right' ), value: "topRight" },
-										{ label: __( 'Bottom Right' ), value: "bottomRight" },
-										{ label: __( 'Bottom Left' ), value: "bottomLeft" },							
+										{ label: __( 'Top' ), value: "top" },
+										{ label: __( 'Right' ), value: "right" },
+										{ label: __( 'Bottom' ), value: "bottom" },
+										{ label: __( 'Left' ), value: "left" },
 									].map( ( side ) => {
 										return(
 											<RangeControl
 												key={ side.value }
 												label={ side.label }
 												value={ padding[ side.value ] }
-													beforeIcon={ syncButton( 'padding', padding, 'unlock' ) 
+													beforeIcon={ syncButton( 'padding', padding, 'unlock' )
 												}
 												onChange={
 													( value ) => {
-														setAttributes( { 
-															padding: 
-														{ 
+														setAttributes( {
+															padding:
+														{
 															...padding,
 															[ side.value ]: value
 														}
@@ -142,9 +142,9 @@ const SpacingControls = ( props ) => {
 										beforeIcon={ syncButton( 'padding', padding, 'lock' ) }
 										onChange={
 											( value ) => {
-												setAttributes( { 
-													padding: 
-												{ 
+												setAttributes( {
+													padding:
+												{
 													...padding,
 													"top": value,
 													"bottom": value,
@@ -159,14 +159,14 @@ const SpacingControls = ( props ) => {
 										max={ 200 }
 										step={ 1 }
 									/>
-								}		
-								<MenuGroup>				
+								}
+								<MenuGroup>
 								<div className={ slug }	>
 									<ToggleControl
 										className="px-3 pt-3"
 										label={ __( 'Custom', 'esnext-example' ) }
 										checked={ ! padding.usePreset }
-										onChange={ ( ) => setAttributes( { 
+										onChange={ ( ) => setAttributes( {
 											padding: {
 												...padding,
 												usePreset : ! padding.usePreset
@@ -174,16 +174,16 @@ const SpacingControls = ( props ) => {
 										) }
 									/>
 								</div>
-								</MenuGroup>	
+								</MenuGroup>
 							</div>
 								</div>
-							) } 
+							) }
 						}
 					/>
 				}
 				{
 					margin.toolbar &&
-					<Dropdown			
+					<Dropdown
 						renderToggle={ ( { isOpen, onToggle } ) => {
 							return(
 								<Button
@@ -194,43 +194,43 @@ const SpacingControls = ( props ) => {
 									aria-expanded={ isOpen }
 									showTooltip
 								/>
-							)							
+							)
 						} }
 						renderContent={ () => {
 							return(
 								<div className="block-editor-block-settings-menu__popover">
-									<div className="components-dropdown-menu__menu esnext-example">	
+									<div className="components-dropdown-menu__menu esnext-example">
 								{
 									margin.usePreset &&
 									<MenuGroup>
 									{
 									[
-										{ 
-											label: __( 'None', 'esnext-example' ), icon: icons.marginNone, value: 'm-0' 
+										{
+											label: __( 'None', 'esnext-example' ), icon: icons.marginNone, value: 'm-0'
 										},
-										{ 
-											label: __( 'Small', 'esnext-example' ), icon: icons.marginSmall, value: 'm-2' 
+										{
+											label: __( 'Small', 'esnext-example' ), icon: icons.marginSmall, value: 'm-2'
 										},
-										{ 
-											label: __( 'Medium', 'esnext-example' ), icon: icons.marginMedium, value: 'm-4' 
+										{
+											label: __( 'Medium', 'esnext-example' ), icon: icons.marginMedium, value: 'm-4'
 										},
-										{ 
-											label: __( 'Large', 'esnext-example' ), icon: icons.marginLarge, value: 'm-8' 
+										{
+											label: __( 'Large', 'esnext-example' ), icon: icons.marginLarge, value: 'm-8'
 										},
-										{ 
-											label: __( 'X-Large', 'esnext-example' ), icon: icons.marginXLarge, value: 'm-16' 
+										{
+											label: __( 'X-Large', 'esnext-example' ), icon: icons.marginXLarge, value: 'm-16'
 										},
 									].map( ( item ) => {
 										return(
 											<MenuItem
 												icon={ item.icon }
 												className={ margin.preset === item.value ? 'is-active components-dropdown-menu__menu-item' : 'components-dropdown-menu__menu-item' }
-												key={ item.label } 
-												onClick={ () => setAttributes( { 
+												key={ item.label }
+												onClick={ () => setAttributes( {
 													margin: {
 														...margin,
 														preset: item.value,
-													} } 
+													} }
 												) }
 											>
 												{ item.label }
@@ -246,20 +246,20 @@ const SpacingControls = ( props ) => {
 										{ label: __( 'Top' ), value: "top" },
 										{ label: __( 'Right' ), value: "right" },
 										{ label: __( 'Bottom' ), value: "bottom" },
-										{ label: __( 'Left' ), value: "left" },							
+										{ label: __( 'Left' ), value: "left" },
 									].map( ( side ) => {
 										return(
 											<RangeControl
 												key={ side.value }
 												label={ side.label }
 												value={ margin[ side.value ] }
-													beforeIcon={ syncButton( 'margin', margin, 'unlock' ) 
+													beforeIcon={ syncButton( 'margin', margin, 'unlock' )
 												}
 												onChange={
 													( value ) => {
-														setAttributes( { 
-															margin: 
-														{ 
+														setAttributes( {
+															margin:
+														{
 															...margin,
 															[ side.value ]: value
 														}
@@ -282,9 +282,9 @@ const SpacingControls = ( props ) => {
 										beforeIcon={ syncButton( 'margin', margin, 'lock' ) }
 										onChange={
 											( value ) => {
-												setAttributes( { 
-													margin: 
-												{ 
+												setAttributes( {
+													margin:
+												{
 													...margin,
 													"top": value,
 													"bottom": value,
@@ -299,14 +299,14 @@ const SpacingControls = ( props ) => {
 										max={ 200 }
 										step={ 1 }
 									/>
-								}		
-								<MenuGroup>				
+								}
+								<MenuGroup>
 								<div className={ slug }	>
 									<ToggleControl
 										className="px-3 pt-3"
 										label={ __( 'Custom', 'esnext-example' ) }
 										checked={ ! margin.usePreset }
-										onChange={ ( ) => setAttributes( { 
+										onChange={ ( ) => setAttributes( {
 											margin: {
 												...margin,
 												usePreset : ! margin.usePreset
@@ -314,10 +314,10 @@ const SpacingControls = ( props ) => {
 										) }
 									/>
 								</div>
-								</MenuGroup>	
+								</MenuGroup>
 							</div>
 								</div>
-							) } 
+							) }
 						}
 					/>
 				}
@@ -340,7 +340,7 @@ const SpacingControls = ( props ) => {
 							className="float-right mb-3"
 							isTertiary
 							isSmall
-							onClick={ () => setAttributes( { 
+							onClick={ () => setAttributes( {
 								padding: {
 									...padding,
 									usePreset: ! padding.usePreset,
@@ -362,13 +362,13 @@ const SpacingControls = ( props ) => {
 										key={ side.value }
 										label={ side.label }
 										value={ padding[ side.value ] }
-											beforeIcon={ syncButton( 'padding', padding, 'unlock' ) 
+											beforeIcon={ syncButton( 'padding', padding, 'unlock' )
 										}
 										onChange={
 											( value ) => {
-												setAttributes( { 
-													padding: 
-												{ 
+												setAttributes( {
+													padding:
+												{
 													...padding,
 													[ side.value ]: value,
 												}
@@ -390,9 +390,9 @@ const SpacingControls = ( props ) => {
 								beforeIcon={ syncButton( 'padding', padding, 'lock' ) }
 								onChange={
 									( value ) => {
-										setAttributes( { 
-											padding: 
-										{ 
+										setAttributes( {
+											padding:
+										{
 											...padding,
 											"top": value,
 											"bottom": value,
@@ -410,7 +410,7 @@ const SpacingControls = ( props ) => {
 						}
 						{
 							padding.usePreset &&
-							<div className="flex justify-between">							
+							<div className="flex justify-between">
 									<ButtonGroup
 										id="padding"
 									>
@@ -427,7 +427,7 @@ const SpacingControls = ( props ) => {
 													key={ item.label }
 													isPrimary={ padding.preset === item.value }
 													isSecondary={ padding.preset !== item.value }
-													onClick={ ( ) => setAttributes( { 
+													onClick={ ( ) => setAttributes( {
 														padding: {
 															...padding,
 															preset: item.value
@@ -453,7 +453,7 @@ const SpacingControls = ( props ) => {
 							className="float-right mb-3"
 							isTertiary
 							isSmall
-							onClick={ () => setAttributes( { 
+							onClick={ () => setAttributes( {
 								margin: {
 									...margin,
 									usePreset: ! margin.usePreset,
@@ -475,13 +475,13 @@ const SpacingControls = ( props ) => {
 										key={ side.value }
 										label={ side.label }
 										value={ margin[ side.value ] }
-											beforeIcon={ syncButton( 'margin', margin, 'unlock' ) 
+											beforeIcon={ syncButton( 'margin', margin, 'unlock' )
 										}
 										onChange={
 											( value ) => {
-												setAttributes( { 
-													margin: 
-												{ 
+												setAttributes( {
+													margin:
+												{
 													...margin,
 													[ side.value ]: value,
 												}
@@ -503,9 +503,9 @@ const SpacingControls = ( props ) => {
 								beforeIcon={ syncButton( 'margin', margin, 'lock' ) }
 								onChange={
 									( value ) => {
-										setAttributes( { 
-											margin: 
-										{ 
+										setAttributes( {
+											margin:
+										{
 											...margin,
 											"top": value,
 											"bottom": value,
@@ -523,7 +523,7 @@ const SpacingControls = ( props ) => {
 						}
 						{
 							margin.usePreset &&
-							<div className="flex justify-between">							
+							<div className="flex justify-between">
 									<ButtonGroup
 										id="margin"
 									>
@@ -540,7 +540,7 @@ const SpacingControls = ( props ) => {
 													key={ item.label }
 													isPrimary={ margin.preset === item.value }
 													isSecondary={ margin.preset !== item.value }
-													onClick={ ( ) => setAttributes( { 
+													onClick={ ( ) => setAttributes( {
 														margin: {
 															...margin,
 															preset: item.value
