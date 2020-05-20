@@ -92,7 +92,7 @@ const TEMPLATE = [
  ],
 ];
 
-export const hexToRGB = ( hex ) => {
+const hexToRGB = ( hex ) => {
  // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
  hex = hex.replace( shorthandRegex, function( m, r, g, b ) {
@@ -107,7 +107,7 @@ export const hexToRGB = ( hex ) => {
  } : null;
 };
 
-export const convertToRGB = ( color ) => {
+const convertToRGB = ( color ) => {
  let rgb = hexToRGB( color );
  rgb = `${ rgb.r }, ${ rgb.g }, ${ rgb.b }`;
  return rgb;
@@ -150,16 +150,16 @@ const rowStyle = {
   <div className={ className } style={ containerStyle }>
    <div className={ rowClasses } style={ rowStyle }>
     <div className={ backgroundClasses } style={ backgroundStyle }></div>  
-    <BackgroundControls
-     className={ className }
-     attributes={ attributes }
-     setAttributes={ setAttributes }
-    />
-    <InnerBlocks
-     allowedBlocks={ [ 'core/paragraph', 'core/heading' ] }
-     template={ TEMPLATE }
-     templateLock={ true }
-    />
+     <BackgroundControls
+      className={ className }
+      attributes={ attributes }
+      setAttributes={ setAttributes }
+     />
+     <InnerBlocks
+      allowedBlocks={ [ 'core/paragraph', 'core/heading' ] }
+      template={ TEMPLATE }
+      templateLock={ true }
+     />
    </div>
   </div>
  );
