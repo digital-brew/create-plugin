@@ -59,7 +59,7 @@
 		"@blockhandbook/controls": "^0.1.76",
 		"@blockhandbook/data": "^0.1.36",
 		"@blockhandbook/tailwindcss": "^0.2.5",
-		"@blockhandbook/tailwindcss-controls": "^0.1.8",
+		"@blockhandbook/tailwindcss-controls": "^0.1.9",
 		"@wordpress/env": "^1.3.0",
 		"@wordpress/scripts": "^9.1.0",
 		"bestzip": "^2.1.5",

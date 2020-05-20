@@ -69,7 +69,7 @@ const BoxShadowControls = ( props ) => {
 				<ToolbarGroup>
 				{
 					boxShadow.toolbar &&
-					<Dropdown					
+					<Dropdown
 						renderToggle={ ( { isOpen, onToggle } ) => (
 							<Button
 								icon={ icons.boxShadow }
@@ -83,34 +83,34 @@ const BoxShadowControls = ( props ) => {
 						renderContent={ () => {
 							return(
 								<div className="block-editor-block-settings-menu__popover">
-									<div className="components-dropdown-menu__menu esnext-example">	
+									<div className="components-dropdown-menu__menu esnext-example">
 								{
 									boxShadow.usePreset &&
 									<MenuGroup>
 										{
 											[
-												{ 
+												{
 													label: __( 'None', 'esnext-example' ), icon: icons.boxShadowNone, value: 'shadow-none'
 												},
-												{ 
+												{
 													label: __( 'Small', 'esnext-example' ), icon: icons.boxShadowSmall, value: 'shadow'
 												},
 												{
-													label: __( 'Medium', 'esnext-example' ), icon: icons.boxShadowMedium, value: 'shadow-md' 
+													label: __( 'Medium', 'esnext-example' ), icon: icons.boxShadowMedium, value: 'shadow-md'
 												},
-												{ 
-													label: __( 'Large', 'esnext-example' ), icon: icons.boxShadowLarge, value: 'shadow-lg' 
+												{
+													label: __( 'Large', 'esnext-example' ), icon: icons.boxShadowLarge, value: 'shadow-lg'
 												},
-												{ 
-													label: __( 'X-Large', 'esnext-example' ), icon: icons.boxShadowXLarge, value: 'shadow-xl' 
+												{
+													label: __( 'X-Large', 'esnext-example' ), icon: icons.boxShadowXLarge, value: 'shadow-xl'
 												},
 											].map( ( item ) => {
 												return(
 													<MenuItem
 														icon={ item.icon }
 														className={ boxShadow.preset === item.value ? 'is-active components-dropdown-menu__menu-item' : 'components-dropdown-menu__menu-item' }
-														key={ item.label } 
-														onClick={ () => setAttributes( { 
+														key={ item.label }
+														onClick={ () => setAttributes( {
 															boxShadow: {
 																...boxShadow,
 																preset: item.value,
@@ -131,8 +131,8 @@ const BoxShadowControls = ( props ) => {
 										<div className="px-6 pb-0 pt-3">
 										{
 											Object.keys( boxShadow ).map( ( key ) => {
-												if( 
-													key === 'x' || key === 'y' || key === 'blur' || key === 'spread' || key === 'opacity' 
+												if(
+													key === 'x' || key === 'y' || key === 'blur' || key === 'spread' || key === 'opacity'
 												) {
 													return(
 													<RangeControl
@@ -143,11 +143,11 @@ const BoxShadowControls = ( props ) => {
 														showTooltip={ false }
 														onChange={
 															( value ) => {
-																setAttributes( { 
-																	customBoxShadow: {
+																setAttributes( {
+																	boxShadow: {
 																		...boxShadow,
 																		[ key ]: value
-																	} 
+																	}
 																} );
 															}
 														}
@@ -161,26 +161,26 @@ const BoxShadowControls = ( props ) => {
 										}
 										</div>
 									</div>
-									</MenuGroup>				
-								}		
-								<MenuGroup>				
+									</MenuGroup>
+								}
+								<MenuGroup>
 								<div className={ slug }	>
 									<ToggleControl
 										className="px-3 pt-3"
 										label={ __( 'Custom', 'esnext-example' ) }
 										checked={ ! boxShadow.usePreset }
-										onChange={ ( ) => setAttributes( { 
+										onChange={ ( ) => setAttributes( {
 											boxShadow: {
 												...boxShadow,
 												usePreset: ! boxShadow.usePreset
-											} } 
+											} }
 										) }
 									/>
 								</div>
-								</MenuGroup>	
+								</MenuGroup>
 							</div>
 								</div>
-							) } 
+							) }
 						}
 					/>
 				}
@@ -198,15 +198,15 @@ const BoxShadowControls = ( props ) => {
 						className={ slug }
 						label={ __( 'Shadow Size', 'esnext-example' ) }
 					>
-					<Button 
+					<Button
 						className="float-right mb-3"
 						isTertiary
 						isSmall
-						onClick={ () => setAttributes( { 
+						onClick={ () => setAttributes( {
 							boxShadow: {
 								...boxShadow,
 								usePreset: ! boxShadow.usePreset,
-							} } 
+							} }
 						) }
 						>
 						{ ! boxShadow.usePreset ? __( 'Defaults', 'esnext-example' ) : __( 'Custom', 'esnext-example' ) }
@@ -214,8 +214,8 @@ const BoxShadowControls = ( props ) => {
 					{
 						! boxShadow.usePreset &&
 						Object.keys( boxShadow ).map( ( key ) => {
-							if( 
-								key === 'x' || key === 'y' || key === 'blur' || key === 'spread' || key === 'opacity' 
+							if(
+								key === 'x' || key === 'y' || key === 'blur' || key === 'spread' || key === 'opacity'
 							) {
 								return(
 								<RangeControl
@@ -225,10 +225,10 @@ const BoxShadowControls = ( props ) => {
 									value={ boxShadow[ key ] }
 									onChange={
 										( value ) => {
-											setAttributes( { 
-												boxShadow: { 
-													...boxShadow, 
-													[ key ]: value 
+											setAttributes( {
+												boxShadow: {
+													...boxShadow,
+													[ key ]: value
 												} } );
 										}
 									}
@@ -239,9 +239,9 @@ const BoxShadowControls = ( props ) => {
 									allowReset
 								/>
 							) }
-						} )						
+						} )
 					}
-					{ 
+					{
 						boxShadow.usePreset &&
 						<div className="flex justify-between">
 							<ButtonGroup
@@ -260,7 +260,7 @@ const BoxShadowControls = ( props ) => {
 												key={ item.label }
 												isPrimary={ boxShadow.preset === item.value }
 												isSecondary={ boxShadow.preset !== item.value }
-												onClick={ ( ) => setAttributes( { 
+												onClick={ ( ) => setAttributes( {
 													boxShadow: {
 														...boxShadow,
 														preset: item.value,
@@ -270,9 +270,9 @@ const BoxShadowControls = ( props ) => {
 										);
 									} )
 								}
-								</ButtonGroup>							
+								</ButtonGroup>
 							</div>
-						}						
+						}
 					</BaseControl>
 					<BaseControl
 						id="shadow-color"
@@ -283,18 +283,18 @@ const BoxShadowControls = ( props ) => {
 							value={ boxShadow.color }
 							onChange={ ( color ) => {
 								if ( color === undefined ) {
-									setAttributes( { 
+									setAttributes( {
 										boxShadow: {
 											...boxShadow,
 											color: convertToRGB( '#000000' ),
-										} 
+										}
 									} );
 								} else {
-									setAttributes( { 
+									setAttributes( {
 										boxShadow: {
 											...boxShadow,
 											color: convertToRGB( color ),
-										} 
+										}
 									} );
 								}
 							}	}
