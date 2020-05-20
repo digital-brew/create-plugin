@@ -3,7 +3,7 @@
  */
 import { BackgroundControls, BorderControls, BoxShadowControls, PaddingControls, MarginControls, SpacingControls } from '../../../../packages/tailwindcss-controls/src';
 // import { tailwindcssControls } from '@blockhandbook/tailwindcss-controls';
-// const { BorderControls, BoxShadowControls, SpacingControls } = tailwindcssControls;
+// const { BackgroundControls, BorderControls, BoxShadowControls, SpacingControls } = tailwindcssControls;
 
 /**
  * WordPress Dependencies

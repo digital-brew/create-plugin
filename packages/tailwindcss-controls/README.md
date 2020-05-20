@@ -50,3 +50,8 @@ Toolbar & InspectorControls for adding padding settings to blocks:
 Toolbar & InspectorControls for adding spacing settings to blocks:
 ![SpacingControls in the WordPress block editor sidebar & toolbar](https://blockhandbook.com/wp-content/uploads/2020/05/SpacingControls-screenshot.png)
 [See Documentation](https://github.com/blockhandbook/create-plugin/tree/master/packages/tailwindcss-controls/src/spacing-controls)
+
+### BackgroundControls
+
+![BackgroundControls in the WordPress block editor sidebar & toolbar](https://blockhandbook.com/wp-content/uploads/2020/05/BackgroundControls-Screenshot.png)
+[See Documentation](https://github.com/blockhandbook/create-plugin/tree/master/packages/tailwindcss-controls/src/background-controls)

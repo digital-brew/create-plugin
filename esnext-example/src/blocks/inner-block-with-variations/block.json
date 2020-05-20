@@ -112,10 +112,10 @@
 				"toolbar": true,
 				"sidebar": true,
 				"color": "0,0,0"
-			},
-			"variationName": {
-				"type": "string"
-			}
+			}			
+		},
+		"variationName": {
+			"type": "string"
 		}
 	}
 }

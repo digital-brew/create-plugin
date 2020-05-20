@@ -6,7 +6,7 @@
  * WordPress Dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { BaseControl, Button, ButtonGroup, FocalPointPicker, PanelBody, PanelRow, Panel, RangeControl, ToggleControl, ToolbarGroup, SelectControl } from '@wordpress/components';
+import { BaseControl, Button, ButtonGroup, FocalPointPicker, PanelBody, PanelRow, RangeControl, ToggleControl, ToolbarGroup, SelectControl } from '@wordpress/components';
 import { BlockControls, ColorPalette, InspectorControls, MediaUpload } from '@wordpress/block-editor';
 import { useCallback, useState } from '@wordpress/element';
 
@@ -90,7 +90,7 @@ const BackgroundControls = ( props ) => {
 			<InspectorControls>
 			<PanelBody
 					title={ __( 'Background settings', 'esnext-example' ) }
-					initialOpen={ false }
+					initialOpen={ initialOpen }
 				>
 					{
 						! backgroundImage.url && backgroundImage.sidebar &&

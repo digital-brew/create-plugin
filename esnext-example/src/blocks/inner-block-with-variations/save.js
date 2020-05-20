@@ -35,7 +35,7 @@ const Save = ( props ) => {
 	console.log( attributes )
 
 	const backgroundClasses = classnames( 
-		`absolute w-full left-0 right-0 top-0 bottom-0 ${ backgroundImage.repeat } ${ backgroundImage.attachment } ${ backgroundImage.backgroundSize } ${ backgroundImage.position } ${ backgroundImage.opacity }`,
+		`absolute w-full left-0 right-0 top-0 bottom-0 z-0 ${ backgroundImage.repeat } ${ backgroundImage.attachment } ${ backgroundImage.backgroundSize } ${ backgroundImage.position } ${ backgroundImage.opacity }`,
 	);
 
 	const rowClasses = classnames(
@@ -84,7 +84,9 @@ const Save = ( props ) => {
 		<div style={ containerStyle }>
 			<div className={ rowClasses } style={ rowStyle }>
 				<div className={ backgroundClasses } style={ backgroundStyle }></div>
-				<InnerBlocks.Content />
+				<div className="z-10 relative">
+					<InnerBlocks.Content />
+				</div>
 			</div>
 		</div>		
 	);

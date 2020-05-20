@@ -46,7 +46,7 @@ const Edit = ( props ) => {
 	} );
 
 	const backgroundClasses = classnames( 
-		`absolute w-full left-0 right-0 top-0 bottom-0 ${ backgroundImage.repeat } ${ backgroundImage.attachment } ${ backgroundImage.backgroundSize } ${ backgroundImage.position } ${ backgroundImage.opacity }`,
+		`absolute w-full left-0 right-0 top-0 bottom-0 z-0 ${ backgroundImage.repeat } ${ backgroundImage.attachment } ${ backgroundImage.backgroundSize } ${ backgroundImage.position } ${ backgroundImage.opacity }`,
 	);
 
 	const rowClasses = classnames(
