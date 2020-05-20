@@ -10,7 +10,7 @@ import { render } from '@wordpress/element';
 import { registerPlugin, unregisterPlugin } from '@wordpress/plugins';
 import { dispatch, select, registerStore } from '@wordpress/data';
 import { addFilter, removeFilter } from '@wordpress/hooks';
-// Needed this for breaking Gutenberg changes.  Commenting out incase we 
+// Needed this for breaking Gutenberg changes.  Commenting out incase we
 // need it in the future
 // const { replaceBlock, insertBlock, removeBlock, updateBlock, updateBlockAttributes } = dispatch( 'core/block-editor' );
 // const { getBlock } = select( 'core/block-editor' );
@@ -145,12 +145,12 @@ export const hotBlockLoader = ( { getContext, module: blockModule } ) => {
 				// 	}
 				// } );
 				// end added
-				
+
 				unregisterBlockType( prevModule.name );
 			}
 
 			registerBlockType( module.name, module.settings );
-			
+
 			// added to fix breaking changes to gutenberg 7.6
 			// keeping just in case we need this again in the future
 			// blocks.forEach( ( block, index ) => {
@@ -158,7 +158,7 @@ export const hotBlockLoader = ( { getContext, module: blockModule } ) => {
 			// 		for( const attribute in module.settings.attributes ) {
 			// 			if( module.settings.attributes[ attribute ] ) {
 			// 				module.settings.attributes[ attribute ].default = prevAttributes[ index ][ attribute ];
-			// 			}								
+			// 			}
 			// 		}
 			// 		const insertedBlock = createBlock( module.name, module.settings );
 			// 		insertBlock( insertedBlock, block.index );
@@ -298,7 +298,7 @@ export const hotFrontendLoader = ( { getContext, module: frontendModule } ) => {
 		if ( ! context ) {
 			return;
 		}
-		
+
 		for ( const filePath of context.keys() ) {
 			const module = context( filePath );
 			const name = module.name;
@@ -310,7 +310,7 @@ export const hotFrontendLoader = ( { getContext, module: frontendModule } ) => {
 			}
 
 			blockContainers.forEach( ( blockContainer, index ) => {
-				render( 
+				render(
 					blocks[ index ],
 					blockContainer
 				);
@@ -436,7 +436,7 @@ export const registerFrontend = ( { getContext } ) => {
 		const blockContainers = module.blockContainers;
 
 		blockContainers.forEach( ( blockContainer, index ) => {
-			render( 
+			render(
 				blocks[ index ],
 				blockContainer
 			);
@@ -456,7 +456,7 @@ export const registerVariations = ( { getContext } ) => {
 
 		variations.forEach( ( variation ) => {
 			// addFilter( 'hookName', 'namespace', 'functionName', 'callback', 'priority' )
-			const { name } = filter;
+			const { name } = variation;
 			registerBlockVariation( name, variation );
 		} );
 	}
