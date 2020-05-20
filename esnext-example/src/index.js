@@ -10,7 +10,7 @@ import {
 	registerFilters,
 	hotStoreLoader,
 	registerStores,
-} from '@blockhandbook/block-hot-loader';
+} from '../../packages/block-hot-loader';
 
 /**
  * WordPress Dependencies

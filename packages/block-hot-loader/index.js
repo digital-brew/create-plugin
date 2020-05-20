@@ -395,7 +395,7 @@ export const registerStores = ( { getContext } ) => {
 
 // Register filters function for non-HMR use
 export const registerFilters = ( { getContext } ) => {
-	const context = { getContext };
+	const context = getContext();
 
 	for ( const filePath of context.keys() ) {
 		const module = context( filePath );
@@ -448,7 +448,7 @@ export const registerFrontend = ( { getContext } ) => {
 
 // Autoload variations for non-HMR use
 export const registerVariations = ( { getContext } ) => {
-	const context = { getContext };
+	const context = getContext();
 
 	for ( const filePath of context.keys() ) {
 		const module = context( filePath );
@@ -457,6 +457,7 @@ export const registerVariations = ( { getContext } ) => {
 		variations.forEach( ( variation ) => {
 			// addFilter( 'hookName', 'namespace', 'functionName', 'callback', 'priority' )
 			const { name } = variation;
+			console.log( name, variation )
 			registerBlockVariation( name, variation );
 		} );
 	}
