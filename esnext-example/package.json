@@ -26,7 +26,7 @@
 	"scripts": {
 		"setup": "composer install && npm run generate-autoloader && npm install && npm run build && npm run server:start && npm run permalinks",
 		"start": "npm run browser-sync & npm run tailwind:watch",
-		"build": "wp-scripts build --config ./webpack.prod.js && npm run tailwind:build && cd ./build && rm *.map",
+		"build": "wp-scripts build --config ./webpack.prod.js && npm run tailwind:build",
 		"clean": "npx wp-env clean && npm run server:stop && rm -rf node_modules wordpress vendor",
 		"config:update": "replace-in-file --configFile=./replace.config.js --regEx --verbose",
 		"server:start": "npx wp-env start && npm run permalinks && npm run install:gutenberg",
@@ -55,7 +55,7 @@
 		"zip": "bestzip ./$npm_package_config_slug.zip ./src ./class-plugin.php ./readme.txt ./LICENSE [ ./build ./languages ./includes ./vendor ]"
 	},
 	"devDependencies": {
-		"@blockhandbook/block-hot-loader": "^1.2.19",
+		"@blockhandbook/block-hot-loader": "^1.2.20",
 		"@blockhandbook/controls": "^0.1.76",
 		"@blockhandbook/data": "^0.1.36",
 		"@blockhandbook/tailwindcss": "^0.2.5",
