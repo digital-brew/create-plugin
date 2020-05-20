@@ -457,7 +457,6 @@ export const registerVariations = ( { getContext } ) => {
 		variations.forEach( ( variation ) => {
 			// addFilter( 'hookName', 'namespace', 'functionName', 'callback', 'priority' )
 			const { name } = variation;
-			console.log( name, variation )
 			registerBlockVariation( name, variation );
 		} );
 	}

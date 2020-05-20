@@ -4,7 +4,7 @@
 import {
 	hotVariationLoader,
 	registerVariations,
-} from '../../packages/block-hot-loader';
+} from '@blockhandbook/block-hot-loader';
 
 /**
  * WordPress Dependencies

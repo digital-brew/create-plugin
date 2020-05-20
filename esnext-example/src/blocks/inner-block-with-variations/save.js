@@ -32,9 +32,7 @@ const Save = ( props ) => {
 		},
 	} = props;
 
-	console.log( attributes )
-
-	const backgroundClasses = classnames( 
+	const backgroundClasses = classnames(
 		`absolute w-full left-0 right-0 top-0 bottom-0 z-0 ${ backgroundImage.repeat } ${ backgroundImage.attachment } ${ backgroundImage.backgroundSize } ${ backgroundImage.position } ${ backgroundImage.opacity }`,
 	);
 
@@ -55,26 +53,26 @@ const Save = ( props ) => {
 
 	const rowStyle = {
 		borderColor: borderColor.color,
-		margin: 
+		margin:
 			! margin.usePreset ? `${ margin.top }px ${ margin.right }px ${ margin.bottom }px ${ margin.left }px` : null,
-		padding: 
+		padding:
 			! padding.usePreset ? `${ padding.top }px ${ padding.right }px ${ padding.bottom }px ${ padding.left }px` : null,
-		borderRadius: 
+		borderRadius:
 			! borderRadius.usePreset ? `${ borderRadius.topLeft }px ${ borderRadius.topRight }px ${ borderRadius.bottomRight }px ${ borderRadius.bottomLeft }px` : null,
-		borderWidth: 
+		borderWidth:
 			! borderWidth.usePreset ? `${ borderWidth.top }px ${ borderWidth.right }px ${ borderWidth.bottom }px ${ borderWidth.left }px` : null,
-		boxShadow: 
-			! boxShadow.usePreset ? `${ boxShadow.x }px ${ boxShadow.y }px ${ boxShadow.blur }px ${ boxShadow.spread }px rgba( ${ boxShadow.color }, ${ boxShadow.opacity / 100 } )` : null,	
-		backgroundColor: 
-		`rgba( ${ convertToRGB( backgroundColor.color ) }, ${ parseInt( backgroundColor.opacity.replace( 'opacity-', '' ) ) / 100 } )`,	
+		boxShadow:
+			! boxShadow.usePreset ? `${ boxShadow.x }px ${ boxShadow.y }px ${ boxShadow.blur }px ${ boxShadow.spread }px rgba( ${ boxShadow.color }, ${ boxShadow.opacity / 100 } )` : null,
+		backgroundColor:
+		`rgba( ${ convertToRGB( backgroundColor.color ) }, ${ parseInt( backgroundColor.opacity.replace( 'opacity-', '' ) ) / 100 } )`,
 	};
 
 	const backgroundStyle = {
-		backgroundSize: 
+		backgroundSize:
 			backgroundImage.customSize ? `${ backgroundImage.size }px` : null,
-		backgroundPosition: 
+		backgroundPosition:
 			backgroundImage.customSize ? `${ backgroundImage.focalPoint.x * 100 }% ${ backgroundImage.focalPoint.y * 100 }%` : null,
-		backgroundImage: 
+		backgroundImage:
 			`url( ${ backgroundImage.url } )`,
 	}
 
@@ -88,7 +86,7 @@ const Save = ( props ) => {
 					<InnerBlocks.Content />
 				</div>
 			</div>
-		</div>		
+		</div>
 	);
 }
 

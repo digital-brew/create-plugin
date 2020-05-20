@@ -1,9 +1,9 @@
 /**
  * External Dependencies
  */
-import { BackgroundControls, BorderControls, BoxShadowControls, PaddingControls, MarginControls, SpacingControls } from '../../../../packages/tailwindcss-controls/src';
-// import { tailwindcssControls } from '@blockhandbook/tailwindcss-controls';
-// const { BackgroundControls, BorderControls, BoxShadowControls, SpacingControls } = tailwindcssControls;
+// import { BackgroundControls, BorderControls, BoxShadowControls, PaddingControls, MarginControls, SpacingControls } from '../../../../packages/tailwindcss-controls/src';
+import { tailwindcssControls } from '@blockhandbook/tailwindcss-controls';
+const { BackgroundControls, BorderControls, BoxShadowControls, SpacingControls } = tailwindcssControls;
 
 /**
  * WordPress Dependencies
