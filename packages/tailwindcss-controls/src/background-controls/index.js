@@ -16,7 +16,7 @@ import { useCallback, useState } from '@wordpress/element';
 import icons from './icons';
 
 /**
- * 
+ *
  * Module Constants
  */
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
@@ -120,7 +120,7 @@ const BackgroundControls = ( props ) => {
 								checked={ backgroundImage.customSize }
 								onChange={ ( ) => {
 									toggleBackgroundSettings( 'repeat' );
-									setAttributes( { 
+									setAttributes( {
 									backgroundImage : {
 										...backgroundImage,
 										customSize: ! backgroundImage.customSize
@@ -128,7 +128,7 @@ const BackgroundControls = ( props ) => {
 								} ) } }
 							/>
 							{
-								backgroundImage.customSize && 
+								backgroundImage.customSize &&
 								<>
 									<FocalPointPicker
 										url={ backgroundImage.url }
@@ -145,7 +145,7 @@ const BackgroundControls = ( props ) => {
 										value={ backgroundImage.size }
 										onChange={
 											( size ) => {
-												setAttributes( { 
+												setAttributes( {
 													backgroundImage: {
 														...backgroundImage,
 														size,
@@ -195,7 +195,7 @@ const BackgroundControls = ( props ) => {
 											className="ml-auto"
 											isSecondary
 											isSmall
-											onClick={ () => setAttributes( { 
+											onClick={ () => setAttributes( {
 												backgroundImage: {
 													...backgroundImage,
 													url: '',
@@ -236,7 +236,7 @@ const BackgroundControls = ( props ) => {
 								</ButtonGroup>
 							</BaseControl>
 							{
-								! backgroundImage.customSize && backgroundSettings === 
+								! backgroundImage.customSize && backgroundSettings ===
 								'size' &&
 								<SelectControl
 									label={ __( 'Background size', 'esnext-example' ) }
@@ -248,7 +248,7 @@ const BackgroundControls = ( props ) => {
 											{ label: __( 'Auto', 'esnext-example' ), value: 'bg-auto' },
 										]
 									}
-									onChange={ ( size ) => setAttributes( { 
+									onChange={ ( size ) => setAttributes( {
 										backgroundImage: {
 											...backgroundImage,
 											"backgroundSize": size,
@@ -271,14 +271,14 @@ const BackgroundControls = ( props ) => {
 											{ label: __( 'Repeat space', 'esnext-example' ), value: 'bg-repeat-space' },
 										]
 									}
-									onChange={ ( repeat ) => setAttributes( { 
+									onChange={ ( repeat ) => setAttributes( {
 										backgroundImage: {
 											...backgroundImage,
 											"repeat": repeat,
 										} }
 									) }
 								/>
-							}							
+							}
 							{
 								! backgroundImage.customSize && backgroundSettings === 'position' &&
 								<SelectControl
@@ -297,7 +297,7 @@ const BackgroundControls = ( props ) => {
 											{ label: __( 'Top', 'esnext-example' ), value: 'bg-top' },
 										]
 									}
-									onChange={ ( size ) => setAttributes( { 
+									onChange={ ( size ) => setAttributes( {
 										backgroundImage: {
 											...backgroundImage,
 											"position": size,
@@ -314,10 +314,10 @@ const BackgroundControls = ( props ) => {
 										[
 											{ label: __( 'Scroll', 'esnext-example' ), value: 'bg-scroll' },
 											{ label: __( 'Fixed', 'esnext-example' ), value: 'bg-fixed' },
-											{ label: __( 'Local', 'esnext-example' ), value: 'bg-local' },											
+											{ label: __( 'Local', 'esnext-example' ), value: 'bg-local' },
 										]
 									}
-									onChange={ ( attachment ) => setAttributes( { 
+									onChange={ ( attachment ) => setAttributes( {
 										backgroundImage: {
 											...backgroundImage,
 											"attachment": attachment,
@@ -331,7 +331,7 @@ const BackgroundControls = ( props ) => {
 								onChange={
 									( value ) => {
 										value = opacity[ value ];
-										setAttributes( { 
+										setAttributes( {
 											backgroundImage: {
 												...backgroundImage,
 												opacity: value,
@@ -355,7 +355,7 @@ const BackgroundControls = ( props ) => {
 							id="img-background-color"
 							value={ backgroundColor }
 							clearable={ false }
-							onChange={ ( color ) => setAttributes( { 
+							onChange={ ( color ) => setAttributes( {
 								backgroundColor: {
 									...backgroundColor,
 									color,
@@ -371,7 +371,7 @@ const BackgroundControls = ( props ) => {
 							onChange={
 								( value ) => {
 									value = opacity[ value ];
-									setAttributes( { 
+									setAttributes( {
 										backgroundColor: {
 											...backgroundColor,
 											opacity: value,

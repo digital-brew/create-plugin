@@ -27,6 +27,7 @@ const config = {
 		enabled: nodeEnv === 'production' ? true : false,
 		content: [
 			'./src/**/*.js',
+			'./node_modules/@blockhandbook/**/*.js'
 		],
 	},
 	plugins: [ 
