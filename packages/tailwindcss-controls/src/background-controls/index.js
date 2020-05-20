@@ -6,9 +6,9 @@
  * WordPress Dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { BaseControl, Button, FocalPointPicker, PanelBody, PanelRow, RangeControl, ToggleControl, ToolbarGroup, SelectControl } from '@wordpress/components';
+import { BaseControl, Button, ButtonGroup, FocalPointPicker, PanelBody, PanelRow, Panel, RangeControl, ToggleControl, ToolbarGroup, SelectControl } from '@wordpress/components';
 import { BlockControls, ColorPalette, InspectorControls, MediaUpload } from '@wordpress/block-editor';
-import { useCallback } from '@wordpress/element';
+import { useCallback, useState } from '@wordpress/element';
 
 /**
  * Internal Dependencies
@@ -28,10 +28,11 @@ const BackgroundControls = ( props ) => {
 		initialOpen = false,
 		attributes: {
 			backgroundColor,
-			backgroundOpacity,
 			backgroundImage,
 		},
 	} = props;
+
+	const [ backgroundSettings, toggleBackgroundSettings ] = useState( 'repeat' );
 
 	// this is kinda annoying, in order to be able to purge styles for production
 	// we need to include the classes fully-written.  these were programatically
@@ -77,8 +78,8 @@ const BackgroundControls = ( props ) => {
 						render={ ( { open } ) => (
 							<Button
 								className="components-toolbar__control"
-								label={ __( 'Edit Image', 'esnext-example' ) }
-								icon="format-image"
+								label={ __( 'Background Image', 'esnext-example' ) }
+								icon={ icons.backgroundImage }
 								onClick={ open }
 							/>
 						) }
@@ -117,12 +118,14 @@ const BackgroundControls = ( props ) => {
 							<ToggleControl
 								label={ __( 'Custom image sizing', 'esnext-example' ) }
 								checked={ backgroundImage.customSize }
-								onChange={ ( ) => setAttributes( { 
+								onChange={ ( ) => {
+									toggleBackgroundSettings( 'repeat' );
+									setAttributes( { 
 									backgroundImage : {
 										...backgroundImage,
 										customSize: ! backgroundImage.customSize
 									}
-								} ) }
+								} ) } }
 							/>
 							{
 								backgroundImage.customSize && 
@@ -173,40 +176,68 @@ const BackgroundControls = ( props ) => {
 												) }
 											/>
 									}
-									<MediaUpload
-										onSelect={ onSelectImage }
-										allowedTypes={ ALLOWED_MEDIA_TYPES }
-										value={ backgroundImage.id }
-										render={ ( { open } ) => (
-											<Button
-												isSecondary
-												onClick={ open }
-											>
-												Replace Image
-											</Button>
-										) }
-									/>
 									<PanelRow>
-										<div className="mt-1">
-											<Button
-												isLink
-												isDestructive
-												onClick={ () => setAttributes( { 
-													backgroundImage: {
-														...backgroundImage,
-														url: '',
-														id: '',
-													}
-												} ) }
-											>
-												Remove Image
-											</Button>
-										</div>
+										{/* <MediaUpload
+											onSelect={ onSelectImage }
+											allowedTypes={ ALLOWED_MEDIA_TYPES }
+											value={ backgroundImage.id }
+											render={ ( { open } ) => (
+												<Button
+													isSecondary
+													isSmall
+													onClick={ open }
+												>
+													Replace Image
+												</Button>
+											) }
+										/> */}
+										<Button
+											className="ml-auto"
+											isSecondary
+											isSmall
+											onClick={ () => setAttributes( { 
+												backgroundImage: {
+													...backgroundImage,
+													url: '',
+													id: '',
+												}
+											} ) }
+										>
+											Clear Image
+										</Button>
 									</PanelRow>
 								</div>
 							</BaseControl>
+							<BaseControl
+							>
+								<ButtonGroup
+									id="background-properties"
+								>
+									{
+										[
+											{ label: __( 'Repeat', 'esnext-example' ), value: 'm-0', name: 'repeat' },
+											{ label: __(  'Position', 'esnext-example' ), value: 'm-2', name: 'position' },
+											{ label: __( 'Size', 'esnext-example' ), value: 'm-4', name: 'size' },
+											{ label: __( 'Attachment', 'esnext-example' ), value: 'm-8', name: 'attachment' },
+										].map( ( item ) => {
+											if( ! backgroundImage.customSize || backgroundImage.customSize && item.name === 'repeat' || backgroundImage.customSize && item.name === 'attachment' ) {
+												return (
+												<Button
+													key={ item.label }
+													isPrimary={ backgroundSettings === item.name }
+													isSecondary={ backgroundSettings !== item.name }
+													isSmall
+													onClick={ () => toggleBackgroundSettings( item.name ) }
+												>{ item.label }</Button>
+											);
+											}
+										} )
+									}
+								</ButtonGroup>
+							</BaseControl>
 							{
-								! backgroundImage.customSize &&
+								! backgroundImage.customSize && backgroundSettings === 
+								'size' &&
 								<SelectControl
 									label={ __( 'Background size', 'esnext-example' ) }
 									value={ backgroundImage.backgroundSize }
@@ -225,28 +256,31 @@ const BackgroundControls = ( props ) => {
 									) }
 								/>
 							}
-							<SelectControl
-								label={ __( 'Background repeat', 'esnext-example' ) }
-								value={ backgroundImage.repeat }
-								options={
-									[
-										{ label: __( 'No repeat', 'esnext-example' ), value: 'bg-no-repeat' },
-										{ label: __( 'Repeat', 'esnext-example' ), value: 'bg-repeat' },
-										{ label: __( 'Repeat x', 'esnext-example' ), value: 'bg-repeat-x' },
-										{ label: __( 'Repeat y', 'esnext-example' ), value: 'bg-repeat-y' },
-										{ label: __( 'Repeat round', 'esnext-example' ), value: 'bg-repeat-round' },
-										{ label: __( 'Repeat space', 'esnext-example' ), value: 'bg-repeat-space' },
-									]
-								}
-								onChange={ ( repeat ) => setAttributes( { 
-									backgroundImage: {
-										...backgroundImage,
-										"repeat": repeat,
-									} }
-								) }
-							/>
 							{
-								! backgroundImage.customSize &&
+								backgroundSettings === 'repeat' &&
+								<SelectControl
+									label={ __( 'Background repeat', 'esnext-example' ) }
+									value={ backgroundImage.repeat }
+									options={
+										[
+											{ label: __( 'No repeat', 'esnext-example' ), value: 'bg-no-repeat' },
+											{ label: __( 'Repeat', 'esnext-example' ), value: 'bg-repeat' },
+											{ label: __( 'Repeat x', 'esnext-example' ), value: 'bg-repeat-x' },
+											{ label: __( 'Repeat y', 'esnext-example' ), value: 'bg-repeat-y' },
+											{ label: __( 'Repeat round', 'esnext-example' ), value: 'bg-repeat-round' },
+											{ label: __( 'Repeat space', 'esnext-example' ), value: 'bg-repeat-space' },
+										]
+									}
+									onChange={ ( repeat ) => setAttributes( { 
+										backgroundImage: {
+											...backgroundImage,
+											"repeat": repeat,
+										} }
+									) }
+								/>
+							}							
+							{
+								! backgroundImage.customSize && backgroundSettings === 'position' &&
 								<SelectControl
 									label={ __( 'Background position', 'esnext-example' ) }
 									value={ backgroundImage.position }
@@ -271,23 +305,26 @@ const BackgroundControls = ( props ) => {
 									) }
 								/>
 							}
-							<SelectControl
-								label={ __( 'Background attachment', 'esnext-example' ) }
-								value={ backgroundImage.attachment }
-								options={
-									[
-										{ label: __( 'Fixed', 'esnext-example' ), value: 'bg-fixed' },
-										{ label: __( 'Local', 'esnext-example' ), value: 'bg-local' },
-										{ label: __( 'Scroll', 'esnext-example' ), value: 'bg-scroll' },
-									]
-								}
-								onChange={ ( attachment ) => setAttributes( { 
-									backgroundImage: {
-										...backgroundImage,
-										"attachment": attachment,
-									} }
-								) }
-							/>
+							{
+								backgroundSettings === 'attachment' &&
+								<SelectControl
+									label={ __( 'Background attachment', 'esnext-example' ) }
+									value={ backgroundImage.attachment }
+									options={
+										[
+											{ label: __( 'Scroll', 'esnext-example' ), value: 'bg-scroll' },
+											{ label: __( 'Fixed', 'esnext-example' ), value: 'bg-fixed' },
+											{ label: __( 'Local', 'esnext-example' ), value: 'bg-local' },											
+										]
+									}
+									onChange={ ( attachment ) => setAttributes( { 
+										backgroundImage: {
+											...backgroundImage,
+											"attachment": attachment,
+										} }
+									) }
+								/>
+							}
 							<RangeControl
 								label={ __( 'Background image opacity', 'esnext-example' ) }
 								value={ parseInt( backgroundImage.opacity.replace( 'opacity-', '' ) ) }
@@ -305,7 +342,6 @@ const BackgroundControls = ( props ) => {
 								min={ 0 }
 								max={ 100 }
 								step={ 10 }
-								allowReset
 							/>
 						</>
 					}
@@ -318,6 +354,7 @@ const BackgroundControls = ( props ) => {
 						<ColorPalette
 							id="img-background-color"
 							value={ backgroundColor }
+							clearable={ false }
 							onChange={ ( color ) => setAttributes( { 
 								backgroundColor: {
 									...backgroundColor,
@@ -345,7 +382,6 @@ const BackgroundControls = ( props ) => {
 							min={ 0 }
 							max={ 100 }
 							step={ 10 }
-							allowReset
 						/>
 					}
 				</PanelBody>
