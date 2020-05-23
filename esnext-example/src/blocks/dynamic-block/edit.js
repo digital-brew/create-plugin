@@ -1,9 +1,9 @@
 /**
  * External Dependencies
  */
-// import { data } from '@blockhandbook/data';
-// const { withPosts } = data;
-import { withPosts } from '../../../../packages/data/src';
+import { data } from '@blockhandbook/data';
+const { withPosts } = data;
+// import { withPosts } from '../../../../packages/data/src';
 
 /**
  * WordPress Dependencies

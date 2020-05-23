@@ -42,8 +42,6 @@ const PostsControls = ( props ) => {
 		},
 	} = props;
 
-	console.log( postTypes )
-
 	const [ categoriesList, setCategoriesList ] = useState([]);
 
 	useEffect( () => {
