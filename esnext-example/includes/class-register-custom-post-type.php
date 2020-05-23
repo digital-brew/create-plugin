@@ -43,27 +43,28 @@ class Register_Custom_Post_Type {
 		register_post_type(
 			'esnext_example_team',
 			array(
-				'labels'       => array(
+				'labels'        => array(
 					'name'          => __( 'Team', 'esnext-example' ),
-					'singular_name' => __( 'Member', 'esnext-example' ),
+					'singular_name' => __( 'Team Member', 'esnext-example' ),
 					'add_new'       => __( 'Add New Member', 'esnext-example' ),
 					'add_new_item'  => __( 'Add New Team Member', 'esnext-example' ),
 					'new_item'      => __( 'New Team Member', 'esnext-example' ),
 				),
-				'public'       => true,
-				'has_archive'  => true,
-				'rewrite'      => array(
+				'public'        => true,
+				'has_archive'   => true,
+				'rewrite'       => array(
 					'slug' => 'team', // Custom slug.
 				),
-				'show_in_rest' => true, // Use in block editor.
-				'supports'     => array(
+				'show_in_rest'  => true, // Use in block editor.
+				'supports'      => array(
 					'title',
 					'editor',
 					'author',
 					'thumbnail',
 					'excerpt',
 				),
-				'template'     => array(
+				'template_lock' => 'all',
+				'template'      => array(
 					array(
 						'core/image',
 						array(

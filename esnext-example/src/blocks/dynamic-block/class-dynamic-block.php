@@ -67,7 +67,12 @@ class Dynamic_Block {
 			$args['category__in'] = array_column( $attributes['categories'], 'id' );
 		}
 
-		$recent_posts = get_posts( $args );
+		$recent_posts = get_posts(
+			array(
+				$args,
+				'post_type' => $attributes['postType'],
+			)
+		);
 
 		if ( count( $recent_posts ) === 0 ) {
 			return 'No posts';
@@ -91,7 +96,7 @@ class Dynamic_Block {
 			}
 
 			// Add the post title.
-			if ( isset( $attributes['showPostTitle'] ) ) {
+			if ( isset( $attributes['showPostTitle'] ) && $attributes['showPostTitle'] ) {
 				$list_items_markup .= sprintf(
 					'<h3><a href="%1$s">%2$s</a></h3>',
 					esc_url( get_permalink( $post ) ),
@@ -100,7 +105,7 @@ class Dynamic_Block {
 			}
 
 			// Add the post author.
-			if ( isset( $attributes['showPostAuthor'] ) ) {
+			if ( isset( $attributes['showPostAuthor'] ) && $attributes['showPostAuthor'] ) {
 				$list_items_markup .= sprintf(
 					'<p>By: %1$s</p>',
 					get_the_author_meta( 'display_name', $post->post_author )
@@ -108,7 +113,7 @@ class Dynamic_Block {
 			}
 
 			// Add the post date.
-			if ( isset( $attributes['showPostDate'] ) ) {
+			if ( isset( $attributes['showPostDate'] ) && $attributes['showPostDate'] ) {
 				$list_items_markup .= sprintf(
 					'<p><time datetime="%1$s">%2$s</time></p>',
 					esc_attr( get_the_date( 'c', $post ) ),
@@ -117,7 +122,7 @@ class Dynamic_Block {
 			}
 
 			// Add the post excerpt.
-			if ( isset( $attributes['showPostExcerpt'] ) ) {
+			if ( isset( $attributes['showPostExcerpt'] ) && $attributes['showPostExcerpt'] ) {
 				$list_items_markup .= sprintf(
 					'<div>%1$s</div>',
 					get_the_excerpt( $post )

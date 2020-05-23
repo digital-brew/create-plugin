@@ -1,15 +1,16 @@
 /**
  * External Dependencies
  */
-// import { data } from '@blockhandbook/data';
-// const { withPosts } = data;
-import { withPosts } from '../../../../packages/data/src';
+import { data } from '@blockhandbook/data';
+const { withPosts } = data;
+// import { withPosts } from '../../../../packages/data/src';
 
 /**
  * WordPress Dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { Spinner } from '@wordpress/components';
+import { parse } from '@wordpress/block-serialization-default-parser';
 
 /**
  * Internal Dependencies
@@ -32,11 +33,9 @@ const Edit = ( props ) => {
 			showPostDate,
 			showPostExcerpt,
 			showPostTitle,
-			showFeaturedImage
+			showFeaturedImage,
 		}
 	} = props;
-
-	console.log( postTypes )
 
 	if ( ! posts ) {
 		return (
@@ -78,7 +77,6 @@ const Edit = ( props ) => {
 				<ul className="list-none">
 					{
 						displayPosts.map( ( post, i ) => {
-							console.log( post )
 							return (
 								<li key={ post.id }>
 									{
