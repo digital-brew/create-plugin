@@ -56,6 +56,7 @@ const withPosts = createHigherOrderComponent(
 			posts: ! Array.isArray( posts )
 			? posts
 			: posts.map( ( post ) => {
+
 				let author_data;
 				if( post.author ) {
 					authors.forEach( ( author ) => {
@@ -66,7 +67,7 @@ const withPosts = createHigherOrderComponent(
 				}
 
 				let image, url;
-				if( post.featuredImage ) {
+				if( post.featured_media ) {
 					image = getMedia( post.featured_media );
 					url = get(
 						image,
