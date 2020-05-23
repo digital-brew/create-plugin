@@ -1,9 +1,8 @@
 /**
  * External Dependencies
  */
-// import { controls } from '@blockhandbook/controls';
-// const { PostsControls } = controls;
-import { PostsControls } from '../../../../packages/controls/src'
+import { controls } from '@blockhandbook/controls';
+const { PostsControls } = controls;
 
 /**
  * WordPress Dependencies
@@ -19,7 +18,6 @@ const Controls = ( props ) => {
 	const {
 		setAttributes,
 		attributes,
-		postTypes,
 		attributes: {
 			// put attribute key names here to use them
 		},
@@ -30,7 +28,6 @@ const Controls = ( props ) => {
 			<BlockControls></BlockControls>
 			<InspectorControls></InspectorControls>
 			<PostsControls
-				postTypes={ postTypes }
 				attributes={ attributes }
 				setAttributes={ setAttributes }
 			/>

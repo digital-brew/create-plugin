@@ -17,19 +17,19 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-class Dynamic_Block {
+class Dynamic_Custom_Post_Type {
 	/**
 	 * Register class with appropriate WordPress hooks
 	 */
 	public static function register() {
 		$instance = new self();
-		add_action( 'init', array( $instance, 'register_dynamic_block' ) );
+		add_action( 'init', array( $instance, 'register_dynamic_custom_post_type' ) );
 	}
 
 	/**
 	 * Registers the `esnext-example/dynamic-block` block on server.
 	 */
-	public function register_dynamic_block() {
+	public function register_dynamic_custom_post_type() {
 		$path     = __DIR__ . '/block.json';
 		$metadata = json_decode( file_get_contents( $path ), true );
 
@@ -38,7 +38,7 @@ class Dynamic_Block {
 			array_merge(
 				$metadata,
 				array(
-					'render_callback' => array( new Dynamic_Block(), 'render' ),
+					'render_callback' => array( new Dynamic_Custom_Post_Type(), 'render' ),
 				)
 			)
 		);
@@ -139,4 +139,4 @@ class Dynamic_Block {
  *
  * @since 1.0.0
  */
-Dynamic_Block::register();
+Dynamic_Custom_Post_Type::register();

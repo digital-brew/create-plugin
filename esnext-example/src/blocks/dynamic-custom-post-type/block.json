@@ -1,13 +1,13 @@
 {
-	"name": "esnext-example/dynamic-block",
+	"name": "esnext-example/custom-post-type-block",
 	"attributes": {
 		"align": {
 			"type": "string",
 			"default": "center"
 		},
 		"postType": {
-			"type": "string",
-			"default": "post"
+		"type": "string",
+		"default": "esnext_example_team"
 		},
 		"categories": {
 			"type": "array"

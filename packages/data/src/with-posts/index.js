@@ -27,7 +27,12 @@ const withPosts = createHigherOrderComponent(
 			},
 		} = props;
 
-		const { getEntityRecords, getMedia, getAuthors } = select( 'core' );
+		const {
+			getEntityRecords,
+			getMedia,
+			getAuthors,
+			getPostTypes,
+		} = select( 'core' );
 
 		const catIds =
 			categories && categories.length > 0
@@ -43,22 +48,26 @@ const withPosts = createHigherOrderComponent(
 
 		const authors = getAuthors();
 		const posts = getEntityRecords( 'postType', `${ !! postType ? postType : 'post' }`, latestPostsQuery );
-	
+
+		const postTypes = getPostTypes();
+
 		return {
 			posts: ! Array.isArray( posts )
 			? posts
 			: posts.map( ( post ) => {
 				let author_data;
+				if( post.author ) {
+					authors.forEach( ( author ) => {
+						if( author.id === post.author ) {
+							author_data = author;
+						};
+					} );
+				}
 
-				authors.forEach( ( author ) => {
-					if( author.id === post.author ) {
-						author_data = author;
-					};
-				} );
-
-				if ( post.featured_media ) {
-					const image = getMedia( post.featured_media );
-					let url = get(
+				let image, url;
+				if( post.featuredImage ) {
+					image = getMedia( post.featured_media );
+					url = get(
 						image,
 						[
 							'media_details',
@@ -71,10 +80,19 @@ const withPosts = createHigherOrderComponent(
 
 					if ( ! url ) {
 						url = get( image, 'source_url', null );
-					}							
-					return { ...post, featuredImageSourceUrl: url, author_data };
+					}
 				}
-				return { ...post, author_data };
+
+				if ( post.featured_media && post.author ) {
+					return { ...post, postTypes, featuredImageSourceUrl: url, author_data };
+				}
+				if( post.featuredImage && ! post.author ) {
+					return { ...post, postTypes, featuredImageSourceUrl: url };
+				}
+				if( ! post.featuredImage && post.author ) {
+					return { ...post, postTypes, author_data };
+				}
+				return { ...post, postTypes };
 			} ),
 		};
 	} ),

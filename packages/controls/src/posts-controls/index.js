@@ -26,6 +26,7 @@ const CATEGORIES_LIST_QUERY = {
 const PostsControls = ( props ) => {
 	const {
 		setAttributes,
+		postTypes,
 		attributes: {
 			categories,
 			postsToShow,
@@ -36,9 +37,12 @@ const PostsControls = ( props ) => {
 			showPostExcerpt,
 			showPostTitle,
 			showFeaturedImage,
-			featuredImageSize
+			featuredImageSize,
+			postType,
 		},
 	} = props;
+
+	console.log( postTypes )
 
 	const [ categoriesList, setCategoriesList ] = useState([]);
 
@@ -85,6 +89,20 @@ const PostsControls = ( props ) => {
 	return (
 		<InspectorControls>
 			<PanelBody>
+				<SelectControl
+					label={ __( 'Post Type' ) }
+					value={ postType }
+					onChange={ ( postType ) => setAttributes( { postType } ) }
+					options={
+						postTypes.map( postType => {
+							const { name, slug } = postType;
+							return {
+								label: name,
+								value: slug,
+							}
+						} )
+					}
+				/>
 				<QueryControls
 					{ ...{ order, orderBy } }
 					numberOfItems={ postsToShow }
@@ -144,7 +162,7 @@ const PostsControls = ( props ) => {
 					onChange={ ( ) => setAttributes( { showPostExcerpt: ! showPostExcerpt } ) }
 				/>
 			</PanelBody>
-		</InspectorControls>		
+		</InspectorControls>
 	);
 }
 

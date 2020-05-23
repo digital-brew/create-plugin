@@ -25,7 +25,6 @@ const Edit = ( props ) => {
 		className,
 		attributes,
 		posts,
-		postTypes,
 		attributes: {
 			postsToShow,
 			showPostAuthor,
@@ -35,8 +34,6 @@ const Edit = ( props ) => {
 			showFeaturedImage
 		}
 	} = props;
-
-	console.log( props )
 
 	if ( ! posts ) {
 		return (
@@ -52,7 +49,6 @@ const Edit = ( props ) => {
 		return (
 			<>
 				<Controls
-					postTypes={ postTypes }
 					attributes={ attributes }
 					setAttributes={ setAttributes }
 				/>
@@ -70,7 +66,6 @@ const Edit = ( props ) => {
 	return (
 		<>
 			<Controls
-				postTypes={ postTypes }
 				attributes={ attributes }
 				setAttributes={ setAttributes }
 			/>
@@ -113,6 +108,9 @@ const Edit = ( props ) => {
 									{
 										showPostExcerpt &&
 										<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
+									}
+									{
+										<div dangerouslySetInnerHTML={ { __html: post.content.rendered } } />
 									}
 								</li>
 							);

@@ -26,6 +26,7 @@ use \CreatePlugin\Register_Plugin_Settings as Register_Plugin_Settings;
 use \CreatePlugin\Register_Rest_API as Register_Rest_API;
 use \CreatePlugin\Load_Dynamic_Blocks as Load_Dynamic_Blocks;
 use \CreatePlugin\Register_Block_Patterns as Register_Block_Patterns;
+use \CreatePlugin\Register_Custom_Post_Type as Register_Custom_Post_Type;
 
 // Stop the hackers if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -127,6 +128,7 @@ if ( ! class_exists( 'Plugin' ) ) :
 			Register_Rest_API::register();
 			new Load_Dynamic_Blocks();
 			Register_Block_Patterns::register();
+			Register_Custom_Post_Type::register();
 		}
 	}
 endif;
