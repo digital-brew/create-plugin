@@ -4,7 +4,7 @@ Getting post data to create dynamic blocks is kinda complicated.  The withPosts(
   
 ### Post data + Featured Media data + Author data
 
-withPosts() bundles the getEntityRecords, getMedia, & getAuthors data store selectors to return an array of post data ( content, title, url, etc. ) as well as post featured media and author data.  
+withPosts() bundles the getEntityRecords, getMedia, getAuthors, and getPostTypes data store selectors to return an array of post data ( content, title, url, etc. ) as well as post featured media, author data if it's available, and all available post types.  
   
 ### Get any post type using attributes  
 
@@ -31,7 +31,7 @@ import { data } from '@blockhandbook/data';
 const { withPosts } = data;
 
 function Edit( props ) {
- const { posts } = props;
+ const { posts, postTypes } = props;
 
  return (
   <ul>

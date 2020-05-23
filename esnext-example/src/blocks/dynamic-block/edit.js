@@ -36,7 +36,7 @@ const Edit = ( props ) => {
 		}
 	} = props;
 
-	console.log( props )
+	console.log( postTypes )
 
 	if ( ! posts ) {
 		return (
@@ -78,6 +78,7 @@ const Edit = ( props ) => {
 				<ul className="list-none">
 					{
 						displayPosts.map( ( post, i ) => {
+							console.log( post )
 							return (
 								<li key={ post.id }>
 									{
@@ -87,7 +88,7 @@ const Edit = ( props ) => {
 										</div>
 									}
 									{
-										showPostTitle &&
+										showPostTitle && post.title.rendered &&
 										<h3>
 											<a href="#">
 												{ post.title.rendered }
@@ -96,7 +97,7 @@ const Edit = ( props ) => {
 									}
 
 									{
-										showPostAuthor &&
+										showPostAuthor && post.author_data &&
 										<p>
 											<span>By: </span>
 											<a href="#">
@@ -105,13 +106,13 @@ const Edit = ( props ) => {
 										</p>
 									}
 									{
-										showPostDate &&
+										showPostDate && post.date_gmt &&
 										<time dateTime={ moment( post.date_gmt ).utc().format() }>
 											{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
 										</time>
 									}
 									{
-										showPostExcerpt &&
+										showPostExcerpt && post.excerpt &&
 										<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
 									}
 								</li>

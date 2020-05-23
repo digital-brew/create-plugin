@@ -89,20 +89,23 @@ const PostsControls = ( props ) => {
 	return (
 		<InspectorControls>
 			<PanelBody>
-				<SelectControl
-					label={ __( 'Post Type' ) }
-					value={ postType }
-					onChange={ ( postType ) => setAttributes( { postType } ) }
-					options={
-						postTypes.map( postType => {
-							const { name, slug } = postType;
-							return {
-								label: name,
-								value: slug,
-							}
-						} )
-					}
-				/>
+				{
+					postTypes &&
+					<SelectControl
+						label={ __( 'Post Type' ) }
+						value={ postType }
+						onChange={ ( postType ) => setAttributes( { postType } ) }
+						options={
+							postTypes.map( postType => {
+								const { name, slug } = postType;
+								return {
+									label: name,
+									value: slug,
+								}
+							} )
+						}
+					/>
+				}
 				<QueryControls
 					{ ...{ order, orderBy } }
 					numberOfItems={ postsToShow }

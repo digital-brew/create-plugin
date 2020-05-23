@@ -52,6 +52,7 @@ const withPosts = createHigherOrderComponent(
 		const postTypes = getPostTypes();
 
 		return {
+			postTypes,
 			posts: ! Array.isArray( posts )
 			? posts
 			: posts.map( ( post ) => {
@@ -84,15 +85,15 @@ const withPosts = createHigherOrderComponent(
 				}
 
 				if ( post.featured_media && post.author ) {
-					return { ...post, postTypes, featuredImageSourceUrl: url, author_data };
+					return { ...post, featuredImageSourceUrl: url, author_data };
 				}
 				if( post.featuredImage && ! post.author ) {
-					return { ...post, postTypes, featuredImageSourceUrl: url };
+					return { ...post, featuredImageSourceUrl: url };
 				}
 				if( ! post.featuredImage && post.author ) {
-					return { ...post, postTypes, author_data };
+					return { ...post, author_data };
 				}
-				return { ...post, postTypes };
+				return { ...post };
 			} ),
 		};
 	} ),

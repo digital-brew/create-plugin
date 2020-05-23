@@ -30,7 +30,11 @@ const Controls = ( props ) => {
 			<BlockControls></BlockControls>
 			<InspectorControls></InspectorControls>
 			<PostsControls
-				postTypes={ postTypes }
+				postTypes={ [
+					{ name: 'Team', slug: 'esnext_example_team' },
+					{ name: 'Page', slug: 'page' },
+					{ name: 'Post', slug: 'post' }
+				] }
 				attributes={ attributes }
 				setAttributes={ setAttributes }
 			/>

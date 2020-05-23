@@ -43,9 +43,12 @@ class Register_Custom_Post_Type {
 		register_post_type(
 			'esnext_example_team',
 			array(
-				'labels'      => array(
+				'labels'       => array(
 					'name'          => __( 'Team', 'esnext-example' ),
 					'singular_name' => __( 'Member', 'esnext-example' ),
+					'add_new'       => __( 'Add New Member', 'esnext-example' ),
+					'add_new_item'  => __( 'Add New Team Member', 'esnext-example' ),
+					'new_item'      => __( 'New Team Member', 'esnext-example' ),
 				),
 				'public'       => true,
 				'has_archive'  => true,

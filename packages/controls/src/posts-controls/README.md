@@ -13,6 +13,10 @@ Add the following attributes to block.json:
   "categories": {
    "type": "array"
   },
+  "postType": {
+   "type": "string",
+   "default": "post"
+  },
   "postsToShow": {
    "type": "number",
    "default": 10
@@ -52,7 +56,8 @@ Add the following attributes to block.json:
  }
 ```
 
-How to use it in edit.js:
+How to use it in edit.js.
+If you want to give users the ability to select the postType to render, just pass an array of the postType's name & slug.  Keep in mind some postTypes have different data available, so you'll have to deal with that in your block.
 
 ```
 import { controls } from '@blockhandbook/controls';
@@ -67,13 +72,18 @@ function Edit( props ) {
  return (
   <>
    <PostsControls
+    postTypes={ [
+     { name: 'Custom Post Type', slug: 'custom_post_type_slug' },
+     { name: 'Page', slug: 'page' },
+     { name: 'Post', slug: 'post' }
+    ] }
     attributes={ attributes }
     setAttributes={ setAttributes }
    />
    <p className={ className }>
     { __(
-     'ESNext Example – hello from the editor!',
-     'create-plugin'
+     'Hello from the editor!',
+     'plugin-name'
     ) }
    </p>
   </>
