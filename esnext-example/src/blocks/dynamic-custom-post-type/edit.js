@@ -10,6 +10,7 @@ import { withPosts } from '../../../../packages/data/src';
  */
 import { __ } from '@wordpress/i18n';
 import { Spinner } from '@wordpress/components';
+import { parse } from '@wordpress/block-serialization-default-parser';
 
 /**
  * Internal Dependencies
@@ -70,45 +71,13 @@ const Edit = ( props ) => {
 				setAttributes={ setAttributes }
 			/>
 			<div className={ className } >
-				<ul className="list-none">
+				<ul className="list-none ml-0 pl-0">
 					{
 						displayPosts.map( ( post, i ) => {
+							console.log( parse( post.content.raw ) )
+							console.log( post )
 							return (
 								<li key={ post.id }>
-									{
-										showFeaturedImage && !! post.featured_media &&
-										<div>
-											<img src={ post.featuredImageSourceUrl } alt="" />
-										</div>
-									}
-									{
-										showPostTitle &&
-										<h3>
-											<a href="#">
-												{ post.title.rendered }
-											</a>
-										</h3>
-									}
-
-									{
-										showPostAuthor &&
-										<p>
-											<span>By: </span>
-											<a href="#">
-												{	post.author_data.name	}
-											</a>
-										</p>
-									}
-									{
-										showPostDate &&
-										<time dateTime={ moment( post.date_gmt ).utc().format() }>
-											{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
-										</time>
-									}
-									{
-										showPostExcerpt &&
-										<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
-									}
 									{
 										<div dangerouslySetInnerHTML={ { __html: post.content.rendered } } />
 									}

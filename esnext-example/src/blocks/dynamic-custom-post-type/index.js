@@ -18,6 +18,8 @@ import transforms from './transforms';
 import './editor.scss';
 import './style.scss';
 
+const validAlignments = [ 'full' ];
+
 const settings = {
 	title: __( 'Custom Post Type Block', 'esnext-example' ),
 	description: __(
@@ -28,8 +30,15 @@ const settings = {
 	icon,
 	category: 'esnext-example',
 	example: {},
+	getEditWrapperProps( attributes ) {
+		const { align } = attributes;
+		if ( -1 !== validAlignments.indexOf( align ) ) {
+			return { 'data-align': align };
+		}
+	},
 	supports: {
 		align: true,
+		align: [ 'full' ]
 	},
 	styles: [],
 	attributes,

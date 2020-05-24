@@ -19,13 +19,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-class Register_Custom_Post_Type {
+class Register_Custom_Post_Types {
 	/**
 	 * Register class with appropriate WordPress hooks
 	 */
 	public static function register() {
 		$instance = new self();
-		add_action( 'init', array( $instance, 'register_custom_post_type' ) );
+		add_action( 'init', array( $instance, 'register_team_post_type' ), 20 );
 	}
 
 	/**
@@ -33,13 +33,7 @@ class Register_Custom_Post_Type {
 	 *
 	 * @return void
 	 */
-	public function register_custom_post_type() {
-		// Shortcuts for variables.
-		$instance        = Plugin::get_instance();
-		$slug            = $instance->slug;
-		$plugin_dir_path = $instance->plugin_dir_path;
-		$plugin_dir_url  = $instance->plugin_dir_url;
-
+	public function register_team_post_type() {
 		register_post_type(
 			'esnext_example_team',
 			array(
@@ -50,12 +44,13 @@ class Register_Custom_Post_Type {
 					'add_new_item'  => __( 'Add New Team Member', 'esnext-example' ),
 					'new_item'      => __( 'New Team Member', 'esnext-example' ),
 				),
+				'taxonomies'    => array( 'department' ),
 				'public'        => true,
 				'has_archive'   => true,
 				'rewrite'       => array(
 					'slug' => 'team', // Custom slug.
 				),
-				'show_in_rest'  => true, // Use in block editor.
+				'show_in_rest' => true, // Use in block editor.
 				'supports'      => array(
 					'title',
 					'editor',
@@ -66,21 +61,49 @@ class Register_Custom_Post_Type {
 				'template_lock' => 'all',
 				'template'      => array(
 					array(
-						'core/image',
+						'core/group',
 						array(
-							'align' => 'left',
+							'align'           => 'full',
+							'backgroundColor' => 'subtle-background',
 						),
-					),
-					array(
-						'core/heading',
 						array(
-							'placeholder' => 'Add Author...',
-						),
-					),
-					array(
-						'core/paragraph',
-						array(
-							'placeholder' => 'Add Description...',
+							array(
+								'core/columns',
+								array(
+									'align'             => 'wide',
+									'verticalAlignment' => 'center',
+								),
+								array(
+									array(
+										'core/column',
+										array( 'width' => 33.33 ),
+										array(
+											array(
+												'core/image',
+												array(),
+											),
+										),
+									),
+									array(
+										'core/column',
+										array( 'width' => 66.66 ),
+										array(
+											array(
+												'core/heading',
+												array( 'placeholder' => 'Name' ),
+											),
+											array(
+												'core/paragraph',
+												array( 'placeholder' => 'Bio' ),
+											),
+											array(
+												'core/paragraph',
+												array( 'placeholder' => 'Title' ),
+											),
+										),
+									),
+								),
+							),
 						),
 					),
 				),

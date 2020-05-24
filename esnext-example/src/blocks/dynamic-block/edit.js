@@ -10,7 +10,6 @@ const { withPosts } = data;
  */
 import { __ } from '@wordpress/i18n';
 import { Spinner } from '@wordpress/components';
-import { parse } from '@wordpress/block-serialization-default-parser';
 
 /**
  * Internal Dependencies

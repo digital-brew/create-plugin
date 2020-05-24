@@ -7,6 +7,8 @@
 // Escape forward slashes, otherwise this won't compile
 // i.e. .w-1\/3 {}
 
-.wp-block-esnext-example-dynamic-block {
-	
+.wp-block-esnext-example-dynamic-custom-post-type {
+	li {
+		margin-bottom:30px;
+	}
 }

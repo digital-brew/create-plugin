@@ -3,11 +3,11 @@
 	"attributes": {
 		"align": {
 			"type": "string",
-			"default": "center"
+			"default": "full"
 		},
 		"postType": {
-		"type": "string",
-		"default": "esnext_example_team"
+			"type": "string",
+			"default": "esnext_example_team"
 		},
 		"categories": {
 			"type": "array"
@@ -23,30 +23,6 @@
 		"orderBy": {
 			"type": "string",
 			"default": "date"
-		},
-		"showPostAuthor": {
-			"type": "boolean",
-			"default": true
-		},
-		"showPostDate": {
-			"type": "boolean",
-			"default": true
-		},
-		"showPostExcerpt": {
-			"type": "boolean",
-			"default": true
-		},
-		"showFeaturedImage": {
-			"type": "boolean",
-			"default": false
-		},
-		"featuredImageSize": {
-			"type": "string",
-			"default": "medium_large"
-		},
-		"showPostTitle": {
-			"type": "boolean",
-			"default": true
 		}
 	}
 }
