@@ -1,9 +1,9 @@
 /**
  * External Dependencies
  */
-import { controls } from '@blockhandbook/controls';
-const { PostsControls } = controls;
-// import { PostsControls } from '../../../../packages/controls/src'
+// import { controls } from '@blockhandbook/controls';
+// const { PostsControls } = controls;
+import { PostsControls } from '../../../../packages/controls/src'
 
 /**
  * WordPress Dependencies
@@ -30,11 +30,6 @@ const Controls = ( props ) => {
 			<BlockControls></BlockControls>
 			<InspectorControls></InspectorControls>
 			<PostsControls
-				postTypes={ [
-					{ name: 'Team', slug: 'esnext_example_team' },
-					{ name: 'Page', slug: 'page' },
-					{ name: 'Post', slug: 'post' }
-				] }
 				attributes={ attributes }
 				setAttributes={ setAttributes }
 			/>

@@ -10,7 +10,13 @@
 			"default": "esnext_example_team"
 		},
 		"categories": {
-			"type": "array"
+			"type": "array",
+			"default": [],
+			"items": { "type": "object" }
+		},
+		"taxonomy": {
+			"type": "string",
+			"default": "department"
 		},
 		"postsToShow": {
 			"type": "number",

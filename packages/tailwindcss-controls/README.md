@@ -25,7 +25,7 @@ A handful of common styling controls powered by Tailwindcss utility classes are 
 
 Toolbar & InspectorControls for adding box shadow settings to blocks:
 ![BoxShadowControls in the WordPress block editor sidebar & toolbar](https://blockhandbook.com/wp-content/uploads/2020/05/BoxShadowControls-screenshot.png)
-[See Documentation](https://github.com/blockhandbook/create-plugin/tree/master/packages/tailwindcss/src/controls/box-shadow-controls)
+[See Documentation](https://github.com/blockhandbook/create-plugin/tree/master/packages/tailwindcss-controls/src/controls/box-shadow-controls)
 
 ### BorderControls
 

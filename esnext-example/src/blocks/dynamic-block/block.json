@@ -6,11 +6,12 @@
 			"default": "center"
 		},
 		"postType": {
-			"type": "string",
-			"default": "post"
+			"type": "string"
 		},
 		"categories": {
-			"type": "array"
+			"type": "array",
+			"default": [],
+			"items": { "type": "object" }
 		},
 		"postsToShow": {
 			"type": "number",

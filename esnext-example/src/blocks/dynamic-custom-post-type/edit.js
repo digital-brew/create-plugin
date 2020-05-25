@@ -26,13 +26,9 @@ const Edit = ( props ) => {
 		className,
 		attributes,
 		posts,
+		taxonomies,
 		attributes: {
 			postsToShow,
-			showPostAuthor,
-			showPostDate,
-			showPostExcerpt,
-			showPostTitle,
-			showFeaturedImage
 		}
 	} = props;
 
@@ -69,6 +65,7 @@ const Edit = ( props ) => {
 			<Controls
 				attributes={ attributes }
 				setAttributes={ setAttributes }
+				taxonomies={ taxonomies }
 			/>
 			<div className={ className } >
 				<ul className="list-none ml-0 pl-0">

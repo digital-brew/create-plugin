@@ -8,6 +8,7 @@
 import { __ } from '@wordpress/i18n';
 import { QueryControls, PanelBody, ToggleControl, SelectControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
+import { PostTaxonomies } from '@wordpress/editor';
 import { useState, useEffect } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 import { addQueryArgs } from '@wordpress/url';
@@ -27,6 +28,12 @@ const PostsControls = ( props ) => {
 	const {
 		setAttributes,
 		postTypes,
+		titleToggle = true,
+		featuredImageToggle = true,
+		dateToggle = true,
+		authorToggle = true,
+		excerptToggle = true,
+		categorySelector = true,
 		attributes: {
 			categories,
 			postsToShow,
@@ -39,15 +46,17 @@ const PostsControls = ( props ) => {
 			showFeaturedImage,
 			featuredImageSize,
 			postType,
+			taxonomy,
 		},
 	} = props;
+	console.log( taxonomy )
 
 	const [ categoriesList, setCategoriesList ] = useState([]);
 
 	useEffect( () => {
 		const fetchCategories = async () => {
 			const categoriesList = await apiFetch( {
-				path: addQueryArgs( `/wp/v2/categories`, CATEGORIES_LIST_QUERY )
+				path: addQueryArgs( `/wp/v2/${ !! taxonomy ? taxonomy : 'categories' }`, CATEGORIES_LIST_QUERY )
 			} );
 
 			try {
@@ -117,16 +126,19 @@ const PostsControls = ( props ) => {
 						setAttributes( { postsToShow: value } )
 					}
 					categorySuggestions={ categorySuggestions }
-					onCategoryChange={ selectCategories }
+					onCategoryChange={ categorySelector ? selectCategories : null }
 					selectedCategories={ categories }
 				/>
-				<ToggleControl
-					label={ __( 'Show Featured Image' ) }
-					checked={ showFeaturedImage }
-					onChange={ ( ) => setAttributes( { showFeaturedImage: ! showFeaturedImage } ) }
-				/>
 				{
-					showFeaturedImage &&
+					featuredImageToggle &&
+						<ToggleControl
+						label={ __( 'Show Featured Image' ) }
+						checked={ showFeaturedImage }
+						onChange={ ( ) => setAttributes( { showFeaturedImage: ! showFeaturedImage } ) }
+					/>
+				}
+				{
+					showFeaturedImage && featuredImageToggle &&
 					<SelectControl
 						label={ __( 'Featured Image Size' ) }
 						value={ featuredImageSize }
@@ -142,26 +154,38 @@ const PostsControls = ( props ) => {
 						}
 					/>
 				}
-				<ToggleControl
-					label={ __( 'Show Title' ) }
-					checked={ showPostTitle }
-					onChange={ ( ) => setAttributes( { showPostTitle: ! showPostTitle } ) }
-				/>
-				<ToggleControl
-					label={ __( 'Show Post Date' ) }
-					checked={ showPostDate }
-					onChange={ ( ) => setAttributes( { showPostDate: ! showPostDate } ) }
-				/>
-				<ToggleControl
-					label={ __( 'Show Post Author' ) }
-					checked={ showPostAuthor }
-					onChange={ ( ) => setAttributes( { showPostAuthor: ! showPostAuthor } ) }
-				/>
-				<ToggleControl
-					label={ __( 'Show Post Excerpt' ) }
-					checked={ showPostExcerpt }
-					onChange={ ( ) => setAttributes( { showPostExcerpt: ! showPostExcerpt } ) }
-				/>
+				{
+					titleToggle &&
+					<ToggleControl
+						label={ __( 'Show Title' ) }
+						checked={ showPostTitle }
+						onChange={ ( ) => setAttributes( { showPostTitle: ! showPostTitle } ) }
+					/>
+				}
+				{
+					dateToggle &&
+						<ToggleControl
+						label={ __( 'Show Post Date' ) }
+						checked={ showPostDate }
+						onChange={ ( ) => setAttributes( { showPostDate: ! showPostDate } ) }
+					/>
+				}
+				{
+					authorToggle &&
+					<ToggleControl
+						label={ __( 'Show Post Author' ) }
+						checked={ showPostAuthor }
+						onChange={ ( ) => setAttributes( { showPostAuthor: ! showPostAuthor } ) }
+					/>
+				}
+				{
+					excerptToggle &&
+					<ToggleControl
+						label={ __( 'Show Post Excerpt' ) }
+						checked={ showPostExcerpt }
+						onChange={ ( ) => setAttributes( { showPostExcerpt: ! showPostExcerpt } ) }
+					/>
+				}
 			</PanelBody>
 		</InspectorControls>
 	);

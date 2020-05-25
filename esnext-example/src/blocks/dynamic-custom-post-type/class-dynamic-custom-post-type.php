@@ -62,10 +62,23 @@ class Dynamic_Custom_Post_Type {
 			'suppress_filters' => false,
 		);
 
-		if ( isset( $attributes['categories'] ) ) {
+		if ( isset( $attributes['categories'] ) && ! isset( $attributes['taxonomy'] ) ) {
 			$args['category__in'] = array_column(
 				$attributes['categories'],
 				'id'
+			);
+		}
+
+		if ( isset( $attributes['categories'] ) && isset( $attributes['taxonomy'] ) ) {
+			$args['tax_query'] = array(
+				array(
+					'taxonomy' => $attributes['taxonomy'],
+					'field'    => 'term_id',
+					'terms'    => array_column(
+						$attributes['categories'],
+						'id'
+					),
+				),
 			);
 		}
 

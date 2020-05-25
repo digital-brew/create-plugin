@@ -53,26 +53,20 @@ class Dynamic_Block {
 	 */
 	public function render( $attributes, $content ) {
 
-		$args = wp_get_recent_posts(
-			array(
-				'numberposts'      => $attributes['postsToShow'],
-				'post_status'      => 'publish',
-				'order'            => $attributes['order'],
-				'orderby'          => $attributes['orderBy'],
-				'suppress_filters' => false,
-			)
+		$args = array(
+			'post_type'        => $attributes['postType'],
+			'numberposts'      => $attributes['postsToShow'],
+			'post_status'      => 'publish',
+			'order'            => $attributes['order'],
+			'orderby'          => $attributes['orderBy'],
+			'suppress_filters' => false,
 		);
 
 		if ( isset( $attributes['categories'] ) ) {
 			$args['category__in'] = array_column( $attributes['categories'], 'id' );
 		}
 
-		$recent_posts = get_posts(
-			array(
-				$args,
-				'post_type' => $attributes['postType'],
-			)
-		);
+		$recent_posts = get_posts( $args );
 
 		if ( count( $recent_posts ) === 0 ) {
 			return 'No posts';

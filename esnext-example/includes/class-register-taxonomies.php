@@ -36,15 +36,24 @@ class Register_Taxonomies {
 	public function register_department_taxonomy() {
 		register_taxonomy(
 			'department',  // The name of the taxonomy. Name should be in slug form (must not contain capital letters or spaces).
-			'esnext_example_team',  // post type name
+			'esnext_example_team', // Post type name.
 			array(
-				'hierarchical' => true,
-				'label'        => 'Department', // display name
-				'query_var'    => true,
-				'rewrite'      => array(
-					'slug'       => 'department', // This controls the base slug that will display before each term
-					'with_front' => false  // Don't display the category base before
+				'hierarchical'      => true,
+				'labels'            => array(
+					'name'          => __( 'Departments', 'esnext-example' ),
+					'singular_name' => __( 'Department', 'esnext-example' ),
+					'all_items'     => __( 'All Departments', 'esnext-example' ),
+					'search_items'  => __( 'Search Departments', 'esnext-example' ),
 				),
+				'public'            => true,
+				'query_var'         => true,
+				'rewrite'           => array(
+					'slug'       => 'department',
+					'with_front' => false,
+				),
+				'show_admin_column' => true,
+				'show_ui'           => true,
+				'show_in_rest'      => true,
 			)
 		);
 	}

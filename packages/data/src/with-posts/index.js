@@ -23,12 +23,14 @@ const withPosts = createHigherOrderComponent(
 				order,
 				orderBy,
 				categories,
+				taxonomy,
 				featuredImageSize,
 			},
 		} = props;
 
 		const {
 			getEntityRecords,
+			getTaxonomies,
 			getMedia,
 			getAuthors,
 			getPostTypes,
@@ -43,13 +45,18 @@ const withPosts = createHigherOrderComponent(
 			categories: catIds,
 			order,
 			orderby: orderBy,
-			per_page: postsToShow
+			per_page: postsToShow,
+			[ `${ taxonomy }` ]: !! taxonomy ? catIds : null,
 		}, ( value ) => ! isUndefined( value ) );
 
 		const authors = getAuthors();
 		const posts = getEntityRecords( 'postType', `${ !! postType ? postType : 'post' }`, latestPostsQuery );
 
 		const postTypes = getPostTypes();
+
+		// At some point need to add dynamic taxonomy filtering if switching between post types.
+		// For now probably need to hide the categorySelector if more than 1 postType
+		//const taxonomies = getTaxonomies();
 
 		return {
 			postTypes,
@@ -58,7 +65,7 @@ const withPosts = createHigherOrderComponent(
 			: posts.map( ( post ) => {
 
 				let author_data;
-				if( post.author ) {
+				if( !! post.author ) {
 					authors.forEach( ( author ) => {
 						if( author.id === post.author ) {
 							author_data = author;
@@ -67,7 +74,7 @@ const withPosts = createHigherOrderComponent(
 				}
 
 				let image, url;
-				if( post.featured_media ) {
+				if( !! post.featured_media ) {
 					image = getMedia( post.featured_media );
 					url = get(
 						image,
