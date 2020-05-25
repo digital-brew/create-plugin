@@ -69,7 +69,7 @@ class Dynamic_Custom_Post_Type {
 			);
 		}
 
-		if ( isset( $attributes['categories'] ) && isset( $attributes['taxonomy'] ) ) {
+		if ( count( $attributes['categories'] ) > 0 && isset( $attributes['taxonomy'] ) ) {
 			$args['tax_query'] = array(
 				array(
 					'taxonomy' => $attributes['taxonomy'],

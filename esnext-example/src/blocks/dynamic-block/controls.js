@@ -1,9 +1,9 @@
 /**
  * External Dependencies
  */
-// import { controls } from '@blockhandbook/controls';
-// const { PostsControls } = controls;
-import { PostsControls } from '../../../../packages/controls/src'
+import { controls } from '@blockhandbook/controls';
+const { PostsControls } = controls;
+// import { PostsControls } from '../../../../packages/controls/src'
 
 /**
  * WordPress Dependencies

@@ -54,7 +54,6 @@ class Dynamic_Block {
 	public function render( $attributes, $content ) {
 
 		$args = array(
-			'post_type'        => $attributes['postType'],
 			'numberposts'      => $attributes['postsToShow'],
 			'post_status'      => 'publish',
 			'order'            => $attributes['order'],

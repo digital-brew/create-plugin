@@ -1,17 +1,15 @@
 /**
  * External Dependencies
  */
-// import { controls } from '@blockhandbook/controls';
-// const { PostsControls } = controls;
-import { PostsControls } from '../../../../packages/controls/src';
-import { PostTaxonomies } from '@wordpress/editor';
+import { controls } from '@blockhandbook/controls';
+const { PostsControls } = controls;
+// import { PostsControls } from '../../../../packages/controls/src';
 
 /**
  * WordPress Dependencies
  */
 import { __ } from '@wordpress/i18n';
 import { BlockControls, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody } from '@wordpress/components';
 
 /**
  * Internal Dependencies
